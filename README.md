@@ -19,7 +19,7 @@ PurrfectPics is your ultimate companion for discovering, customizing, and sharin
 To get started with PurrfectPics, follow these steps:
 
 1. Clone the repository to your local machine:
-   git clone https://github.com/yourusername/PurrfectPics.git
+   git clone git@github.com:manununhez/purrfect-pics.git
    
 
 2. Open the project in Android Studio.
