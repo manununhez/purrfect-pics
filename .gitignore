@@ -31,3 +31,44 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# built application files
+*.ap_
+*.dex
+*.class
+
+# generated files
+bin/
+gen/
+out/
+
+# Eclipse project files
+.classpath
+.project
+
+# Windows thumbnail db
+.DS_Store
+
+# IDEA/Android Studio project files, because
+# the project can be imported from settings.gradle.kts.kts
+.idea/*
+!.idea/copyright
+# Keep the code styles.
+!/.idea/codeStyles
+/.idea/codeStyles/*
+!/.idea/codeStyles/Project.xml
+!/.idea/codeStyles/codeStyleConfig.xml
+
+# Gradle cache
+.gradle
+
+# Sandbox stuff
+_sandbox
+
+# Android Studio captures folder
+captures/
+
+/keystore.properties
+
+.externalNativeBuild
+.cxx
