@@ -25,13 +25,13 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
-  
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
 
-  kotlinOptions { jvmTarget = "17" }
+  kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
   buildFeatures { compose = true }
 
@@ -41,6 +41,8 @@ android {
 }
 
 dependencies {
+  implementation(projects.core.commonUi)
+
   implementation(libs.androidx.core.splashscreen)
   implementation(libs.androidx.core.ktx)
 

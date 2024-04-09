@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.purrfectpics.theme
+package com.manuelnunez.apps.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -20,6 +20,20 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Purrfect Pics"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+rootProject.name = "Purrfect_Pics"
 
 include(":app")
+
+include(":features")
+
+include(":core:database")
+
+include(":core:data")
+
+include(":core:domain")
+
+include(":core:services")
+
+include(":core:common-ui")
