@@ -2,8 +2,9 @@ package com.manuelnunez.apps.core.services.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.manuelnunez.apps.core.services.PexelsService
-import com.manuelnunez.apps.core.services.authenticator.KeyAuthenticator
+import com.manuelnunez.apps.core.services.authenticator.PexelsKeyAuthenticator
+import com.manuelnunez.apps.core.services.service.CataasService
+import com.manuelnunez.apps.core.services.service.PexelsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,13 +21,14 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
   private const val BASE_URL = "https://api.pexels.com/v1/"
+  private const val BASE_URL2 = "https://cataas.com/"
 
   @Provides
   @Singleton
   fun provideOkHttpClient(): OkHttpClient =
       OkHttpClient.Builder()
           .addInterceptor(HttpLoggingInterceptor().setLevel(Level.BODY))
-          .authenticator(KeyAuthenticator())
+          .authenticator(PexelsKeyAuthenticator())
           .connectTimeout(60, TimeUnit.SECONDS)
           .readTimeout(60, TimeUnit.SECONDS)
           .build()
@@ -51,4 +53,9 @@ object NetworkModule {
   @Provides
   fun providePexelsService(retrofit: Retrofit): PexelsService =
       retrofit.create(PexelsService::class.java)
+
+  @Singleton
+  @Provides
+  fun provideCataasService(retrofit: Retrofit): CataasService =
+      retrofit.create(CataasService::class.java)
 }

@@ -47,6 +47,7 @@ class NetworkManagerImpl @Inject constructor(@ApplicationContext private val con
       return activeNetwork != null && activeNetwork.type == ConnectivityManager.TYPE_WIFI
     }
 
+    // TODO: complete errors
     /** Get the active [NetworkInfo] */
     private fun getActiveNetwork(context: Context): NetworkInfo? {
       return (context.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager)

@@ -1,8 +1,10 @@
 package com.manuelnunez.apps.core.data.di
 
-import com.manuelnunez.apps.core.data.CatsRemoteDataSourceImpl
 import com.manuelnunez.apps.core.data.HomeRepositoryImpl
-import com.manuelnunez.apps.core.data.datasource.CatsRemoteDataSource
+import com.manuelnunez.apps.core.data.datasource.CataasCatsRemoteDataSource
+import com.manuelnunez.apps.core.data.datasource.CataasCatsRemoteDataSourceImpl
+import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
+import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSourceImpl
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
 import dagger.Binds
 import dagger.Module
@@ -20,7 +22,13 @@ abstract class DataModule {
 
   @Singleton
   @Binds
-  abstract fun provideCatsRemoteDataSource(
-      remoteDataSourceImpl: CatsRemoteDataSourceImpl
-  ): CatsRemoteDataSource
+  abstract fun providePexelsCatsRemoteDataSource(
+      remoteDataSourceImpl: PexelsCatsRemoteDataSourceImpl
+  ): PexelsCatsRemoteDataSource
+
+  @Singleton
+  @Binds
+  abstract fun provideCataasCatsRemoteDataSource(
+      remoteDataSourceImpl: CataasCatsRemoteDataSourceImpl
+  ): CataasCatsRemoteDataSource
 }
