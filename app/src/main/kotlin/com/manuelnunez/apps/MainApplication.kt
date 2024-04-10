@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.purrfectpics
+package com.manuelnunez.apps
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

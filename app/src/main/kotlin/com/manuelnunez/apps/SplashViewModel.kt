@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.purrfectpics
+package com.manuelnunez.apps
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

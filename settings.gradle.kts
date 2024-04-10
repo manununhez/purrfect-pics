@@ -26,8 +26,6 @@ rootProject.name = "Purrfect_Pics"
 
 include(":app")
 
-include(":features")
-
 include(":core:database")
 
 include(":core:data")
@@ -37,3 +35,7 @@ include(":core:domain")
 include(":core:services")
 
 include(":core:common-ui")
+
+include(":features:home:domain")
+
+include(":features:home:ui")

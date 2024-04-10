@@ -1,6 +1,7 @@
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.ksp)
 }
 
 android {
@@ -17,4 +18,10 @@ android {
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 }
 
-dependencies {}
+dependencies {
+  implementation(libs.kotlinx.coroutines.android)
+
+  // HILT
+  implementation(libs.hilt.android)
+  ksp(libs.hilt.compiler)
+}

@@ -18,15 +18,15 @@ android {
 
   buildFeatures { compose = true }
 
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.2" // androidxComposeCompiler
-  }
+  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
 }
 
 dependencies {
   implementation(libs.androidx.core.ktx)
 
   implementation(libs.androidx.compose.material3)
+
+  implementation(libs.coil.kt.compose)
 
   // Compose
   val composeBom = platform(libs.androidx.compose.bom)

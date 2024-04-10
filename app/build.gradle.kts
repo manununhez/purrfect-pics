@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace = "com.manuelnunez.apps.purrfectpics"
+  namespace = "com.manuelnunez.apps"
   compileSdk = 34
 
   defaultConfig {
@@ -15,8 +15,6 @@ android {
     targetSdk = 34
     versionCode = 1
     versionName = "1.0"
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 
   buildTypes {
@@ -35,13 +33,13 @@ android {
 
   buildFeatures { compose = true }
 
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.2" // androidxComposeCompiler
-  }
+  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
 }
 
 dependencies {
   implementation(projects.core.commonUi)
+  implementation(projects.core.data)
+  implementation(projects.features.home.ui)
 
   implementation(libs.androidx.core.splashscreen)
   implementation(libs.androidx.core.ktx)

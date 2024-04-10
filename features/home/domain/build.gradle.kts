@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-  namespace = "com.manuelnunez.apps.core.data"
+  namespace = "com.manuelnunez.apps.features.home.domain"
   compileSdk = 34
 
   defaultConfig { minSdk = 21 }
@@ -19,11 +19,9 @@ android {
 }
 
 dependencies {
-  implementation(projects.features.home.domain)
-  implementation(projects.core.services)
+  implementation(projects.core.domain)
 
-  implementation(libs.retrofit.core)
-  implementation(libs.retrofit.gsonConverter)
+  implementation(libs.kotlinx.coroutines.android)
 
   // HILT
   implementation(libs.hilt.android)
