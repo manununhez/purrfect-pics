@@ -66,10 +66,10 @@ fun HomeScreen(viewModel: HomeScreenViewModel = hiltViewModel()) {
 
     if (items is HomeUiState.Success) {
       LazyColumn {
-        items((items as HomeUiState.Success).data.photos) {
+        items((items as HomeUiState.Success).data) {
           OutlinedCard {
             DynamicAsyncImage(
-                imageUrl = it.src.small,
+                imageUrl = it.thumbnailUrl,
                 contentDescription = null,
                 modifier = Modifier.size(140.dp))
           }
