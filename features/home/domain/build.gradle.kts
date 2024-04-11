@@ -17,9 +17,7 @@ android {
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
-  tasks.withType<Test> {
-    useJUnitPlatform()
-  }
+  tasks.withType<Test> { useJUnitPlatform() }
 }
 
 dependencies {

@@ -27,9 +27,7 @@ android {
 
   buildFeatures { compose = true }
 
-  tasks.withType<Test> {
-    useJUnitPlatform()
-  }
+  tasks.withType<Test> { useJUnitPlatform() }
 }
 
 dependencies {
