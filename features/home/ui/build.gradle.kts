@@ -26,6 +26,10 @@ android {
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
   buildFeatures { compose = true }
+
+  tasks.withType<Test> {
+    useJUnitPlatform()
+  }
 }
 
 dependencies {

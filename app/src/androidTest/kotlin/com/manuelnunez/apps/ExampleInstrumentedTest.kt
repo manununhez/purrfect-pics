@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.purrfectpics
+package com.manuelnunez.apps
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

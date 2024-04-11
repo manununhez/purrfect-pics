@@ -34,6 +34,10 @@ android {
   buildFeatures { compose = true }
 
   composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
+
+  tasks.withType<Test> {
+    useJUnitPlatform()
+  }
 }
 
 dependencies {
