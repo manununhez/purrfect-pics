@@ -27,11 +27,11 @@ import com.manuelnunez.apps.core.ui.R
 @Composable
 fun DynamicAsyncImage(
     imageUrl: String,
-    contentDescription: String?,
     modifier: Modifier = Modifier,
+    contentDescription: String,
     placeholder: Painter = painterResource(R.drawable.ic_broken_image),
+    contentScale: ContentScale = ContentScale.Crop
 ) {
-  //    val iconTint = LocalTintTheme.current.iconTint
   var isLoading by remember { mutableStateOf(true) }
   var isError by remember { mutableStateOf(false) }
   val imageLoader =
@@ -40,8 +40,7 @@ fun DynamicAsyncImage(
           onState = { state ->
             isLoading = state is Loading
             isError = state is Error
-          },
-      )
+          })
   val isLocalInspection = LocalInspectionMode.current
   Box(
       modifier = modifier,
@@ -55,10 +54,10 @@ fun DynamicAsyncImage(
       )
     }
     Image(
-        contentScale = ContentScale.Crop,
+        modifier = modifier,
         painter = if (isError.not() && !isLocalInspection) imageLoader else placeholder,
-        contentDescription = contentDescription,
-        colorFilter = null // if (iconTint != Unspecified) ColorFilter.tint(iconTint) else null,
-        )
+        contentScale =
+            if (isError.not() && !isLocalInspection) contentScale else ContentScale.FillBounds,
+        contentDescription = contentDescription)
   }
 }

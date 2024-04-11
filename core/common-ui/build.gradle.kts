@@ -25,6 +25,7 @@ dependencies {
   implementation(libs.androidx.core.ktx)
 
   implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.compose.ui.tooling.preview)
 
   implementation(libs.coil.kt.compose)
 
@@ -32,4 +33,5 @@ dependencies {
   val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)
   androidTestImplementation(composeBom)
+  debugImplementation(libs.androidx.ui.tooling)
 }
