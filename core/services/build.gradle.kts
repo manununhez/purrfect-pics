@@ -23,7 +23,7 @@ android {
           null
         }
 
-    val pexelsKey = keystoreProperties?.getProperty("PEXELS_API_KEY") ?: ""
+    val pexelsKey = keystoreProperties?.getProperty("PEXELS_API_KEY") ?: "\"\""
 
     debug { buildConfigField("String", "PEXELS_API_KEY", pexelsKey) }
 

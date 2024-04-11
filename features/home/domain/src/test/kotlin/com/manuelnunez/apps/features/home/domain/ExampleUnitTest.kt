@@ -1,6 +1,6 @@
 package com.manuelnunez.apps.features.home.domain
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**

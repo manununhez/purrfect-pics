@@ -16,7 +16,7 @@ class DataMapperTest {
     // THEN
     assertEquals(pexeelsResponse.photos.size, items.size)
     items[0].apply {
-      assertEquals(pexeelsResponse.photos[0].id, photoId)
+      assertEquals(pexeelsResponse.photos[0].id.toString(), photoId)
       assertEquals(pexeelsResponse.photos[0].src.original, imageUrl)
       assertEquals(pexeelsResponse.photos[0].src.portrait, thumbnailUrl)
       assertEquals(pexeelsResponse.photos[0].alt, description)

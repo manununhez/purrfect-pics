@@ -65,26 +65,26 @@ class HomeRepositoryTest {
     itemsResponse.fold(
         success = { items ->
           assertEquals(10, items.size)
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[0].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[1].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[2].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[3].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[4].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[5].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[6].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[7].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[8].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[9].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[0].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[1].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[2].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[3].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[4].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[5].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[6].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[7].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[8].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[9].photoId })
         },
         error = {})
   }
@@ -108,16 +108,16 @@ class HomeRepositoryTest {
     itemsResponse.fold(
         success = { items ->
           assertEquals(5, items.size)
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[0].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[1].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[2].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[3].photoId })
-          assertEquals(
-              true, mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[4].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[0].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[1].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[2].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[3].photoId })
+          assertTrue(
+              mockPexelsSearchResponseDTO.photos.any { it.id.toString() == items[4].photoId })
         },
         error = {})
   }
