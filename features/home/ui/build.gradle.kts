@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+  implementation(projects.core.common)
   implementation(projects.core.domain)
   implementation(projects.core.commonUi)
   implementation(projects.features.home.domain)
@@ -40,6 +41,7 @@ dependencies {
 
   // Hilt
   implementation(libs.hilt.android)
+  debugImplementation(libs.androidx.ui.tooling)
   ksp(libs.hilt.compiler)
 
   // Coil

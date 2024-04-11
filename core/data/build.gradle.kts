@@ -19,8 +19,9 @@ android {
 }
 
 dependencies {
-  implementation(projects.features.home.domain)
+  implementation(projects.core.common)
   implementation(projects.core.services)
+  implementation(projects.features.home.domain)
 
   implementation(libs.retrofit.core)
   implementation(libs.retrofit.gsonConverter)
@@ -28,4 +29,7 @@ dependencies {
   // HILT
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
+
+  testImplementation(libs.junit)
+  testImplementation(libs.mockk)
 }

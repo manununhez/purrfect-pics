@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.core.domain.usecase
+package com.manuelnunez.apps.core.common
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

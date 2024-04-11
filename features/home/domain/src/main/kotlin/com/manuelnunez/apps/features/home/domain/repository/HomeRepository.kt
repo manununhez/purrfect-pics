@@ -1,11 +1,13 @@
 package com.manuelnunez.apps.features.home.domain.repository
 
+import com.manuelnunez.apps.core.common.Either
+import com.manuelnunez.apps.features.home.domain.model.HomeErrorModel
 import com.manuelnunez.apps.features.home.domain.model.Item
 
 interface HomeRepository {
-  fun getAllItems(): List<Item>
+  fun getAllItems(): Either<List<Item>, HomeErrorModel>
 
-  fun getPopularItems(): List<Item>
+  fun getPopularItems(): Either<List<Item>, HomeErrorModel>
 
-  fun getFeaturedItems(): List<Item>
+  fun getFeaturedItems(): Either<List<Item>, HomeErrorModel>
 }

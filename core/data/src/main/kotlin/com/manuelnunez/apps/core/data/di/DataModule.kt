@@ -1,10 +1,10 @@
 package com.manuelnunez.apps.core.data.di
 
-import com.manuelnunez.apps.core.data.HomeRepositoryImpl
 import com.manuelnunez.apps.core.data.datasource.CataasCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.datasource.CataasCatsRemoteDataSourceImpl
 import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSourceImpl
+import com.manuelnunez.apps.core.data.repository.HomeRepositoryImpl
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
 import dagger.Binds
 import dagger.Module

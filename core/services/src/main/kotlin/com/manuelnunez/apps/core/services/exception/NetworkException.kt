@@ -1,3 +1,3 @@
-package com.manuelnunez.apps.core.domain.exception
+package com.manuelnunez.apps.core.services.exception
 
 class NetworkException(message: String) : Exception(message)

@@ -1,5 +1,6 @@
 package com.manuelnunez.apps.core.domain.usecase
 
+import com.manuelnunez.apps.core.common.DispatcherProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlin.coroutines.CoroutineContext

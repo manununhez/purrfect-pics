@@ -26,7 +26,7 @@ rootProject.name = "Purrfect_Pics"
 
 include(":app")
 
-include(":core:database")
+include(":core:common")
 
 include(":core:data")
 

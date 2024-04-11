@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.core.services.authenticator
+package com.manuelnunez.apps.core.services.interceptor
 
 import com.manuelnunez.apps.core.services.BuildConfig
 import okhttp3.Authenticator
@@ -14,15 +14,12 @@ class PexelsKeyAuthenticator : Authenticator {
    */
   @Throws(IOException::class)
   override fun authenticate(route: Route?, response: Response): Request? {
-    var requestAvailable: Request? = null
     try {
-      requestAvailable =
-          response.request
-              .newBuilder()
-              .addHeader("Authorization", BuildConfig.PEXELS_API_KEY)
-              .build()
-      return requestAvailable
-    } catch (ex: Exception) {}
-    return requestAvailable
+      return response.request
+          .newBuilder()
+          .addHeader("Authorization", BuildConfig.PEXELS_API_KEY)
+          .build()
+    } catch (_: Exception) {}
+    return null
   }
 }

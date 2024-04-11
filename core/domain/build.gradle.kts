@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-  implementation(libs.kotlinx.coroutines.android)
+  implementation(projects.core.common)
 
   // HILT
   implementation(libs.hilt.android)

@@ -1,10 +1,11 @@
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.ksp)
 }
 
 android {
-  namespace = "com.manuelnunez.apps.core.database"
+  namespace = "com.manuelnunez.apps.core.common"
   compileSdk = 34
 
   defaultConfig { minSdk = 21 }
@@ -17,4 +18,10 @@ android {
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 }
 
-dependencies {}
+dependencies {
+  implementation(libs.kotlinx.coroutines.android)
+
+  // HILT
+  implementation(libs.hilt.android)
+  ksp(libs.hilt.compiler)
+}

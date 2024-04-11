@@ -1,13 +1,18 @@
 package com.manuelnunez.apps.core.services.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.manuelnunez.apps.core.services.authenticator.PexelsKeyAuthenticator
+import com.manuelnunez.apps.core.services.executors.RetrofitServicesExecutor
+import com.manuelnunez.apps.core.services.executors.ServicesExecutor
+import com.manuelnunez.apps.core.services.interceptor.ConnectivityInterceptor
+import com.manuelnunez.apps.core.services.interceptor.PexelsKeyAuthenticator
 import com.manuelnunez.apps.core.services.service.CataasService
 import com.manuelnunez.apps.core.services.service.PexelsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,9 +30,10 @@ object NetworkModule {
 
   @Provides
   @Singleton
-  fun provideOkHttpClient(): OkHttpClient =
+  fun provideOkHttpClient(connectivityInterceptor: ConnectivityInterceptor): OkHttpClient =
       OkHttpClient.Builder()
           .addInterceptor(HttpLoggingInterceptor().setLevel(Level.BODY))
+          .addInterceptor(connectivityInterceptor)
           .authenticator(PexelsKeyAuthenticator())
           .connectTimeout(60, TimeUnit.SECONDS)
           .readTimeout(60, TimeUnit.SECONDS)
@@ -58,4 +64,14 @@ object NetworkModule {
   @Provides
   fun provideCataasService(retrofit: Retrofit): CataasService =
       retrofit.create(CataasService::class.java)
+
+  @Provides
+  @Singleton
+  fun provideConnectivityInterceptor(
+      @ApplicationContext context: Context
+  ): ConnectivityInterceptor {
+    return ConnectivityInterceptor(context)
+  }
+
+  @Provides @Singleton fun provideServicesExecutor(): ServicesExecutor = RetrofitServicesExecutor()
 }

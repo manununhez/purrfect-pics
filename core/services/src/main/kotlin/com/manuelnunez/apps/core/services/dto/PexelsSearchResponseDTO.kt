@@ -4,7 +4,7 @@ import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
 @Keep
-data class SearchResponseDTO(
+data class PexelsSearchResponseDTO(
     @SerializedName("total_results") val totalResult: Int,
     @SerializedName("page") val page: Int,
     @SerializedName("per_page") val perPage: Int,

@@ -1,6 +1,6 @@
-package com.manuelnunez.apps.core.domain.di
+package com.manuelnunez.apps.core.common.di
 
-import com.manuelnunez.apps.core.domain.usecase.DispatcherProvider
+import com.manuelnunez.apps.core.common.DispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
