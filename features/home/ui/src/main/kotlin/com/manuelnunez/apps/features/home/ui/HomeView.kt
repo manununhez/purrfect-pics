@@ -2,6 +2,7 @@ package com.manuelnunez.apps.features.home.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -133,7 +134,9 @@ private fun PopularItem(items: List<Item>, navigateToDetails: (String) -> Unit) 
                     Modifier.height(160.dp)
                         .width(100.dp)
                         .clickable(onClick = { navigateToDetails.invoke("") })) {
-                  Text(text = "See more")
+                  Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                    Text(text = stringResource(id = R.string.section_gallery))
+                  }
                 }
           }
         }
