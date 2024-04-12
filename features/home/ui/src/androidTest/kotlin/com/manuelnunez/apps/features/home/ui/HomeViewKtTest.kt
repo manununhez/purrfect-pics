@@ -5,6 +5,7 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import com.manuelnunez.apps.features.home.ui.components.HomeScreen
 import com.manuelnunez.apps.features.home.ui.utils.mockFeaturedPhotos
 import com.manuelnunez.apps.features.home.ui.utils.mockPopularPhotos
 import org.junit.Rule

@@ -42,6 +42,7 @@ fun DynamicAsyncImage(
             isError = state is Error
           })
   val isLocalInspection = LocalInspectionMode.current
+
   Box(
       modifier = modifier,
       contentAlignment = Alignment.Center,
@@ -53,6 +54,7 @@ fun DynamicAsyncImage(
           color = MaterialTheme.colorScheme.tertiary,
       )
     }
+
     Image(
         modifier = modifier,
         painter = if (isError.not() && !isLocalInspection) imageLoader else placeholder,

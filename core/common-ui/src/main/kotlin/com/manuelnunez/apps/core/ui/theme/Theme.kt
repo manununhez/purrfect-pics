@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.manuelnunez.apps.core.ui.component.MainGradientBackground
 
 private val LightColorScheme =
     lightColorScheme(
@@ -137,11 +138,13 @@ fun MainTheme(
       LocalGradientColors provides gradientColors,
       LocalBackgroundTheme provides backgroundTheme,
   ) {
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content,
-    )
+    MainGradientBackground {
+      MaterialTheme(
+          colorScheme = colorScheme,
+          typography = Typography,
+          content = content,
+      )
+    }
   }
 }
 
