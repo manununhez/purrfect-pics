@@ -35,10 +35,11 @@ constructor(
           .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), HomeUiState.Empty)
 
   init {
-    getItems()
+    getPopularItems()
+    getFeaturedItems()
   }
 
-  private fun getItems() {
+  private fun getPopularItems() {
     getPopularItemsUseCase
         .prepare(Unit)
         .onStart { popularItemsState.value = PopularItemsState.Loading }
@@ -49,7 +50,9 @@ constructor(
         }
         .catch { popularItemsState.value = PopularItemsState.Error }
         .launchIn(viewModelScope)
+  }
 
+  private fun getFeaturedItems() {
     getFeaturedItemsUseCase
         .prepare(Unit)
         .onStart { featuredItemsState.value = FeaturedItemsState.Loading }

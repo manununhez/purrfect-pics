@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.core.common
+package com.manuelnunez.apps.core.common.dispatcher
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

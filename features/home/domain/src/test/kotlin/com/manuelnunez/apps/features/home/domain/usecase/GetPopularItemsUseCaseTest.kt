@@ -13,24 +13,24 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class GetFeaturedItemsUseCaseTest {
+class GetPopularItemsUseCaseTest {
   @RegisterExtension private val mainDispatcherRule = MainDispatcherRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val homeRepository = mockk<HomeRepository>()
-  private lateinit var useCase: GetFeaturedItemsUseCase
+  private lateinit var useCase: GetPopularItemsUseCase
 
   @BeforeEach
   fun setUp() {
-    useCase = GetFeaturedItemsUseCase(homeRepository, mainDispatcherRule.testDispatcherProvider)
+    useCase = GetPopularItemsUseCase(homeRepository, mainDispatcherRule.testDispatcherProvider)
   }
 
   @Test
-  fun `call GetFeaturedItemsUseCase invokes getFeatureItems from repository`() =
+  fun `call GetItemUseCase invokes getFeatureItems from repository`() =
       mainDispatcherRule.runTest {
         useCase.prepare(Unit).test {}
 
-        verify(exactly = 1) { homeRepository.getFeaturedItems() }
+        verify(exactly = 1) { homeRepository.getPopularItems() }
         confirmVerified(homeRepository)
       }
 }
