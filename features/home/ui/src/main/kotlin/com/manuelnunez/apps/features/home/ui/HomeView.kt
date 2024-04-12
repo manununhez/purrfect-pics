@@ -18,6 +18,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -48,7 +50,30 @@ fun HomeView(
 ) {
   val items by viewModel.state.collectAsStateWithLifecycle()
 
-  HomeScreen(items, navigateToDetails, navigateToSeeMore)
+  if (items.popularItemsState is PopularItemsState.Error &&
+      items.featuredItemsState is FeaturedItemsState.Error) {
+    HomeErrorScreen { viewModel.getItems() }
+  } else {
+    HomeScreen(items, navigateToDetails, navigateToSeeMore)
+  }
+}
+
+@Composable
+private fun HomeErrorScreen(retry: () -> Unit) {
+  Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Column {
+      Button(
+          onClick = { retry.invoke() },
+          colors =
+              ButtonDefaults.buttonColors(
+                  containerColor = MaterialTheme.colorScheme.onBackground,
+              )) {
+            Text(text = stringResource(id = R.string.button_retry))
+          }
+
+      Text(text = stringResource(id = R.string.alert_error_try_again))
+    }
+  }
 }
 
 @Composable
@@ -76,7 +101,16 @@ private fun LazyListScope.featuredSection(
         item {
           LoadingIndicator(loaderContentDescription = stringResource(id = R.string.section_feature))
         }
+    FeaturedItemsState.Error -> item { FeatureError() }
     else -> {}
+  }
+}
+
+@Composable
+private fun FeatureError() {
+  Column {
+    HeaderTitle(title = stringResource(id = R.string.section_feature))
+    Text(text = "An error has occurred")
   }
 }
 
@@ -117,7 +151,18 @@ private fun LazyListScope.popularSection(
         item {
           LoadingIndicator(loaderContentDescription = stringResource(id = R.string.section_popular))
         }
+    PopularItemsState.Error -> {
+      item { PopularError() }
+    }
     else -> {}
+  }
+}
+
+@Composable
+private fun PopularError() {
+  Column {
+    HeaderTitle(title = stringResource(id = R.string.section_popular))
+    Text(text = "An error has occurred")
   }
 }
 
