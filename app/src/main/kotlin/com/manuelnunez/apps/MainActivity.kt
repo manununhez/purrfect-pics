@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
 
     setContent {
       MainTheme(disableDynamicTheming = true) {
-        MainGradientBackground { HomeView(navigateToDetails = {}) }
+        MainGradientBackground { HomeView(navigateToDetails = {}, navigateToSeeMore = {}) }
       }
     }
   }

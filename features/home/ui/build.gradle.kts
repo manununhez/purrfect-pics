@@ -28,6 +28,8 @@ android {
   buildFeatures { compose = true }
 
   tasks.withType<Test> { useJUnitPlatform() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
@@ -62,7 +64,6 @@ dependencies {
   testImplementation(libs.mockk)
   testImplementation(libs.turbine)
 
-  // Instrumented tests: jUnit rules and runners
-  androidTestImplementation(libs.androidx.test.ext.junit)
-  androidTestImplementation(libs.androidx.test.runner)
+  api(libs.androidx.compose.ui.test.junit4)
+  debugApi(libs.androidx.compose.ui.test.manifest)
 }

@@ -18,6 +18,8 @@ android {
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
   tasks.withType<Test> { useJUnitPlatform() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
