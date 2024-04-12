@@ -4,43 +4,93 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.manuelnunez.apps.core.common.fold
 import com.manuelnunez.apps.features.home.domain.model.Item
-import com.manuelnunez.apps.features.home.domain.usecase.GetItemUseCase
+import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
+import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(private val getItemUseCase: GetItemUseCase) :
-    ViewModel() {
+class HomeScreenViewModel
+@Inject
+constructor(
+    private val getFeaturedItemsUseCase: GetFeaturedItemsUseCase,
+    private val getPopularItemsUseCase: GetPopularItemsUseCase
+) : ViewModel() {
 
-  private val _uiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
-  val uiState: StateFlow<HomeUiState> = _uiState
+  private val popularItemsState = MutableStateFlow<PopularItemsState>(PopularItemsState.Idle)
+  private val featuredItemsState = MutableStateFlow<FeaturedItemsState>(FeaturedItemsState.Idle)
+
+  val state =
+      combine(popularItemsState, featuredItemsState) { movieState, dateState ->
+            HomeUiState(movieState, dateState)
+          }
+          .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), HomeUiState.Empty)
 
   init {
-    search()
+    getPopularItems()
+    getFeaturedItems()
   }
 
-  fun search() {
-    getItemUseCase
+  private fun getPopularItems() {
+    getPopularItemsUseCase
         .prepare(Unit)
+        .onStart { popularItemsState.value = PopularItemsState.Loading }
         .onEach { response ->
           response.fold(
-              success = { _uiState.value = HomeUiState.Success(it) },
-              error = { _uiState.value = HomeUiState.Error })
+              success = { popularItemsState.value = PopularItemsState.ShowList(it) },
+              error = { popularItemsState.value = PopularItemsState.Error })
         }
-        .catch { _uiState.value = HomeUiState.Error }
+        .catch { popularItemsState.value = PopularItemsState.Error }
         .launchIn(viewModelScope)
   }
 
-  sealed interface HomeUiState {
-    data object Loading : HomeUiState
+  private fun getFeaturedItems() {
+    getFeaturedItemsUseCase
+        .prepare(Unit)
+        .onStart { featuredItemsState.value = FeaturedItemsState.Loading }
+        .onEach { response ->
+          response.fold(
+              success = { featuredItemsState.value = FeaturedItemsState.ShowList(it) },
+              error = { featuredItemsState.value = FeaturedItemsState.Error })
+        }
+        .catch { featuredItemsState.value = FeaturedItemsState.ShowList(emptyList()) }
+        .launchIn(viewModelScope)
+  }
 
-    data object Error : HomeUiState
+  sealed interface PopularItemsState {
+    data object Idle : PopularItemsState
 
-    data class Success(val data: List<Item>) : HomeUiState
+    data object Loading : PopularItemsState
+
+    data object Error : PopularItemsState
+
+    data class ShowList(val items: List<Item>) : PopularItemsState
+  }
+
+  sealed interface FeaturedItemsState {
+    data object Idle : FeaturedItemsState
+
+    data object Loading : FeaturedItemsState
+
+    data object Error : FeaturedItemsState
+
+    data class ShowList(val items: List<Item>) : FeaturedItemsState
+  }
+
+  data class HomeUiState(
+      val popularItemsState: PopularItemsState = PopularItemsState.Idle,
+      val featuredItemsState: FeaturedItemsState = FeaturedItemsState.Idle,
+  ) {
+    companion object {
+      val Empty = HomeUiState()
+    }
   }
 }

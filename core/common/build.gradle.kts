@@ -16,10 +16,15 @@ android {
   }
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
   implementation(libs.kotlinx.coroutines.android)
+  implementation(libs.kotlinx.coroutines.test)
+  implementation(libs.junit.api)
+  implementation(libs.mockk)
 
   // HILT
   implementation(libs.hilt.android)

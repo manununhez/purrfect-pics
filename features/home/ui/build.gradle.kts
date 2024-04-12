@@ -26,6 +26,10 @@ android {
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
   buildFeatures { compose = true }
+
+  tasks.withType<Test> { useJUnitPlatform() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
@@ -57,8 +61,9 @@ dependencies {
   // Local tests: jUnit, coroutines, Android runner
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.mockk)
+  testImplementation(libs.turbine)
 
-  // Instrumented tests: jUnit rules and runners
-  androidTestImplementation(libs.androidx.test.ext.junit)
-  androidTestImplementation(libs.androidx.test.runner)
+  api(libs.androidx.compose.ui.test.junit4)
+  debugApi(libs.androidx.compose.ui.test.manifest)
 }

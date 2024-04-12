@@ -3,8 +3,8 @@ package com.manuelnunez.apps.core.data.mapper
 import com.manuelnunez.apps.core.data.utils.mockCataasResponseDTOS
 import com.manuelnunez.apps.core.data.utils.mockPexelsSearchResponseDTO
 import com.manuelnunez.apps.core.services.dto.CataasResponseDTO
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 class DataMapperTest {
   @Test

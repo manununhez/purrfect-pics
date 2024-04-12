@@ -1,0 +1,5 @@
+<resources>
+    <string name="section_feature">Featured</string>
+    <string name="section_popular">Popular</string>
+    <string name="section_gallery">See more</string>
+</resources>

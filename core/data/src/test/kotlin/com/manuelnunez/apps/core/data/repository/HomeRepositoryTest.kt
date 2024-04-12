@@ -11,17 +11,17 @@ import com.manuelnunez.apps.features.home.domain.model.HomeErrorModel
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
 import io.mockk.every
 import io.mockk.mockk
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 class HomeRepositoryTest {
   private lateinit var repository: HomeRepository
 
   private val remoteDataSource = mockk<PexelsCatsRemoteDataSource>()
 
-  @Before
+  @BeforeEach
   fun setUp() {
     repository = HomeRepositoryImpl(remoteDataSource)
   }
