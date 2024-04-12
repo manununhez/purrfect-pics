@@ -2,4 +2,6 @@
     <string name="section_feature">Featured</string>
     <string name="section_popular">Popular</string>
     <string name="section_gallery">See more</string>
+    <string name="alert_error_try_again">An Error has occurred. Please pull and refresh.</string>
+    <string name="button_retry">Retry</string>
 </resources>

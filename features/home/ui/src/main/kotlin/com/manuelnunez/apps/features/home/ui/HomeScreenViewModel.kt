@@ -35,6 +35,10 @@ constructor(
           .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), HomeUiState.Empty)
 
   init {
+    getItems()
+  }
+
+  fun getItems() {
     getPopularItems()
     getFeaturedItems()
   }
