@@ -32,6 +32,5 @@ dependencies {
   // Compose
   val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)
-  androidTestImplementation(composeBom)
   debugImplementation(libs.androidx.ui.tooling)
 }

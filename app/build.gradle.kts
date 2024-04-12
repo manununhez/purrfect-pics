@@ -36,6 +36,8 @@ android {
   composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
 
   tasks.withType<Test> { useJUnitPlatform() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
@@ -53,13 +55,8 @@ dependencies {
   // Compose
   val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)
-  androidTestImplementation(composeBom)
 
   // Hilt Dependency Injection
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
-
-  testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -130,12 +131,17 @@ private fun PopularItem(items: List<Item>, navigateToDetails: (String) -> Unit) 
 
           if (items.size >= 10) { // TODO: check popular size with a Constant?
             Card(
+                colors =
+                    CardDefaults.cardColors()
+                        .copy(containerColor = MaterialTheme.colorScheme.onBackground),
                 modifier =
                     Modifier.height(160.dp)
                         .width(100.dp)
                         .clickable(onClick = { navigateToDetails.invoke("") })) {
                   Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                    Text(text = stringResource(id = R.string.section_gallery))
+                    Text(
+                        text = stringResource(id = R.string.section_gallery),
+                        color = MaterialTheme.colorScheme.background)
                   }
                 }
           }

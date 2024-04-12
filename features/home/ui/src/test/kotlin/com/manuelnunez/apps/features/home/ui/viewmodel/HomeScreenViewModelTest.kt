@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.features.home.ui
+package com.manuelnunez.apps.features.home.ui.viewmodel
 
 import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.eitherError
@@ -8,6 +8,7 @@ import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.features.home.domain.model.HomeErrorModel
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
+import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
 import com.manuelnunez.apps.features.home.ui.utils.mockPhotos
