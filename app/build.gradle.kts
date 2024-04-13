@@ -43,7 +43,9 @@ android {
 dependencies {
   implementation(projects.core.commonUi)
   implementation(projects.core.data)
+  implementation(projects.features.home.domain)
   implementation(projects.features.home.ui)
+  implementation(projects.features.detail.ui)
 
   implementation(libs.androidx.core.splashscreen)
   implementation(libs.androidx.core.ktx)
@@ -51,6 +53,7 @@ dependencies {
   implementation(libs.androidx.activity.compose)
 
   implementation(libs.androidx.compose.material3)
+  implementation(libs.androidx.navigation.compose)
 
   implementation(libs.coil.kt)
 

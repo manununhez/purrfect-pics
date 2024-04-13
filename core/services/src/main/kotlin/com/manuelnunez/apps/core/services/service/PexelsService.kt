@@ -13,7 +13,7 @@ interface PexelsService {
   fun searchCats(
       @Query("query") query: String = "cats",
       @Query("page") page: Int = 0,
-      @Query("per_page") perPage: Int = 40
+      @Query("per_page") perPage: Int = 10
   ): Call<PexelsSearchResponseDTO>
 
   @GET("photos/{id}") fun searchCatsById(@Path("id") id: Long): Call<PhotoDTO>

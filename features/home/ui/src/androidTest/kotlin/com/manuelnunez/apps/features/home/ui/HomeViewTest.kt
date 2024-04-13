@@ -5,6 +5,8 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import com.manuelnunez.apps.features.home.ui.components.HomeErrorScreen
+import com.manuelnunez.apps.features.home.ui.components.HomeScreen
 import com.manuelnunez.apps.features.home.ui.utils.mockFeaturedPhotos
 import com.manuelnunez.apps.features.home.ui.utils.mockPopularPhotos
 import org.junit.Rule
@@ -64,7 +66,7 @@ class HomeViewTest {
 
     composeTestRule
         .onNodeWithContentDescription(
-            mockPopularPhotos[0].description,
+            mockFeaturedPhotos[0].description,
             substring = true,
         )
         .assertExists()
@@ -80,7 +82,27 @@ class HomeViewTest {
 
     composeTestRule
         .onNodeWithContentDescription(
-            mockFeaturedPhotos[0].description,
+            mockPopularPhotos[0].description,
+            substring = true,
+        )
+        .assertExists()
+        .assertHasClickAction()
+  }
+
+  @Test
+  fun error_whenError_showsTextAndButtonForRetry() {
+    composeTestRule.setContent { HomeErrorScreen(retry = {}) }
+
+    composeTestRule
+        .onNodeWithText(
+            composeTestRule.activity.resources.getString(R.string.alert_error_try_again),
+            substring = true,
+        )
+        .assertExists()
+
+    composeTestRule
+        .onNodeWithContentDescription(
+            composeTestRule.activity.resources.getString(R.string.button_retry),
             substring = true,
         )
         .assertExists()
