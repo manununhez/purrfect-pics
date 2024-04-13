@@ -3,6 +3,8 @@ package com.manuelnunez.apps.core.ui.component
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
@@ -13,15 +15,17 @@ import com.manuelnunez.apps.core.ui.utils.ThemePreviews
 @Composable
 fun ImageCard(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
+    imageUrl: String,
     cardContentDescription: String,
-    imageUrl: String
+    elevation: CardElevation = CardDefaults.cardElevation(),
+    onClick: (() -> Unit)? = null,
 ) {
   Card(
       modifier =
-          modifier.clickable(onClick = { onClick.invoke() }).semantics {
+          modifier.clickable(onClick = { onClick?.invoke() }).semantics {
             contentDescription = cardContentDescription
-          }) {
+          },
+      elevation = elevation) {
         DynamicAsyncImage(
             modifier = Modifier.fillMaxSize(), imageUrl = imageUrl, contentDescription = "")
       }

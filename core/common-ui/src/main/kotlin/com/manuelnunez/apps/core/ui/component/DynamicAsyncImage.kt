@@ -26,8 +26,8 @@ import com.manuelnunez.apps.core.ui.R
 /** A wrapper around [AsyncImage] which determines the colorFilter based on the theme */
 @Composable
 fun DynamicAsyncImage(
-    imageUrl: String,
     modifier: Modifier = Modifier,
+    imageUrl: String,
     contentDescription: String,
     placeholder: Painter = painterResource(R.drawable.ic_broken_image),
     contentScale: ContentScale = ContentScale.Crop

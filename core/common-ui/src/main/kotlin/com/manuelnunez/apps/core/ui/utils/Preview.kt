@@ -44,3 +44,13 @@ annotation class FontScalingPreviews
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, group = "Themes", name = "Light theme")
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, group = "Themes", name = "Dark theme")
 annotation class ThemePreviews
+
+@Preview(
+    showSystemUi = true,
+    device =
+        "spec:width=411dp,height=891dp,dpi=420,isRound=false,chinSize=0dp,orientation=portrait")
+@Preview(
+    showSystemUi = true,
+    device =
+        "spec:width=411dp,height=891dp,dpi=420,isRound=false,chinSize=0dp,orientation=landscape")
+annotation class OrientationPreviews
