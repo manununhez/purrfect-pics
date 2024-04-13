@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.manuelnunez.apps.core.ui.component.TitleText
@@ -22,15 +24,17 @@ import com.manuelnunez.apps.features.home.ui.R
 
 @Composable
 fun HomeErrorScreen(retry: () -> Unit) {
+  val retryText = stringResource(id = R.string.button_retry)
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
       Button(
+          modifier = Modifier.semantics { contentDescription = retryText },
           onClick = { retry.invoke() },
           colors =
               ButtonDefaults.buttonColors(
                   containerColor = MaterialTheme.colorScheme.onBackground,
               )) {
-            Text(text = stringResource(id = R.string.button_retry))
+            Text(text = retryText)
           }
 
       Text(text = stringResource(id = R.string.alert_error_try_again), textAlign = TextAlign.Center)

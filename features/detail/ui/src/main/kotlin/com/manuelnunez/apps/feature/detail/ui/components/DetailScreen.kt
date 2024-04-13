@@ -48,7 +48,7 @@ private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
 
     ImageCard(
         modifier = Modifier.weight(1f).padding(top = 20.dp).padding(horizontal = 40.dp),
-        cardContentDescription = "",
+        cardContentDescription = item.photoId,
         imageUrl = item.imageUrl,
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp))
 
@@ -96,7 +96,7 @@ private fun DetailLandscape(item: Item, onBackClick: () -> Unit) {
       Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
         ImageCard(
             modifier = Modifier.weight(1f).padding(top = 20.dp).padding(start = 40.dp, end = 20.dp),
-            cardContentDescription = "",
+            cardContentDescription = item.photoId,
             imageUrl = item.imageUrl,
             elevation = CardDefaults.cardElevation(defaultElevation = 10.dp))
 
@@ -128,7 +128,7 @@ private fun ShareImage(url: String) {
   IconButton(onClick = { ContextCompat.startActivity(context, shareIntent, null) }) {
     Icon(
         imageVector = Icons.Filled.Share,
-        contentDescription = stringResource(id = R.string.button_back),
+        contentDescription = stringResource(id = R.string.button_share),
         tint = MaterialTheme.colorScheme.onSurface)
   }
 }

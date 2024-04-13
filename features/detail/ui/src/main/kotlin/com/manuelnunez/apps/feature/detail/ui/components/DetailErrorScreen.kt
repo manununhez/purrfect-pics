@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.OrientationPreviews
@@ -18,15 +20,17 @@ import com.manuelnunez.apps.features.detail.ui.R
 
 @Composable
 fun DetailErrorScreen(onBackClick: () -> Unit) {
-  Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+  val textButtonGoBack = stringResource(id = R.string.button_back)
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
       Button(
+          modifier = Modifier.semantics { contentDescription = textButtonGoBack },
           onClick = { onBackClick.invoke() },
           colors =
               ButtonDefaults.buttonColors(
                   containerColor = MaterialTheme.colorScheme.onBackground,
               )) {
-            Text(text = stringResource(id = R.string.button_back))
+            Text(text = textButtonGoBack)
           }
 
       Text(
