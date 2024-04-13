@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.material3.Button
@@ -32,7 +32,7 @@ fun HomeErrorScreen(retry: () -> Unit) {
   val retryText = stringResource(id = R.string.button_retry)
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-      Spacer(Modifier.windowInsetsTopHeight(WindowInsets.systemBars))
+      Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
 
       Button(
           modifier = Modifier.semantics { contentDescription = retryText },
@@ -45,7 +45,7 @@ fun HomeErrorScreen(retry: () -> Unit) {
           }
 
       Text(text = stringResource(id = R.string.alert_error_try_again), textAlign = TextAlign.Center)
-      Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
+      Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
     }
   }
 }

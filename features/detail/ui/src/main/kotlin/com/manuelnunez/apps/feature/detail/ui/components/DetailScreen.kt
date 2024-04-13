@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.layout.wrapContentSize
@@ -51,7 +51,7 @@ fun DetailScreen(item: Item, onBackClick: () -> Unit) {
 @Composable
 private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
   Column {
-    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.systemBars))
+    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
 
     DetailToolbar(onBackClick)
 
@@ -72,9 +72,11 @@ private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
               text = item.description,
               style = MaterialTheme.typography.titleSmall,
               color = MaterialTheme.colorScheme.onSurface)
+
+          Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
         }
 
-    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
+    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
   }
 }
 
@@ -91,7 +93,7 @@ private fun DetailToolbar(onBackClick: () -> Unit) {
 @Composable
 private fun DetailLandscape(item: Item, onBackClick: () -> Unit) {
   Column(modifier = Modifier.fillMaxSize()) {
-    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.systemBars))
+    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
 
     DetailToolbar(onBackClick)
 
@@ -114,9 +116,8 @@ private fun DetailLandscape(item: Item, onBackClick: () -> Unit) {
           overflow = TextOverflow.Ellipsis,
           style = MaterialTheme.typography.titleMedium,
           color = MaterialTheme.colorScheme.onSurface)
-
-      Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
     }
+    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
   }
 }
 
