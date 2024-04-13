@@ -39,3 +39,5 @@ include(":core:common-ui")
 include(":features:home:domain")
 
 include(":features:home:ui")
+
+include(":features:detail:ui")
