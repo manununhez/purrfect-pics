@@ -21,7 +21,7 @@ import com.manuelnunez.apps.features.detail.ui.R
 @Composable
 fun DetailErrorScreen(onBackClick: () -> Unit) {
   val textButtonGoBack = stringResource(id = R.string.button_back)
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+  Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
       Button(
           modifier = Modifier.semantics { contentDescription = textButtonGoBack },

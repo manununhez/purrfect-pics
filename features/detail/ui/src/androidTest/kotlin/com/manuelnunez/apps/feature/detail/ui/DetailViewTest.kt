@@ -67,10 +67,10 @@ class DetailViewTest {
         .assertHasClickAction()
   }
 
-    private val mockItem =
-        Item(
-            photoId = "14gf",
-            imageUrl = "https://example.com/photo14gf",
-            thumbnailUrl = "https://example.com/photo14gf/small",
-            description = "This is a description for popular items 14gf")
+  private val mockItem =
+      Item(
+          photoId = "14gf",
+          imageUrl = "https://example.com/photo14gf",
+          thumbnailUrl = "https://example.com/photo14gf/small",
+          description = "This is a description for popular items 14gf")
 }
