@@ -3,6 +3,7 @@ package com.manuelnunez.apps
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
@@ -19,6 +20,8 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
 
     splashScreen.setKeepOnScreenCondition { viewModel.isLoading.value }
+
+    enableEdgeToEdge()
 
     setContent {
       val navController = rememberNavController()

@@ -4,9 +4,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.manuelnunez.apps.core.ui.component.AdaptableVerticalGrid
 import com.manuelnunez.apps.core.ui.component.AdaptableVerticalGridDecoration
@@ -41,7 +46,17 @@ fun HomeScreen(
     navigateToDetails: (Item) -> Unit,
     navigateToSeeMore: () -> Unit
 ) {
-  LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(vertical = 20.dp)) {
+  val padding: Dp = 40.dp
+
+  val contentPadding: PaddingValues =
+      WindowInsets(
+              top = padding,
+              bottom = padding,
+          )
+          .add(WindowInsets.navigationBars)
+          .asPaddingValues()
+
+  LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = contentPadding) {
     when (items.featuredItemsState) {
       is FeaturedItemsState.ShowList ->
           item { FeaturedItem(items.featuredItemsState.items, navigateToDetails) }

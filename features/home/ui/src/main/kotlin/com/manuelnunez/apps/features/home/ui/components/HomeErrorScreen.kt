@@ -2,8 +2,13 @@ package com.manuelnunez.apps.features.home.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -27,6 +32,8 @@ fun HomeErrorScreen(retry: () -> Unit) {
   val retryText = stringResource(id = R.string.button_retry)
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+      Spacer(Modifier.windowInsetsTopHeight(WindowInsets.systemBars))
+
       Button(
           modifier = Modifier.semantics { contentDescription = retryText },
           onClick = { retry.invoke() },
@@ -38,6 +45,7 @@ fun HomeErrorScreen(retry: () -> Unit) {
           }
 
       Text(text = stringResource(id = R.string.alert_error_try_again), textAlign = TextAlign.Center)
+      Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
     }
   }
 }

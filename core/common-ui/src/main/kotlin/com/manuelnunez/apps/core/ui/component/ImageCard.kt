@@ -7,6 +7,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import com.manuelnunez.apps.core.ui.theme.MainTheme
@@ -18,6 +19,7 @@ fun ImageCard(
     imageUrl: String,
     cardContentDescription: String,
     elevation: CardElevation = CardDefaults.cardElevation(),
+    contentScale: ContentScale = ContentScale.Crop,
     onClick: (() -> Unit)? = null,
 ) {
   Card(
@@ -27,7 +29,10 @@ fun ImageCard(
           },
       elevation = elevation) {
         DynamicAsyncImage(
-            modifier = Modifier.fillMaxSize(), imageUrl = imageUrl, contentDescription = "")
+            modifier = Modifier.fillMaxSize(),
+            imageUrl = imageUrl,
+            contentDescription = "",
+            contentScale = contentScale)
       }
 }
 
