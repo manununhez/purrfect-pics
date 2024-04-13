@@ -36,8 +36,12 @@ import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsSta
 import com.manuelnunez.apps.features.home.ui.R
 
 @Composable
-fun HomeScreen(items: HomeUiState, navigateToDetails: () -> Unit, navigateToSeeMore: () -> Unit) {
-  LazyColumn(Modifier.padding(vertical = 20.dp).fillMaxSize()) {
+fun HomeScreen(
+    items: HomeUiState,
+    navigateToDetails: (Item) -> Unit,
+    navigateToSeeMore: () -> Unit
+) {
+  LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(vertical = 20.dp)) {
     when (items.featuredItemsState) {
       is FeaturedItemsState.ShowList ->
           item { FeaturedItem(items.featuredItemsState.items, navigateToDetails) }
@@ -67,7 +71,7 @@ fun HomeScreen(items: HomeUiState, navigateToDetails: () -> Unit, navigateToSeeM
 }
 
 @Composable
-private fun FeaturedItem(items: List<Item>, navigateToDetails: () -> Unit) {
+private fun FeaturedItem(items: List<Item>, navigateToDetails: (Item) -> Unit) {
   Column {
     TitleText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
@@ -80,7 +84,7 @@ private fun FeaturedItem(items: List<Item>, navigateToDetails: () -> Unit) {
           items(items) { item ->
             ImageCard(
                 modifier = Modifier.size(height = 100.dp, width = 160.dp),
-                onClick = navigateToDetails,
+                onClick = { navigateToDetails.invoke(item) },
                 cardContentDescription = item.description,
                 imageUrl = item.thumbnailUrl)
           }
@@ -93,7 +97,7 @@ private fun FeaturedItem(items: List<Item>, navigateToDetails: () -> Unit) {
 @Composable
 private fun PopularItem(
     items: List<Item>,
-    navigateToDetails: () -> Unit,
+    navigateToDetails: (Item) -> Unit,
     navigateToSeeMore: () -> Unit
 ) {
   val itemWidth = 100.dp
@@ -118,7 +122,7 @@ private fun PopularItem(
                     Modifier.size(height = itemHeight, width = itemWidth)
                         .padding(horizontal = horizontalMarginItem)
                         .padding(bottom = verticalMarginItem),
-                onClick = navigateToDetails,
+                onClick = { navigateToDetails.invoke(item) },
                 cardContentDescription = item.description,
                 imageUrl = item.thumbnailUrl)
           }

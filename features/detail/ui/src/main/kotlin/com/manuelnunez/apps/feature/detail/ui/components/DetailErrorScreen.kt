@@ -29,7 +29,9 @@ fun DetailErrorScreen(onBackClick: () -> Unit) {
             Text(text = stringResource(id = R.string.button_back))
           }
 
-      Text(text = stringResource(id = R.string.alert_error_try_again_back), textAlign = TextAlign.Center)
+      Text(
+          text = stringResource(id = R.string.alert_error_try_again_back),
+          textAlign = TextAlign.Center)
     }
   }
 }

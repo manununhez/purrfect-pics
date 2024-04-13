@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
@@ -22,7 +23,7 @@ import com.manuelnunez.apps.features.home.ui.R
 @Composable
 fun HomeErrorScreen(retry: () -> Unit) {
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-    Column {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
       Button(
           onClick = { retry.invoke() },
           colors =
@@ -32,7 +33,7 @@ fun HomeErrorScreen(retry: () -> Unit) {
             Text(text = stringResource(id = R.string.button_retry))
           }
 
-      Text(text = stringResource(id = R.string.alert_error_try_again))
+      Text(text = stringResource(id = R.string.alert_error_try_again), textAlign = TextAlign.Center)
     }
   }
 }
