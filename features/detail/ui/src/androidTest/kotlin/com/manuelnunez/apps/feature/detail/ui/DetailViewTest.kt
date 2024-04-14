@@ -5,10 +5,10 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.feature.detail.ui.components.DetailErrorScreen
 import com.manuelnunez.apps.feature.detail.ui.components.DetailScreen
 import com.manuelnunez.apps.features.detail.ui.R
-import com.manuelnunez.apps.features.home.domain.model.Item
 import org.junit.Rule
 import org.junit.Test
 

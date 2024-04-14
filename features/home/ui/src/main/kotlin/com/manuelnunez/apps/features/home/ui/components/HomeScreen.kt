@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.ui.component.AdaptableVerticalGrid
 import com.manuelnunez.apps.core.ui.component.AdaptableVerticalGridDecoration
 import com.manuelnunez.apps.core.ui.component.ImageCard
@@ -32,7 +33,6 @@ import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
-import com.manuelnunez.apps.features.home.domain.model.Item
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.HomeUiState
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState

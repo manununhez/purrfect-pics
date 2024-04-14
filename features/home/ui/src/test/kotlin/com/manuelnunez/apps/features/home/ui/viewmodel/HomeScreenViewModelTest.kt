@@ -5,7 +5,7 @@ import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
 import com.manuelnunez.apps.core.common.test.MainDispatcherRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
-import com.manuelnunez.apps.features.home.domain.model.HomeErrorModel
+import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel
@@ -72,9 +72,9 @@ class HomeScreenViewModelTest {
   fun `GIVEN viewmodel init, WHEN onFailure, THEN set state with ERROR`() =
       mainDispatcherRule.runTest {
         every { getFeaturedItemsUseCase.prepare(Unit) } returns
-            flow { emit(eitherError(HomeErrorModel.ServiceError)) }
+            flow { emit(eitherError(ErrorModel.ServiceError)) }
         every { getPopularItemsUseCase.prepare(Unit) } returns
-            flow { emit(eitherError(HomeErrorModel.ServiceError)) }
+            flow { emit(eitherError(ErrorModel.ServiceError)) }
 
         viewModel = HomeScreenViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
 

@@ -25,6 +25,7 @@ android {
 dependencies {
   implementation(projects.core.common)
   implementation(projects.core.services)
+  implementation(projects.core.domain) // TODO: data knows domain?
   implementation(projects.features.home.domain)
 
   implementation(libs.retrofit.core)

@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.features.home.domain.model
+package com.manuelnunez.apps.core.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

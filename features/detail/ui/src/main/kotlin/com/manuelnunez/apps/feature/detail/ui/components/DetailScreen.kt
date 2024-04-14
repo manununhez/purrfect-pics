@@ -32,11 +32,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.ui.component.DynamicAsyncImage
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.OrientationPreviews
 import com.manuelnunez.apps.features.detail.ui.R
-import com.manuelnunez.apps.features.home.domain.model.Item
 
 @Composable
 fun DetailScreen(item: Item, onBackClick: () -> Unit) {

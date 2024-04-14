@@ -6,8 +6,8 @@ import com.manuelnunez.apps.core.common.eitherSuccess
 import com.manuelnunez.apps.core.common.fold
 import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.utils.mockPexelsSearchResponseDTO
+import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.services.executors.ServiceError
-import com.manuelnunez.apps.features.home.domain.model.HomeErrorModel
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
 import io.mockk.every
 import io.mockk.mockk
@@ -52,7 +52,11 @@ class HomeRepositoryTest {
     val itemsResponse = repository.getAllItems()
     assertTrue(itemsResponse is Either.Error)
 
-    itemsResponse.fold(success = {}, error = { assertEquals(HomeErrorModel.ServiceError, it) })
+    itemsResponse.fold(
+        success = {},
+        error = {
+          assertEquals(ErrorModel.ServiceError, it)
+        })
   }
 
   @Test
@@ -96,7 +100,11 @@ class HomeRepositoryTest {
     val itemsResponse = repository.getPopularItems()
     assertTrue(itemsResponse is Either.Error)
 
-    itemsResponse.fold(success = {}, error = { assertEquals(HomeErrorModel.ServiceError, it) })
+    itemsResponse.fold(
+        success = {},
+        error = {
+          assertEquals(ErrorModel.ServiceError, it)
+        })
   }
 
   @Test
@@ -129,6 +137,10 @@ class HomeRepositoryTest {
     val itemsResponse = repository.getFeaturedItems()
     assertTrue(itemsResponse is Either.Error)
 
-    itemsResponse.fold(success = {}, error = { assertEquals(HomeErrorModel.ServiceError, it) })
+    itemsResponse.fold(
+        success = {},
+        error = {
+          assertEquals(ErrorModel.ServiceError, it)
+        })
   }
 }

@@ -43,9 +43,10 @@ android {
 dependencies {
   implementation(projects.core.commonUi)
   implementation(projects.core.data)
-  implementation(projects.features.home.domain)
+  implementation(projects.core.domain)
   implementation(projects.features.home.ui)
   implementation(projects.features.detail.ui)
+  implementation(projects.features.seemore.ui)
 
   implementation(libs.androidx.core.splashscreen)
   implementation(libs.androidx.core.ktx)
