@@ -41,3 +41,7 @@ include(":features:home:domain")
 include(":features:home:ui")
 
 include(":features:detail:ui")
+
+include(":features:seemore:ui")
+
+include(":features:seemore:domain")
