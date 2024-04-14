@@ -27,6 +27,7 @@ dependencies {
   implementation(projects.core.services)
   implementation(projects.core.domain) // TODO: data knows domain?
   implementation(projects.features.home.domain)
+  implementation(projects.features.seemore.domain)
 
   implementation(libs.retrofit.core)
   implementation(libs.retrofit.gsonConverter)

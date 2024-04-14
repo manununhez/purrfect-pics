@@ -14,5 +14,7 @@ fun NavController.navigateToSeeMore(navOptions: NavOptionsBuilder.() -> Unit = {
 }
 
 fun NavGraphBuilder.seeMoreScreen(onBackClick: () -> Unit, navigateToDetails: (Item) -> Unit) {
-  composable(SEE_MORE_ROUTE) { SeeMoreView(onBackClick, navigateToDetails) }
+  composable(SEE_MORE_ROUTE) {
+    SeeMoreView(onBackClick = onBackClick, navigateToDetails = navigateToDetails)
+  }
 }

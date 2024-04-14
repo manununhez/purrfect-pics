@@ -18,11 +18,13 @@ class GetItemUseCaseTest {
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val homeRepository = mockk<HomeRepository>()
-  private lateinit var useCase: GetItemUseCase
+  private lateinit var useCase: com.manuelnunez.apps.feature.seemore.domain.usecase.GetItemUseCase
 
   @BeforeEach
   fun setUp() {
-    useCase = GetItemUseCase(homeRepository, mainDispatcherRule.testDispatcherProvider)
+    useCase =
+        com.manuelnunez.apps.feature.seemore.domain.usecase.GetItemUseCase(
+            homeRepository, mainDispatcherRule.testDispatcherProvider)
   }
 
   @Test

@@ -5,8 +5,6 @@ import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.domain.model.Item
 
 interface HomeRepository {
-  fun getAllItems(): Either<List<Item>, ErrorModel>
-
   fun getPopularItems(): Either<List<Item>, ErrorModel>
 
   fun getFeaturedItems(): Either<List<Item>, ErrorModel>

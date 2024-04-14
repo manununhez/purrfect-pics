@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.ui.component.DynamicAsyncImage
+import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.OrientationPreviews
 import com.manuelnunez.apps.features.detail.ui.R
@@ -82,11 +83,15 @@ private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
 
 @Composable
 private fun DetailToolbar(onBackClick: () -> Unit) {
-  IconButton(onClick = { onBackClick() }) {
-    Icon(
-        imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-        contentDescription = stringResource(id = R.string.button_back),
-        tint = MaterialTheme.colorScheme.onSurface)
+  Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+    IconButton(onClick = { onBackClick() }) {
+      Icon(
+          imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+          contentDescription = stringResource(id = R.string.button_back),
+          tint = MaterialTheme.colorScheme.onSurface)
+    }
+
+    TitleText(title = "Details")
   }
 }
 

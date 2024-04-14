@@ -6,24 +6,17 @@ import com.manuelnunez.apps.core.common.fold
 import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.mapper.toItems
 import com.manuelnunez.apps.core.domain.model.ErrorModel
-import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
+import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
 import javax.inject.Inject
 
-class HomeRepositoryImpl
+class SeeMoreRepositoryImpl
 @Inject
-constructor(private val remoteDataSource: PexelsCatsRemoteDataSource) : HomeRepository {
+constructor(private val remoteDataSource: PexelsCatsRemoteDataSource) : SeeMoreRepository {
 
-  override fun getPopularItems() =
+  override fun getAllItems() =
       remoteDataSource
           .getItems()
           .fold(
-              success = { eitherSuccess(it.toItems().shuffled().take(10)) },
-              error = { eitherError(ErrorModel.ServiceError) })
-
-  override fun getFeaturedItems() =
-      remoteDataSource
-          .getItems()
-          .fold(
-              success = { eitherSuccess(it.toItems().shuffled().take(5)) },
+              success = { eitherSuccess(it.toItems()) },
               error = { eitherError(ErrorModel.ServiceError) })
 }
