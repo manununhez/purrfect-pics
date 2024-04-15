@@ -11,6 +11,7 @@ import com.manuelnunez.apps.features.home.ui.utils.mockFeaturedPhotos
 import com.manuelnunez.apps.features.home.ui.utils.mockPopularPhotos
 import org.junit.Rule
 import org.junit.Test
+import com.manuelnunez.apps.core.ui.R as RCU
 
 class HomeViewTest {
 
@@ -95,17 +96,59 @@ class HomeViewTest {
 
     composeTestRule
         .onNodeWithText(
-            composeTestRule.activity.resources.getString(R.string.alert_error_try_again),
+            composeTestRule.activity.resources.getString(RCU.string.alert_error_try_again),
             substring = true,
         )
         .assertExists()
 
     composeTestRule
         .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(R.string.button_retry),
+            composeTestRule.activity.resources.getString(RCU.string.button_retry),
             substring = true,
         )
         .assertExists()
         .assertHasClickAction()
+  }
+
+  @Test
+  fun error_whenError_showsAlertWhenFeatureFailed() {
+    composeTestRule.setContent {
+      HomeScreen(
+          items =
+              HomeScreenViewModel.HomeUiState(
+                  popularItemsState =
+                      HomeScreenViewModel.PopularItemsState.ShowList(mockPopularPhotos),
+                  featuredItemsState = HomeScreenViewModel.FeaturedItemsState.Error),
+          navigateToDetails = {},
+          navigateToSeeMore = {})
+    }
+
+    composeTestRule
+        .onNodeWithText(
+            composeTestRule.activity.resources.getString(R.string.alert_error_feature),
+            substring = true,
+        )
+        .assertExists()
+  }
+
+  @Test
+  fun error_whenError_showsAlertWhenPopularFailed() {
+    composeTestRule.setContent {
+      HomeScreen(
+          items =
+              HomeScreenViewModel.HomeUiState(
+                  popularItemsState = HomeScreenViewModel.PopularItemsState.Error,
+                  featuredItemsState =
+                      HomeScreenViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
+          navigateToDetails = {},
+          navigateToSeeMore = {})
+    }
+
+    composeTestRule
+        .onNodeWithText(
+            composeTestRule.activity.resources.getString(R.string.alert_error_popular),
+            substring = true,
+        )
+        .assertExists()
   }
 }

@@ -5,13 +5,13 @@ import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
 import com.manuelnunez.apps.core.common.test.MainDispatcherRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
-import com.manuelnunez.apps.features.home.domain.model.HomeErrorModel
+import com.manuelnunez.apps.core.domain.model.ErrorModel
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
-import com.manuelnunez.apps.features.home.ui.utils.mockPhotos
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -72,9 +72,9 @@ class HomeScreenViewModelTest {
   fun `GIVEN viewmodel init, WHEN onFailure, THEN set state with ERROR`() =
       mainDispatcherRule.runTest {
         every { getFeaturedItemsUseCase.prepare(Unit) } returns
-            flow { emit(eitherError(HomeErrorModel.ServiceError)) }
+            flow { emit(eitherError(ErrorModel.ServiceError)) }
         every { getPopularItemsUseCase.prepare(Unit) } returns
-            flow { emit(eitherError(HomeErrorModel.ServiceError)) }
+            flow { emit(eitherError(ErrorModel.ServiceError)) }
 
         viewModel = HomeScreenViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
 
@@ -100,4 +100,14 @@ class HomeScreenViewModelTest {
         }
         confirmVerified(getFeaturedItemsUseCase, getPopularItemsUseCase)
       }
+
+  private val mockPhotos: List<Item> =
+    List(20) { index ->
+      val id = (index + 1).toString()
+      Item(
+        photoId = id,
+        imageUrl = "https://example.com/photo$id",
+        thumbnailUrl = "https://example.com/photo$id/small",
+        description = "This is a description for item $id")
+    }
 }

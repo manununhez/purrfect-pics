@@ -1,5 +1,6 @@
 package com.manuelnunez.apps.core.data.utils
 
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.services.dto.CataasResponseDTO
 import com.manuelnunez.apps.core.services.dto.PexelsSearchResponseDTO
 import com.manuelnunez.apps.core.services.dto.PhotoDTO
@@ -56,3 +57,5 @@ val mockCataasResponseDTOS =
             mimetype = "image/jpeg",
             size = 4096,
             tags = listOf("funny", "mischief", "whiskers")))
+
+val mockItems = listOf(Item("1", "imageUrl1", "thumbnailUrl1", "description1"))

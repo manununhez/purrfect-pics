@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.manuelnunez.apps.features.home.domain.model.Item
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.ui.HomeView
 
 const val HOME_ROUTE = "home_route"

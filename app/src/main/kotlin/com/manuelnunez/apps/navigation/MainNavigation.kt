@@ -6,6 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.manuelnunez.apps.feature.detail.ui.navigation.detailScreen
 import com.manuelnunez.apps.feature.detail.ui.navigation.navigateToDetail
+import com.manuelnunez.apps.feature.seemore.ui.navigation.navigateToSeeMore
+import com.manuelnunez.apps.feature.seemore.ui.navigation.seeMoreScreen
 import com.manuelnunez.apps.features.home.ui.navigation.HOME_ROUTE
 import com.manuelnunez.apps.features.home.ui.navigation.homeScreen
 
@@ -16,7 +18,12 @@ fun MainNavigation(
     startDestination: String = HOME_ROUTE,
 ) {
   NavHost(modifier = modifier, navController = navController, startDestination = startDestination) {
-    homeScreen(navigateToDetails = navController::navigateToDetail, navigateToSeeMore = {})
+    homeScreen(
+        navigateToDetails = navController::navigateToDetail,
+        navigateToSeeMore = navController::navigateToSeeMore)
     detailScreen(onBackClick = { navController.navigateUp() })
+    seeMoreScreen(
+        onBackClick = { navController.navigateUp() },
+        navigateToDetails = navController::navigateToDetail)
   }
 }

@@ -3,7 +3,7 @@ package com.manuelnunez.apps.features.home.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.manuelnunez.apps.core.common.fold
-import com.manuelnunez.apps.features.home.domain.model.Item
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

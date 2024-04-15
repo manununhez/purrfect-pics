@@ -1,6 +1,6 @@
 package com.manuelnunez.apps.features.home.ui.utils
 
-import com.manuelnunez.apps.features.home.domain.model.Item
+import com.manuelnunez.apps.core.domain.model.Item
 
 val mockPopularPhotos =
     List(20) { index ->

@@ -25,15 +25,19 @@ android {
 dependencies {
   implementation(projects.core.common)
   implementation(projects.core.services)
+  implementation(projects.core.domain) // TODO: data knows domain?
   implementation(projects.features.home.domain)
+  implementation(projects.features.seemore.domain)
 
   implementation(libs.retrofit.core)
   implementation(libs.retrofit.gsonConverter)
 
   // HILT
   implementation(libs.hilt.android)
+  implementation(libs.androidx.paging.common.ktx)
   ksp(libs.hilt.compiler)
 
+  testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.junit)
   testImplementation(libs.mockk)
 }

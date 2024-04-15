@@ -2,7 +2,6 @@
     <string name="section_feature">Featured</string>
     <string name="section_popular">Popular</string>
     <string name="see_more_text">See more</string>
-    <string name="alert_error_try_again">An Error has occurred. Please try again.</string>
-    <string name="alert_error">An Error has occurred</string>
-    <string name="button_retry">Retry</string>
+    <string name="alert_error_feature">An Error has occurred in Featured section</string>
+    <string name="alert_error_popular">An Error has occurred in Popular section</string>
 </resources>

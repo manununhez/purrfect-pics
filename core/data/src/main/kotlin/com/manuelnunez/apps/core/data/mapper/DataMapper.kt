@@ -1,8 +1,8 @@
 package com.manuelnunez.apps.core.data.mapper
 
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.services.dto.CataasResponseDTO
 import com.manuelnunez.apps.core.services.dto.PexelsSearchResponseDTO
-import com.manuelnunez.apps.features.home.domain.model.Item
 
 fun PexelsSearchResponseDTO.toItems() =
     photos.map {

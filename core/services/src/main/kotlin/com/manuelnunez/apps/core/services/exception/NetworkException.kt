@@ -1,3 +1,5 @@
 package com.manuelnunez.apps.core.services.exception
 
-class NetworkException(message: String) : Exception(message)
+import java.io.IOException
+
+class NetworkException(message: String) : IOException(message)
