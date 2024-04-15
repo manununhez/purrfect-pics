@@ -8,28 +8,27 @@ android {
   namespace = "com.manuelnunez.apps.features.detail.ui"
   compileSdk = 34
 
-  defaultConfig {
-    minSdk = 21
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes { release { isMinifyEnabled = false } }
-
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
 
-  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
+  defaultConfig {
+    minSdk = 21
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
   buildFeatures { compose = true }
 
+  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
+
   tasks.withType<Test> { useJUnitPlatform() }
 
   packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
+
+  buildTypes { release { isMinifyEnabled = false } }
 }
 
 dependencies {

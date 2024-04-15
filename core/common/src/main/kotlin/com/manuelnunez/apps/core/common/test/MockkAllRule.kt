@@ -1,6 +1,7 @@
 package com.manuelnunez.apps.core.common.test
 
-import com.manuelnunez.apps.core.common.dispatcher.DispatcherProvider
+import com.manuelnunez.apps.core.common.dispatcher.CoroutineDispatcherProvider
+import io.mockk.unmockkAll
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -14,13 +15,13 @@ import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
 @ExperimentalCoroutinesApi
-class MainDispatcherRule : BeforeEachCallback, AfterEachCallback {
+class MockkAllRule : BeforeEachCallback, AfterEachCallback {
 
   private val testCoroutinesDispatcher = StandardTestDispatcher()
   private val testScope = TestScope(testCoroutinesDispatcher)
 
-  val testDispatcherProvider =
-      object : DispatcherProvider {
+  val testCoroutineDispatcherProvider =
+      object : CoroutineDispatcherProvider {
         override fun default(): CoroutineDispatcher = testCoroutinesDispatcher
 
         override fun io(): CoroutineDispatcher = testCoroutinesDispatcher
@@ -39,4 +40,11 @@ class MainDispatcherRule : BeforeEachCallback, AfterEachCallback {
   }
 
   fun runTest(testBody: suspend TestScope.() -> Unit) = testScope.runTest(testBody = testBody)
+}
+
+class UnMockkAllRule : AfterEachCallback {
+
+  override fun afterEach(context: ExtensionContext?) {
+    unmockkAll()
+  }
 }

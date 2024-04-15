@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -37,6 +37,7 @@ import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsSt
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.HomeUiState
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
 import com.manuelnunez.apps.features.home.ui.R
+import com.manuelnunez.apps.core.ui.R as RCU
 
 @Composable
 fun HomeScreen(
@@ -44,35 +45,35 @@ fun HomeScreen(
     navigateToDetails: (Item) -> Unit,
     navigateToSeeMore: () -> Unit
 ) {
-  LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(vertical = 40.dp)) {
-    when (items.featuredItemsState) {
-      is FeaturedItemsState.ShowList ->
-          item { FeaturedItem(items.featuredItemsState.items, navigateToDetails) }
-      FeaturedItemsState.Loading ->
-          item {
-            LoadingIndicator(
-                loaderContentDescription = stringResource(id = R.string.section_feature))
-          }
-      FeaturedItemsState.Error -> item { FeatureError() }
-      else -> {}
-    }
+  LazyColumn(
+      modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeContent),
+      contentPadding = PaddingValues(vertical = 20.dp)) {
+        when (items.featuredItemsState) {
+          is FeaturedItemsState.ShowList ->
+              item { FeaturedItem(items.featuredItemsState.items, navigateToDetails) }
+          FeaturedItemsState.Loading ->
+              item {
+                LoadingIndicator(
+                    loaderContentDescription = stringResource(id = RCU.string.section_feature))
+              }
+          FeaturedItemsState.Error -> item { FeatureError() }
+          else -> {}
+        }
 
-    when (items.popularItemsState) {
-      is PopularItemsState.ShowList ->
-          item { PopularItem(items.popularItemsState.items, navigateToDetails, navigateToSeeMore) }
-      PopularItemsState.Loading ->
-          item {
-            LoadingIndicator(
-                loaderContentDescription = stringResource(id = R.string.section_popular))
-          }
-      PopularItemsState.Error -> {
-        item { PopularError() }
+        when (items.popularItemsState) {
+          is PopularItemsState.ShowList ->
+              item {
+                PopularItem(items.popularItemsState.items, navigateToDetails, navigateToSeeMore)
+              }
+          PopularItemsState.Loading ->
+              item {
+                LoadingIndicator(
+                    loaderContentDescription = stringResource(id = RCU.string.section_popular))
+              }
+          PopularItemsState.Error -> item { PopularError() }
+          else -> {}
+        }
       }
-      else -> {}
-    }
-
-    item { Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing)) }
-  }
 }
 
 @Composable
@@ -80,7 +81,9 @@ private fun FeaturedItem(items: List<Item>, navigateToDetails: (Item) -> Unit) {
   Column {
     TitleText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
-        title = stringResource(id = R.string.section_feature))
+        title = stringResource(id = RCU.string.section_feature))
+
+    Spacer(modifier = Modifier.height(10.dp))
 
     LazyRow(
         modifier = Modifier.fillMaxSize(),
@@ -114,7 +117,9 @@ private fun PopularItem(
   Column {
     TitleText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
-        title = stringResource(id = R.string.section_popular))
+        title = stringResource(id = RCU.string.section_popular))
+
+    Spacer(modifier = Modifier.height(10.dp))
 
     AdaptableVerticalGrid(
         modifier = Modifier.padding(horizontal = gridPadding),
@@ -132,15 +137,13 @@ private fun PopularItem(
                 imageUrl = item.thumbnailUrl)
           }
 
-          if (items.size >= 10) { // TODO: check popular size with a Constant?
-            TextCard(
-                modifier =
-                    Modifier.size(height = itemHeight, width = itemWidth)
-                        .padding(horizontal = horizontalMarginItem)
-                        .padding(bottom = verticalMarginItem),
-                onClick = navigateToSeeMore,
-                text = stringResource(id = R.string.see_more_text))
-          }
+          TextCard(
+              modifier =
+                  Modifier.size(height = itemHeight, width = itemWidth)
+                      .padding(horizontal = horizontalMarginItem)
+                      .padding(bottom = verticalMarginItem),
+              onClick = navigateToSeeMore,
+              text = stringResource(id = R.string.see_more_text))
         }
   }
 }

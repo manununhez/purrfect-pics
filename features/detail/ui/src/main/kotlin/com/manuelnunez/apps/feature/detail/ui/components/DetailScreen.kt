@@ -8,10 +8,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
-import androidx.compose.foundation.layout.windowInsetsTopHeight
+import androidx.compose.foundation.layout.safeContent
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -52,13 +53,15 @@ fun DetailScreen(item: Item, onBackClick: () -> Unit) {
 
 @Composable
 private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
-  Column {
-    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
+  Column(Modifier.windowInsetsPadding(WindowInsets.safeContent)) {
+    Spacer(modifier = Modifier.height(20.dp))
 
     DetailToolbar(onBackClick)
 
+    Spacer(modifier = Modifier.height(10.dp))
+
     Column(
-        modifier = Modifier.weight(1f).wrapContentSize(),
+        modifier = Modifier.weight(1f).wrapContentSize().heightIn(100.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
           DynamicAsyncImage(
               modifier = Modifier.fillMaxWidth().padding(horizontal = 6.dp),
@@ -74,18 +77,16 @@ private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
               text = item.description,
               style = MaterialTheme.typography.titleSmall,
               color = MaterialTheme.colorScheme.onSurface)
-
-          Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
         }
 
-    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
+    Spacer(modifier = Modifier.height(20.dp))
   }
 }
 
 @Composable
 private fun DetailToolbar(onBackClick: () -> Unit) {
   Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-    IconButton(onClick = { onBackClick() }) {
+    IconButton(onClick = onBackClick) {
       Icon(
           imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
           contentDescription = stringResource(id = RCU.string.button_back),
@@ -98,10 +99,12 @@ private fun DetailToolbar(onBackClick: () -> Unit) {
 
 @Composable
 private fun DetailLandscape(item: Item, onBackClick: () -> Unit) {
-  Column(modifier = Modifier.fillMaxSize()) {
-    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
+  Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeContent)) {
+    Spacer(modifier = Modifier.height(20.dp))
 
     DetailToolbar(onBackClick)
+
+    Spacer(modifier = Modifier.height(10.dp))
 
     Row(verticalAlignment = Alignment.CenterVertically) {
       DynamicAsyncImage(
@@ -123,7 +126,7 @@ private fun DetailLandscape(item: Item, onBackClick: () -> Unit) {
           style = MaterialTheme.typography.titleMedium,
           color = MaterialTheme.colorScheme.onSurface)
     }
-    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
+    Spacer(modifier = Modifier.height(20.dp))
   }
 }
 

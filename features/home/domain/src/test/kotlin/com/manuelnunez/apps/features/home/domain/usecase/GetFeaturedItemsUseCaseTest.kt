@@ -1,7 +1,7 @@
 package com.manuelnunez.apps.features.home.domain.usecase
 
 import app.cash.turbine.test
-import com.manuelnunez.apps.core.common.test.MainDispatcherRule
+import com.manuelnunez.apps.core.common.test.MockkAllRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
 import io.mockk.confirmVerified
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.RegisterExtension
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetFeaturedItemsUseCaseTest {
-  @RegisterExtension private val mainDispatcherRule = MainDispatcherRule()
+  @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val homeRepository = mockk<HomeRepository>()
@@ -22,12 +22,13 @@ class GetFeaturedItemsUseCaseTest {
 
   @BeforeEach
   fun setUp() {
-    useCase = GetFeaturedItemsUseCase(homeRepository, mainDispatcherRule.testDispatcherProvider)
+    useCase =
+        GetFeaturedItemsUseCase(homeRepository, mockkAllExtension.testCoroutineDispatcherProvider)
   }
 
   @Test
   fun `call GetFeaturedItemsUseCase invokes getFeatureItems from repository`() =
-      mainDispatcherRule.runTest {
+      mockkAllExtension.runTest {
         useCase.prepare(Unit).test {}
 
         verify(exactly = 1) { homeRepository.getFeaturedItems() }

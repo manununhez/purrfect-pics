@@ -3,7 +3,7 @@ package com.manuelnunez.apps.features.home.ui.viewmodel
 import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
-import com.manuelnunez.apps.core.common.test.MainDispatcherRule
+import com.manuelnunez.apps.core.common.test.MockkAllRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.domain.model.Item
@@ -26,7 +26,7 @@ import kotlin.properties.Delegates
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class HomeScreenViewModelTest {
-  @RegisterExtension private val mainDispatcherRule = MainDispatcherRule()
+  @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val getFeaturedItemsUseCase = mockk<GetFeaturedItemsUseCase>()
@@ -36,7 +36,7 @@ class HomeScreenViewModelTest {
 
   @Test
   fun `GIVEN viewmodel init, WHEN onSuccess, THEN set state with popular and featured items`() =
-      mainDispatcherRule.runTest {
+      mockkAllExtension.runTest {
         every { getFeaturedItemsUseCase.prepare(Unit) } returns
             flow { emit(eitherSuccess(mockPhotos)) }
         every { getPopularItemsUseCase.prepare(Unit) } returns
@@ -70,7 +70,7 @@ class HomeScreenViewModelTest {
 
   @Test
   fun `GIVEN viewmodel init, WHEN onFailure, THEN set state with ERROR`() =
-      mainDispatcherRule.runTest {
+      mockkAllExtension.runTest {
         every { getFeaturedItemsUseCase.prepare(Unit) } returns
             flow { emit(eitherError(ErrorModel.ServiceError)) }
         every { getPopularItemsUseCase.prepare(Unit) } returns

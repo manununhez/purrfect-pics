@@ -9,12 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.windowInsetsBottomHeight
-import androidx.compose.foundation.layout.windowInsetsTopHeight
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
@@ -50,14 +49,14 @@ fun SeeMoreScreen(
     onBackClick: () -> Unit,
     navigateToDetails: (Item) -> Unit
 ) {
-  Column(Modifier.fillMaxSize()) {
-    Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
+  Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeContent)) {
+    Spacer(modifier = Modifier.height(20.dp))
 
     SeeMoreToolbar(onBackClick)
 
     PopularItems(navigateToDetails = navigateToDetails, itemsPagingItems = items)
 
-    Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))
+    Spacer(modifier = Modifier.height(20.dp))
   }
 }
 
@@ -72,9 +71,9 @@ fun PopularItems(itemsPagingItems: LazyPagingItems<Item>, navigateToDetails: (It
 
   LazyVerticalGrid(
       columns = cellConfiguration,
-      modifier = Modifier.imePadding().fillMaxSize(),
+      modifier = Modifier.fillMaxSize(),
       state = gridState,
-      contentPadding = PaddingValues(horizontal = 20.dp, vertical = 40.dp),
+      contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 20.dp),
       verticalArrangement = Arrangement.spacedBy(10.dp),
       horizontalArrangement = Arrangement.spacedBy(10.dp)) {
         items(
@@ -102,14 +101,14 @@ fun PopularItems(itemsPagingItems: LazyPagingItems<Item>, navigateToDetails: (It
 @Composable
 private fun SeeMoreToolbar(onBackClick: () -> Unit) {
   Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-    IconButton(onClick = { onBackClick() }) {
+    IconButton(onClick = onBackClick) {
       Icon(
           imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
           contentDescription = stringResource(id = RCU.string.button_back),
           tint = MaterialTheme.colorScheme.onSurface)
     }
 
-    TitleText(title = "Popular")
+    TitleText(title = stringResource(id = RCU.string.section_popular))
   }
 }
 
