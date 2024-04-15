@@ -27,7 +27,7 @@ fun SeeMoreView(
   itemPagingItems.apply {
     when {
       loadState.refresh is LoadState.Loading -> {
-        // You can add modifier to manage load state when first time response page is loading
+        // first time response page is loading
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
           CircularProgressIndicator()
         }

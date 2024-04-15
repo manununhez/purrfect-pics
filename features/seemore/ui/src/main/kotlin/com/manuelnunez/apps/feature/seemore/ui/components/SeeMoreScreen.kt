@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.ui.component.ImageCard
@@ -40,6 +41,7 @@ import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
+import kotlinx.coroutines.flow.flowOf
 import com.manuelnunez.apps.core.ui.R as RCU
 
 @Composable
@@ -116,8 +118,17 @@ private fun SeeMoreToolbar(onBackClick: () -> Unit) {
 @Composable
 private fun SeeMoreScreenPreview() {
   MainTheme {
-    val items = PagingData.from(List(5) { Item("", "", description = "", thumbnailUrl = "") })
+    val items =
+        PagingData.from(
+            List(5) { index ->
+              Item(
+                  "$index",
+                  "https://example.com/$index",
+                  description = "description: $index",
+                  thumbnailUrl = "https://example.com/$index")
+            })
 
-    //    SeeMoreScreen(items = items, onBackClick = {}, navigateToDetails = {}) {}
+    SeeMoreScreen(
+        items = flowOf(items).collectAsLazyPagingItems(), onBackClick = {}, navigateToDetails = {})
   }
 }
