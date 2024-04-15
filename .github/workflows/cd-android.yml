@@ -19,7 +19,7 @@ jobs:
           cache: gradle
 
       - name: Decode keystore and create jks
-        run: echo "${{ secrets.KEY_KEYSTORE_BASE64 }}" | base64 --decode > purrfect-pics-key
+        run: echo "${{ secrets.KEY_KEYSTORE_BASE64 }}" | base64 --decode > app/purrfect-pics-key
 
       - name: Generate keystore.properties
         run: |
