@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="section_feature">Featured</string>
+    <string name="section_popular">Popular</string>
     <string name="button_back">Go back</string>
     <string name="alert_error_try_again">An Error has occurred. Please try again.</string>
     <string name="alert_error">An Error has occurred</string>

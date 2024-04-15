@@ -3,7 +3,7 @@ package com.manuelnunez.apps.core.services.di
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.manuelnunez.apps.core.services.executors.RetrofitServicesExecutor
+import com.manuelnunez.apps.core.services.executors.ServiceExecutorRetrofitImpl
 import com.manuelnunez.apps.core.services.executors.ServicesExecutor
 import com.manuelnunez.apps.core.services.interceptor.ConnectivityInterceptor
 import com.manuelnunez.apps.core.services.interceptor.PexelsKeyAuthenticator
@@ -25,8 +25,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
-  private const val BASE_URL = "https://api.pexels.com/v1/"
-  private const val BASE_URL2 = "https://cataas.com/"
+  /**
+   * API interchangeable. In case of using PEXELS API, use PEXELS_BASE_URL with the PexelKeyAuthenticator interceptor.
+   * In case of using CATAAS API, use CATAAS_BASE_URL, an remove PexelsKeyAuth interceptor. Finally, select
+   * RemoteDataSources accordingly.
+   */
+  private const val PEXELS_BASE_URL = "https://api.pexels.com/v1/"
+  private const val CATAAS_BASE_URL = "https://cataas.com/"
 
   @Provides
   @Singleton
@@ -35,21 +40,15 @@ object NetworkModule {
           .addInterceptor(HttpLoggingInterceptor().setLevel(Level.BODY))
           .addInterceptor(connectivityInterceptor)
           .authenticator(PexelsKeyAuthenticator())
-          .connectTimeout(60, TimeUnit.SECONDS)
-          .readTimeout(60, TimeUnit.SECONDS)
+          .connectTimeout(30, TimeUnit.SECONDS)
+          .readTimeout(30, TimeUnit.SECONDS)
           .build()
-
-  @Singleton
-  @Provides
-  fun provideGson(): Gson {
-    return GsonBuilder().create()
-  }
 
   @Singleton
   @Provides
   fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(PEXELS_BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(okHttpClient)
         .build()
@@ -73,5 +72,13 @@ object NetworkModule {
     return ConnectivityInterceptor(context)
   }
 
-  @Provides @Singleton fun provideServicesExecutor(): ServicesExecutor = RetrofitServicesExecutor()
+  @Provides
+  @Singleton
+  fun provideServicesExecutor(): ServicesExecutor = ServiceExecutorRetrofitImpl()
+
+  @Singleton
+  @Provides
+  fun provideGson(): Gson {
+    return GsonBuilder().create()
+  }
 }

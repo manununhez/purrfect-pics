@@ -1,14 +1,15 @@
 package com.manuelnunez.apps.core.data.repository
 
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
-import com.manuelnunez.apps.core.data.datasource.PexeelsCatsPagingSource
+import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.utils.mockItems
 import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
-import io.mockk.coEvery
+import io.mockk.confirmVerified
+import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -16,21 +17,22 @@ import org.junit.jupiter.api.Test
 class SeeMoreRepositoryTest {
   private lateinit var repository: SeeMoreRepository
 
-  private val pagingSource = mockk<PexeelsCatsPagingSource>()
+  private val remoteDataSource = mockk<PexelsCatsRemoteDataSource>()
 
   @BeforeEach
   fun setUp() {
-    repository = SeeMoreRepositoryImpl(pagingSource)
+    repository = SeeMoreRepositoryImpl(remoteDataSource)
   }
 
   @Test
   fun `GIVEN getAllItems call, WHEN success, THEN return items`() {
-    coEvery { pagingSource.load(any()) } returns
-        PagingSource.LoadResult.Page(data = mockItems, prevKey = null, nextKey = null)
+    val expectedResult = PagingData.from(mockItems)
 
-    val response = runBlocking { repository.getAllItems() }
-    val expectingResult = PagingData.from(mockItems)
+    every { remoteDataSource.getAllItems() } returns flow { emit(expectedResult) }
 
-    response.map { assertEquals(expectingResult, it) }
+    repository.getAllItems().map { assertEquals(expectedResult, it) }
+
+    verify(exactly = 1) { remoteDataSource.getAllItems() }
+    confirmVerified(remoteDataSource)
   }
 }

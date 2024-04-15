@@ -1,21 +1,22 @@
-package com.manuelnunez.apps.core.data.datasource
+package com.manuelnunez.apps.core.data.datasource.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.manuelnunez.apps.core.data.PAGE_SIZE
 import com.manuelnunez.apps.core.data.mapper.toItems
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.services.exception.NetworkException
 import com.manuelnunez.apps.core.services.exception.ServiceException
-import com.manuelnunez.apps.core.services.service.PexelsService
+import com.manuelnunez.apps.core.services.service.CataasService
 import retrofit2.HttpException
 import java.io.IOException
 
-class PexeelsCatsPagingSource(private val apiService: PexelsService) : PagingSource<Int, Item>() {
+class CataasCatsPagingSource(private val apiService: CataasService) : PagingSource<Int, Item>() {
   override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Item> {
     return try {
       val page = params.key ?: 1 // Default to first page if key is null
 
-      val response = apiService.searchCatsPaginated(page = page)
+      val response = apiService.searchCatsPaginated(skip = page * PAGE_SIZE)
 
       val items = response.toItems()
       LoadResult.Page(

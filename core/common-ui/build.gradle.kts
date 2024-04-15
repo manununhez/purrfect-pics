@@ -29,8 +29,6 @@ dependencies {
 
   implementation(libs.coil.kt.compose)
 
-  implementation(libs.androidx.navigation.compose)
-
   // Compose
   val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)

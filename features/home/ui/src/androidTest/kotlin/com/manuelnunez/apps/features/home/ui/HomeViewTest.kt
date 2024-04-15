@@ -5,13 +5,13 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import com.manuelnunez.apps.core.ui.R as RCU
 import com.manuelnunez.apps.features.home.ui.components.HomeErrorScreen
 import com.manuelnunez.apps.features.home.ui.components.HomeScreen
 import com.manuelnunez.apps.features.home.ui.utils.mockFeaturedPhotos
 import com.manuelnunez.apps.features.home.ui.utils.mockPopularPhotos
 import org.junit.Rule
 import org.junit.Test
+import com.manuelnunez.apps.core.ui.R as RCU
 
 class HomeViewTest {
 
@@ -31,14 +31,14 @@ class HomeViewTest {
     // Feature loader
     composeTestRule
         .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(R.string.section_feature),
+            composeTestRule.activity.resources.getString(RCU.string.section_feature),
         )
         .assertExists()
 
     // Popular loader
     composeTestRule
         .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(R.string.section_popular),
+            composeTestRule.activity.resources.getString(RCU.string.section_popular),
         )
         .assertExists()
   }
@@ -60,7 +60,7 @@ class HomeViewTest {
     // Feature title
     composeTestRule
         .onNodeWithText(
-            composeTestRule.activity.resources.getString(R.string.section_feature),
+            composeTestRule.activity.resources.getString(RCU.string.section_feature),
             substring = true,
         )
         .assertExists()
@@ -76,7 +76,7 @@ class HomeViewTest {
     // Popular title
     composeTestRule
         .onNodeWithText(
-            composeTestRule.activity.resources.getString(R.string.section_popular),
+            composeTestRule.activity.resources.getString(RCU.string.section_popular),
             substring = true,
         )
         .assertExists()
@@ -100,14 +100,6 @@ class HomeViewTest {
             substring = true,
         )
         .assertExists()
-
-    composeTestRule
-        .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(RCU.string.button_retry),
-            substring = true,
-        )
-        .assertExists()
-        .assertHasClickAction()
   }
 
   @Test

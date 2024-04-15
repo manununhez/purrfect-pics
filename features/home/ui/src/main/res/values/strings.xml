@@ -1,6 +1,4 @@
 <resources>
-    <string name="section_feature">Featured</string>
-    <string name="section_popular">Popular</string>
     <string name="see_more_text">See more</string>
     <string name="alert_error_feature">An Error has occurred in Featured section</string>
     <string name="alert_error_popular">An Error has occurred in Popular section</string>

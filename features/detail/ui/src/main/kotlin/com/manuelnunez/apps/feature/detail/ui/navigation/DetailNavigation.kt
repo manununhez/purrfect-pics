@@ -6,8 +6,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navOptions
+import com.manuelnunez.apps.core.common.navigation.navigate
 import com.manuelnunez.apps.core.domain.model.Item
-import com.manuelnunez.apps.core.ui.navigate
 import com.manuelnunez.apps.feature.detail.ui.DetailView
 
 const val DETAIL_ITEM = "myItem"

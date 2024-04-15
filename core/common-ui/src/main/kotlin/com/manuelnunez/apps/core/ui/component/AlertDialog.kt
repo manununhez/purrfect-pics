@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.manuelnunez.apps.core.ui.theme.MainTheme
+import com.manuelnunez.apps.core.ui.utils.ThemePreviews
 
 @Composable
 fun ErrorDialog(dialogTitle: String, dialogText: String, onConfirmation: () -> Unit) {
@@ -45,4 +47,15 @@ fun ErrorAlertDialog(
       onDismissRequest = { onDismissRequest() },
       confirmButton = { TextButton(onClick = { onConfirmation() }) { Text("Confirm") } },
       dismissButton = { TextButton(onClick = { onDismissRequest() }) { Text("Dismiss") } })
+}
+
+@ThemePreviews
+@Composable
+fun ErrorDialogPreview() {
+  MainTheme {
+    ErrorDialog(
+        onConfirmation = {},
+        dialogTitle = "Title",
+        dialogText = "https://picsum.photos/id/237/200/300")
+  }
 }

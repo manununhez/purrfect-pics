@@ -23,6 +23,9 @@ android {
 dependencies {
   implementation(libs.kotlinx.coroutines.android)
   implementation(libs.kotlinx.coroutines.test)
+
+  implementation(libs.androidx.navigation.compose)
+
   implementation(libs.junit.api)
   implementation(libs.mockk)
 

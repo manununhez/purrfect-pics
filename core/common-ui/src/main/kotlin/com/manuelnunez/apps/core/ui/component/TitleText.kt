@@ -18,8 +18,24 @@ fun TitleText(modifier: Modifier = Modifier, title: String, textAlign: TextAlign
       style = MaterialTheme.typography.titleLarge)
 }
 
+@Composable
+fun ErrorText(modifier: Modifier = Modifier, title: String, textAlign: TextAlign? = null) {
+  Text(
+      modifier = modifier,
+      text = title,
+      textAlign = textAlign,
+      color = MaterialTheme.colorScheme.onSurface,
+      style = MaterialTheme.typography.titleSmall)
+}
+
 @ThemePreviews
 @Composable
 fun TitleTextPreview() {
   MainTheme { TitleText(title = "See more") }
+}
+
+@ThemePreviews
+@Composable
+fun ErrorTextPreview() {
+  MainTheme { ErrorText(title = "See more") }
 }
