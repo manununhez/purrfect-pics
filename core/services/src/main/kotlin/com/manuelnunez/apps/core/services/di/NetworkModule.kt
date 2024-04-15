@@ -26,9 +26,9 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
   /**
-   * API interchangeable. In case of using PEXELS API, use PEXELS_BASE_URL with the PexelKeyAuthenticator interceptor.
-   * In case of using CATAAS API, use CATAAS_BASE_URL, an remove PexelsKeyAuth interceptor. Finally, select
-   * RemoteDataSources accordingly.
+   * API interchangeable. In case of using PEXELS API, use PEXELS_BASE_URL with the
+   * PexelKeyAuthenticator interceptor. In case of using CATAAS API, use CATAAS_BASE_URL, an remove
+   * PexelsKeyAuth interceptor. Finally, select RemoteDataSources accordingly.
    */
   private const val PEXELS_BASE_URL = "https://api.pexels.com/v1/"
   private const val CATAAS_BASE_URL = "https://cataas.com/"
