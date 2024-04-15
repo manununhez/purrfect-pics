@@ -10,8 +10,21 @@ heart.
 - **Share:** Share delightful cat images with friends, family, and fellow cat enthusiasts with just
   a tap.
 - **Save Favorites:** (Coming soon) Save your favorite cat images to easily revisit them later and
-  create your
-  personalized collection.
+  create your personalized collection.
+- **Splash Screen:** Engage users with a captivating splash screen animation while the app loads. (
+  Note: There is a known issue with the splash screen not showing on Android 12. A temporary
+  solution is to **open the app from the app tray**, as
+  indicated [here](https://stackoverflow.com/questions/69812590/android-12-splash-screen-icon-not-displaying))
+
+## Considerations
+
+- FREE Cat APIs used in this version: [Cataas](https://cataas.com/)
+  and [Pexels](https://www.pexels.com/). In particular, Pexels API
+  is [rate-limited](https://www.pexels.com/api/documentation/#guidelines), in case of errors for
+  this, a new API key will be necessary to be generated.
+- Not persisted in DB or preferences because this API has dynamic and frequently updated data. On
+  the other hand, Coil image lib does use disk and memory cache to smooth image loading.
+- KtfmtFormat plugin applied for code formatting.
 
 ## Tools/Libraries
 
@@ -52,13 +65,20 @@ heart.
 
 To get started with PurrfectPics, follow these steps:
 
-1. Clone the repository to your local machine:
-   git clone git@github.com:manununhez/purrfect-pics.git
-
-
+1. Clone the repository to your local
+   machine: `git clone git@github.com:manununhez/purrfect-pics.git`
 2. Open the project in Android Studio.
-
 3. Build and run the app on your device or emulator.
+
+## Branching Strategy
+
+- **Main Branch:** The primary branch of the project, reflecting the latest stable release.
+- **Feature Branches:** Used for developing new features. Branch names should be descriptive of the
+  feature being developed.
+- **Epic Branches:** Used for grouping related features or significant enhancements. Branch names
+  should reflect the overarching theme of the epic.
+- **Release Branches:** Used for preparing releases. Branch names should follow the
+  pattern `release/v<MAJOR>/<MAJOR>.<MINOR>.<PATCH>`.
 
 ## Contributing
 
@@ -76,6 +96,5 @@ PurrfectPics is licensed under the [MIT License](LICENSE).
 
 ## About
 
-PurrfectPics is developed and maintained by [Manuel Nuñez]. For inquiries, please
-contact [manuel.nunhez90@gmail.com].
-
+PurrfectPics is developed and maintained by [Manuel Nuñez](mailto:manuel.nunhez90@gmail.com). For
+inquiries, please contact [manuel.nunhez90@gmail.com].

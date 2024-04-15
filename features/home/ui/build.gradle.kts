@@ -8,18 +8,17 @@ android {
   namespace = "com.manuelnunez.apps.features.home.ui"
   compileSdk = 34
 
-  defaultConfig {
-    minSdk = 21
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes { release { isMinifyEnabled = false } }
-
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
+
+  defaultConfig {
+    minSdk = 21
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes { release { isMinifyEnabled = false } }
 
   composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
 

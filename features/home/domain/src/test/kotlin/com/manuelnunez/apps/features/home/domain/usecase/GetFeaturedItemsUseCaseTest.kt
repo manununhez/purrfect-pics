@@ -2,6 +2,7 @@ package com.manuelnunez.apps.features.home.domain.usecase
 
 import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.test.MockkAllRule
+import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
 import io.mockk.confirmVerified
 import io.mockk.mockk
@@ -21,7 +22,8 @@ class GetFeaturedItemsUseCaseTest {
 
   @BeforeEach
   fun setUp() {
-    useCase = GetFeaturedItemsUseCase(homeRepository, mockkAllExtension.testCoroutineDispatcherProvider)
+    useCase =
+        GetFeaturedItemsUseCase(homeRepository, mockkAllExtension.testCoroutineDispatcherProvider)
   }
 
   @Test

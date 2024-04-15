@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
 import com.manuelnunez.apps.core.common.test.MockkAllRule
+import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase

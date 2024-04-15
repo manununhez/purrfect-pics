@@ -1,5 +1,5 @@
-import java.io.FileInputStream
 import java.util.Properties
+import java.io.FileInputStream
 
 plugins {
   alias(libs.plugins.android.application)
@@ -11,6 +11,11 @@ plugins {
 android {
   namespace = "com.manuelnunez.apps"
   compileSdk = 34
+
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
 
   defaultConfig {
     applicationId = "com.manuelnunez.apps.purrfectpics"
@@ -37,6 +42,14 @@ android {
     }
   }
 
+  buildFeatures { compose = true }
+
+  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
+
+  tasks.withType<Test> { useJUnitPlatform() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
+
   buildTypes {
     getByName("release") {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -53,21 +66,6 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
-
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-
-  kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
-
-  buildFeatures { compose = true }
-
-  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
-
-  tasks.withType<Test> { useJUnitPlatform() }
-
-  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {

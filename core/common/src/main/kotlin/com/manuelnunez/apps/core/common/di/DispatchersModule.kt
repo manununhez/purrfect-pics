@@ -13,5 +13,6 @@ object DispatchersModule {
 
   @Provides
   @Singleton
-  fun provideCoroutineDispatcherProvider(): CoroutineDispatcherProvider = object : CoroutineDispatcherProvider {}
+  fun provideCoroutineDispatcherProvider(): CoroutineDispatcherProvider =
+      object : CoroutineDispatcherProvider {}
 }

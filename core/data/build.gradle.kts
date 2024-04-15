@@ -8,12 +8,12 @@ android {
   namespace = "com.manuelnunez.apps.core.data"
   compileSdk = 34
 
-  defaultConfig { minSdk = 21 }
-
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
+
+  defaultConfig { minSdk = 21 }
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
@@ -25,7 +25,7 @@ android {
 dependencies {
   implementation(projects.core.common)
   implementation(projects.core.services)
-  implementation(projects.core.domain) // TODO: data knows domain?
+  implementation(projects.core.domain)
   implementation(projects.features.home.domain)
   implementation(projects.features.seemore.domain)
 

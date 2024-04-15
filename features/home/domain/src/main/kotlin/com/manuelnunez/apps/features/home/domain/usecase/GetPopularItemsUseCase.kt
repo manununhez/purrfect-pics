@@ -12,8 +12,10 @@ import javax.inject.Inject
 
 class GetPopularItemsUseCase
 @Inject
-constructor(private val homeRepository: HomeRepository, coroutineDispatcherProvider: CoroutineDispatcherProvider) :
-    FlowUseCase<Unit, Either<List<Item>, ErrorModel>>(coroutineDispatcherProvider) {
+constructor(
+    private val homeRepository: HomeRepository,
+    coroutineDispatcherProvider: CoroutineDispatcherProvider
+) : FlowUseCase<Unit, Either<List<Item>, ErrorModel>>(coroutineDispatcherProvider) {
 
   override fun execute(input: Unit): Flow<Either<List<Item>, ErrorModel>> = flow {
     emit(homeRepository.getPopularItems())

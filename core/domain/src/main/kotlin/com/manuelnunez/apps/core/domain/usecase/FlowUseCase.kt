@@ -5,7 +5,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlin.coroutines.CoroutineContext
 
-abstract class FlowUseCase<T, R>(private val coroutineDispatcherProvider: CoroutineDispatcherProvider) {
+abstract class FlowUseCase<T, R>(
+    private val coroutineDispatcherProvider: CoroutineDispatcherProvider
+) {
 
   protected open fun dispatcher(): CoroutineContext = coroutineDispatcherProvider.io()
 

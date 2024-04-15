@@ -2,6 +2,7 @@ package com.manuelnunez.apps.feature.seemore.ui.viewmodel
 
 import androidx.paging.PagingData
 import com.manuelnunez.apps.core.common.test.MockkAllRule
+import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.feature.seemore.domain.usecase.GetAllItemUseCase
 import com.manuelnunez.apps.feature.seemore.ui.SeeMoreViewModel

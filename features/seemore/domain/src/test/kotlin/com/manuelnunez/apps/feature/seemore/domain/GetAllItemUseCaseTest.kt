@@ -3,6 +3,7 @@ package com.manuelnunez.apps.feature.seemore.domain
 import androidx.paging.PagingData
 import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.test.MockkAllRule
+import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
 import com.manuelnunez.apps.feature.seemore.domain.usecase.GetAllItemUseCase
 import io.mockk.confirmVerified
@@ -25,7 +26,8 @@ class GetAllItemUseCaseTest {
 
   @BeforeEach
   fun setUp() {
-    useCase = GetAllItemUseCase(seeMoreRepository, mockkAllExtension.testCoroutineDispatcherProvider)
+    useCase =
+        GetAllItemUseCase(seeMoreRepository, mockkAllExtension.testCoroutineDispatcherProvider)
   }
 
   @Test
