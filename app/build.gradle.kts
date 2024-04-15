@@ -12,6 +12,11 @@ android {
   namespace = "com.manuelnunez.apps"
   compileSdk = 34
 
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
+
   defaultConfig {
     applicationId = "com.manuelnunez.apps.purrfectpics"
     minSdk = 21
@@ -31,11 +36,19 @@ android {
           storeFile = file(getProperty("KEYSTORE_FILE"))
           keyAlias = getProperty("KEY_ALIAS")
           keyPassword = getProperty("KEY_PASSWORD")
-          storePassword = getProperty("KEYSTORE_PASSWORD")
+          storePassword = getProperty("KEY_PASSWORD")
         }
       }
     }
   }
+
+  buildFeatures { compose = true }
+
+  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
+
+  tasks.withType<Test> { useJUnitPlatform() }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 
   buildTypes {
     getByName("release") {
@@ -53,21 +66,6 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
-
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-
-  kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
-
-  buildFeatures { compose = true }
-
-  composeOptions { kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get() }
-
-  tasks.withType<Test> { useJUnitPlatform() }
-
-  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {

@@ -1,7 +1,7 @@
 package com.manuelnunez.apps.feature.seemore.ui.viewmodel
 
 import androidx.paging.PagingData
-import com.manuelnunez.apps.core.common.test.MainDispatcherRule
+import com.manuelnunez.apps.core.common.test.MockkAllRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.feature.seemore.domain.usecase.GetAllItemUseCase
@@ -19,7 +19,7 @@ import kotlin.properties.Delegates
 @OptIn(ExperimentalCoroutinesApi::class)
 class SeeMoreViewModelTest {
 
-  @RegisterExtension private val mainDispatcherRule = MainDispatcherRule()
+  @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val getAllItemUseCase = mockk<GetAllItemUseCase>()
@@ -28,7 +28,7 @@ class SeeMoreViewModelTest {
 
   @Test
   fun `WHEN viewmodel init, THEN getAllItemUseCase is called`() =
-      mainDispatcherRule.runTest {
+      mockkAllExtension.runTest {
         val pagingData = PagingData.from(mockItems)
 
         every { getAllItemUseCase.prepare(Unit) } returns flow { emit(pagingData) }

@@ -37,10 +37,4 @@ abstract class DataModule {
   abstract fun provideCataasCatsRemoteDataSource(
       remoteDataSourceImpl: CataasCatsRemoteDataSourceImpl
   ): CataasCatsRemoteDataSource
-
-  @Singleton
-  @Binds
-  abstract fun provideItemsPagingSource(
-      remoteDataSourceImpl: CataasCatsRemoteDataSourceImpl
-  ): CataasCatsRemoteDataSource
 }

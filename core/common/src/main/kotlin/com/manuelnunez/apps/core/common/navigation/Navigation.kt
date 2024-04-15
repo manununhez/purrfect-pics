@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.core.ui
+package com.manuelnunez.apps.core.common.navigation
 
 import android.os.Bundle
 import androidx.navigation.NavController

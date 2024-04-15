@@ -7,12 +7,12 @@ android {
   namespace = "com.manuelnunez.apps.core.ui"
   compileSdk = 34
 
-  defaultConfig { minSdk = 21 }
-
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
+
+  defaultConfig { minSdk = 21 }
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
@@ -28,8 +28,6 @@ dependencies {
   implementation(libs.androidx.compose.ui.tooling.preview)
 
   implementation(libs.coil.kt.compose)
-
-  implementation(libs.androidx.navigation.compose)
 
   // Compose
   val composeBom = platform(libs.androidx.compose.bom)
