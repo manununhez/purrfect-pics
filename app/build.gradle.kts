@@ -43,7 +43,7 @@ android {
       isMinifyEnabled = true // Enables code shrinking for the release build type.
       isShrinkResources = true
       signingConfig = signingConfigs.getByName("release")
-      isDebuggable = true
+      isDebuggable = false
     }
 
     getByName("debug") {
