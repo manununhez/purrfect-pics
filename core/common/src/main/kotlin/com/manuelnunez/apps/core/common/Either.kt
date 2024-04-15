@@ -6,8 +6,6 @@ sealed class Either<out L, out R> {
   data class Error<out R>(val value: R) : Either<Nothing, R>()
 }
 
-fun eitherEmpty() = Either.Success(Unit)
-
 fun <T> eitherSuccess(data: T) = Either.Success(data)
 
 fun <T> eitherError(error: T) = Either.Error(error)

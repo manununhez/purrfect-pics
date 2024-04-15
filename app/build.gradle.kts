@@ -31,7 +31,7 @@ android {
           storeFile = file(getProperty("KEYSTORE_FILE"))
           keyAlias = getProperty("KEY_ALIAS")
           keyPassword = getProperty("KEY_PASSWORD")
-          storePassword = getProperty("KEYSTORE_PASSWORD")
+          storePassword = getProperty("KEY_PASSWORD")
         }
       }
     }

@@ -19,19 +19,19 @@ annotation class DevicePreviews
  */
 @Preview(
     name = "Small font",
-    group = "font scales",
+    group = "Font scaling",
     fontScale = 0.5f,
     showBackground = true,
 )
 @Preview(
     name = "Large font",
-    group = "font scales",
-    fontScale = 2f,
+    group = "Font scaling",
+    fontScale = 2.5f,
     showBackground = true,
 )
 @Preview(
     name = "Normal font",
-    group = "font scales",
+    group = "Font scaling",
     backgroundColor = 0xFFFFFFFF,
     showBackground = true,
 )

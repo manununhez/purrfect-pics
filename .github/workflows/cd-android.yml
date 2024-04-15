@@ -2,7 +2,7 @@ name: Generate release APK and AAB
 
 on:
   push:
-    branches: [ "release/*/*" ]
+    branches: [ "release/*/*", "test/release/*" ]
 
 jobs:
   apk:
@@ -25,7 +25,6 @@ jobs:
         run: |
           cat <<EOF > keystore.properties
           PEXELS_API_KEY:${{ secrets.PEXELS_API_KEY }}
-          KEYSTORE_PASSWORD:${{ secrets.KEYSTORE_PASSWORD }}
           KEY_PASSWORD:${{ secrets.KEY_PASSWORD }}
           KEY_ALIAS:${{ secrets.KEY_ALIAS }}
           KEYSTORE_FILE:${{ secrets.KEYSTORE_FILE }}

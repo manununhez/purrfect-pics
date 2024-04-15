@@ -3,7 +3,7 @@ package com.manuelnunez.apps.core.common.dispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-interface DispatcherProvider {
+interface CoroutineDispatcherProvider {
 
   fun main(): CoroutineDispatcher = Dispatchers.Main
 

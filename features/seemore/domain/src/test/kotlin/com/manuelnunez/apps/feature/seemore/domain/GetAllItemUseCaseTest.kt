@@ -2,8 +2,7 @@ package com.manuelnunez.apps.feature.seemore.domain
 
 import androidx.paging.PagingData
 import app.cash.turbine.test
-import com.manuelnunez.apps.core.common.test.MainDispatcherRule
-import com.manuelnunez.apps.core.common.test.UnMockkAllRule
+import com.manuelnunez.apps.core.common.test.MockkAllRule
 import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
 import com.manuelnunez.apps.feature.seemore.domain.usecase.GetAllItemUseCase
 import io.mockk.confirmVerified
@@ -18,7 +17,7 @@ import org.junit.jupiter.api.extension.RegisterExtension
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetAllItemUseCaseTest {
-  @RegisterExtension private val mainDispatcherRule = MainDispatcherRule()
+  @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val seeMoreRepository = mockk<SeeMoreRepository>()
@@ -26,12 +25,12 @@ class GetAllItemUseCaseTest {
 
   @BeforeEach
   fun setUp() {
-    useCase = GetAllItemUseCase(seeMoreRepository, mainDispatcherRule.testDispatcherProvider)
+    useCase = GetAllItemUseCase(seeMoreRepository, mockkAllExtension.testCoroutineDispatcherProvider)
   }
 
   @Test
   fun `call GetItemUseCase invokes getFeatureItems from repository`() =
-      mainDispatcherRule.runTest {
+      mockkAllExtension.runTest {
         every { seeMoreRepository.getAllItems() } returns flow { emit(PagingData.empty()) }
 
         useCase.prepare(Unit).test {}

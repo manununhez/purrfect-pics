@@ -1,6 +1,6 @@
 package com.manuelnunez.apps.core.common.di
 
-import com.manuelnunez.apps.core.common.dispatcher.DispatcherProvider
+import com.manuelnunez.apps.core.common.dispatcher.CoroutineDispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,5 +13,5 @@ object DispatchersModule {
 
   @Provides
   @Singleton
-  fun provideDispatcherProvider(): DispatcherProvider = object : DispatcherProvider {}
+  fun provideCoroutineDispatcherProvider(): CoroutineDispatcherProvider = object : CoroutineDispatcherProvider {}
 }
