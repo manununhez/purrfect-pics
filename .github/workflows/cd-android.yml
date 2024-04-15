@@ -19,15 +19,15 @@ jobs:
           cache: gradle
 
       - name: Decode keystore and create jks
-        run: echo "${{ secrets.KEY_KEYSTORE_BASE64 }}" | base64 --decode > app/purrfect-pics-key.jks
+        run: echo "${{ secrets.KEY_KEYSTORE_BASE64 }}" | base64 --decode > app/keystore.jks
 
       - name: Generate keystore.properties
         run: |
           cat <<EOF > keystore.properties
-          PEXELS_API_KEY:${{ secrets.PEXELS_API_KEY }}
-          KEY_PASSWORD:${{ secrets.KEY_PASSWORD }}
-          KEY_ALIAS:${{ secrets.KEY_ALIAS }}
-          KEYSTORE_FILE:${{ secrets.KEYSTORE_FILE }}
+          PEXELS_API_KEY=${{ secrets.PEXELS_API_KEY }}
+          KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS=${{ secrets.KEY_ALIAS }}
+          KEYSTORE_FILE=${{ secrets.KEYSTORE_FILE }}
           EOF
 
       - name: Generate file name env var
