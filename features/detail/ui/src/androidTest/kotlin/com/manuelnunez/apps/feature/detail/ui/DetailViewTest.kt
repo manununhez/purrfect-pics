@@ -11,6 +11,7 @@ import com.manuelnunez.apps.feature.detail.ui.components.DetailScreen
 import com.manuelnunez.apps.features.detail.ui.R
 import org.junit.Rule
 import org.junit.Test
+import com.manuelnunez.apps.core.ui.R as RCU
 
 class DetailViewTest {
 
@@ -53,14 +54,14 @@ class DetailViewTest {
 
     composeTestRule
         .onNodeWithText(
-            composeTestRule.activity.resources.getString(R.string.alert_error_try_again_back),
+            composeTestRule.activity.resources.getString(RCU.string.alert_error_try_again_back),
             substring = true,
         )
         .assertExists()
 
     composeTestRule
         .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(R.string.button_back),
+            composeTestRule.activity.resources.getString(RCU.string.button_back),
             substring = true,
         )
         .assertExists()

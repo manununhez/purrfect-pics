@@ -34,8 +34,10 @@ dependencies {
 
   // HILT
   implementation(libs.hilt.android)
+  implementation(libs.androidx.paging.common.ktx)
   ksp(libs.hilt.compiler)
 
+  testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.junit)
   testImplementation(libs.mockk)
 }

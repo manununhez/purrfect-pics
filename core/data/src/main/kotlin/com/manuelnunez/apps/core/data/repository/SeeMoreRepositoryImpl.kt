@@ -1,22 +1,21 @@
 package com.manuelnunez.apps.core.data.repository
 
-import com.manuelnunez.apps.core.common.eitherError
-import com.manuelnunez.apps.core.common.eitherSuccess
-import com.manuelnunez.apps.core.common.fold
-import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
-import com.manuelnunez.apps.core.data.mapper.toItems
-import com.manuelnunez.apps.core.domain.model.ErrorModel
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import com.manuelnunez.apps.core.data.datasource.PexeelsCatsPagingSource
 import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
 import javax.inject.Inject
 
-class SeeMoreRepositoryImpl
-@Inject
-constructor(private val remoteDataSource: PexelsCatsRemoteDataSource) : SeeMoreRepository {
-
+class SeeMoreRepositoryImpl @Inject constructor(private val pagingSource: PexeelsCatsPagingSource) :
+    SeeMoreRepository {
   override fun getAllItems() =
-      remoteDataSource
-          .getItems()
-          .fold(
-              success = { eitherSuccess(it.toItems()) },
-              error = { eitherError(ErrorModel.ServiceError) })
+      Pager(
+              config = PagingConfig(pageSize = PAGE_SIZE, prefetchDistance = PREFETCH_DISTANCE),
+              pagingSourceFactory = { pagingSource })
+          .flow
+
+  companion object {
+    private const val PAGE_SIZE = 10
+    private const val PREFETCH_DISTANCE = 5
+  }
 }

@@ -18,10 +18,10 @@ fun HomeView(
 ) {
   val items by viewModel.state.collectAsStateWithLifecycle()
 
-  if (items.popularItemsState is PopularItemsState.Error &&
+  if (items.popularItemsState is PopularItemsState.Error ||
       items.featuredItemsState is FeaturedItemsState.Error) {
     HomeErrorScreen { viewModel.getItems() }
-  } else {
-    HomeScreen(items, navigateToDetails, navigateToSeeMore)
   }
+
+  HomeScreen(items, navigateToDetails, navigateToSeeMore)
 }

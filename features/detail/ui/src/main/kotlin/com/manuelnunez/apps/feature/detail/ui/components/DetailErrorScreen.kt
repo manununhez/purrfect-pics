@@ -19,13 +19,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.OrientationPreviews
-import com.manuelnunez.apps.features.detail.ui.R
+import com.manuelnunez.apps.core.ui.R as RCU
 
 @Composable
 fun DetailErrorScreen(onBackClick: () -> Unit) {
-  val textButtonGoBack = stringResource(id = R.string.button_back)
+  val textButtonGoBack = stringResource(id = RCU.string.button_back)
   Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
       Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
@@ -40,8 +41,8 @@ fun DetailErrorScreen(onBackClick: () -> Unit) {
             Text(text = textButtonGoBack)
           }
 
-      Text(
-          text = stringResource(id = R.string.alert_error_try_again_back),
+      TitleText(
+          title = stringResource(id = RCU.string.alert_error_try_again_back),
           textAlign = TextAlign.Center)
 
       Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.safeDrawing))

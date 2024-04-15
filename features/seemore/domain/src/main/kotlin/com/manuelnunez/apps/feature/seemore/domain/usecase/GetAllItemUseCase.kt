@@ -1,13 +1,11 @@
 package com.manuelnunez.apps.feature.seemore.domain.usecase
 
-import com.manuelnunez.apps.core.common.Either
+import androidx.paging.PagingData
 import com.manuelnunez.apps.core.common.dispatcher.DispatcherProvider
-import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.domain.usecase.FlowUseCase
 import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetAllItemUseCase
@@ -15,9 +13,7 @@ class GetAllItemUseCase
 constructor(
     private val seeMoreRepository: SeeMoreRepository,
     dispatcherProvider: DispatcherProvider
-) : FlowUseCase<Unit, Either<List<Item>, ErrorModel>>(dispatcherProvider) {
+) : FlowUseCase<Unit, PagingData<Item>>(dispatcherProvider) {
 
-  override fun execute(input: Unit): Flow<Either<List<Item>, ErrorModel>> = flow {
-    emit(seeMoreRepository.getAllItems())
-  }
+  override fun execute(input: Unit): Flow<PagingData<Item>> = seeMoreRepository.getAllItems()
 }

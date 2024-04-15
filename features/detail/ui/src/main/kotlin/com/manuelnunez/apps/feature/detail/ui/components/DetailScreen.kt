@@ -38,6 +38,7 @@ import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.OrientationPreviews
 import com.manuelnunez.apps.features.detail.ui.R
+import com.manuelnunez.apps.core.ui.R as RCU
 
 @Composable
 fun DetailScreen(item: Item, onBackClick: () -> Unit) {
@@ -87,7 +88,7 @@ private fun DetailToolbar(onBackClick: () -> Unit) {
     IconButton(onClick = { onBackClick() }) {
       Icon(
           imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-          contentDescription = stringResource(id = R.string.button_back),
+          contentDescription = stringResource(id = RCU.string.button_back),
           tint = MaterialTheme.colorScheme.onSurface)
     }
 
