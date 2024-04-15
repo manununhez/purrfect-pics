@@ -14,14 +14,9 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class SeeMoreRepositoryTest {
-  //  @RegisterExtension
-  //  private val mainDispatcherRule = MainDispatcherRule()
-  //  @RegisterExtension
-  //  private val unMockkAllExtension = UnMockkAllRule()
-
   private lateinit var repository: SeeMoreRepository
 
-  private val pagingSource = mockk<PexeelsCatsPagingSource>(relaxed = true)
+  private val pagingSource = mockk<PexeelsCatsPagingSource>()
 
   @BeforeEach
   fun setUp() {

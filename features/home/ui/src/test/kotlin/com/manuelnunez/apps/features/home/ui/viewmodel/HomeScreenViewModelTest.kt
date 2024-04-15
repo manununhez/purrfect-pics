@@ -6,12 +6,12 @@ import com.manuelnunez.apps.core.common.eitherSuccess
 import com.manuelnunez.apps.core.common.test.MainDispatcherRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
 import com.manuelnunez.apps.core.domain.model.ErrorModel
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
 import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
-import com.manuelnunez.apps.features.home.ui.utils.mockPhotos
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -100,4 +100,14 @@ class HomeScreenViewModelTest {
         }
         confirmVerified(getFeaturedItemsUseCase, getPopularItemsUseCase)
       }
+
+  private val mockPhotos: List<Item> =
+    List(20) { index ->
+      val id = (index + 1).toString()
+      Item(
+        photoId = id,
+        imageUrl = "https://example.com/photo$id",
+        thumbnailUrl = "https://example.com/photo$id/small",
+        description = "This is a description for item $id")
+    }
 }
