@@ -9,12 +9,30 @@ heart.
 - **Discover:** Explore a vast collection of random cat images sourced from the web.
 - **Share:** Share delightful cat images with friends, family, and fellow cat enthusiasts with just
   a tap.
-- **Save Favorites:** (Coming soon) Save your favorite cat images to easily revisit them later and
+- **Save Favorites: (Coming soon)** Save your favorite cat images to easily revisit them later and
   create your personalized collection.
-- **Splash Screen:** Engage users with a captivating splash screen animation while the app loads. (
-  Note: There is a known issue with the splash screen not showing on Android 12. A temporary
-  solution is to **open the app from the app tray**, as
-  indicated [here](https://stackoverflow.com/questions/69812590/android-12-splash-screen-icon-not-displaying))
+
+## Tools/Libraries
+
+### Android Libraries
+
+- **UI Components:** [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Testing:** [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
+- **Dependency Injection:** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+- **Coroutines:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+- **Networking:** [Retrofit](https://square.github.io/retrofit/)
+- **Image Loading:** [Coil](https://coil-kt.github.io/coil/)
+
+### Compose Libraries
+
+- **UI Components:**  [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Navigation:** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
+- **Material Design:** [Material Components for Android](https://github.com/material-components/material-components-android)
+
+## Screenshots
+
+| ![Screenshot 2024-04-15 at 6 34 16 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/a8024c0c-e31f-4189-b268-1167048658ad) | ![Screenshot 2024-04-15 at 6 35 33 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/1a72c5ea-ee22-4470-8e98-6215ebb86924) | ![Screenshot 2024-04-15 at 6 36 08 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/c31637d7-ddfe-436a-8e16-d27244d638ea) |
+|---|---|---|
 
 ## Considerations
 
@@ -25,41 +43,8 @@ heart.
 - Not persisted in DB or preferences because this API has dynamic and frequently updated data. On
   the other hand, Coil image lib does use disk and memory cache to smooth image loading.
 - KtfmtFormat plugin applied for code formatting.
-
-## Tools/Libraries
-
-### Android Libraries
-
-- **UI Components:** Essential libraries for building UI components and handling UI-related
-  tasks. [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Testing:** Frameworks and tools for writing and running tests to ensure code quality and
-  reliability. [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
-- **Dependency Injection:** Tools for managing dependencies and implementing dependency injection in
-  your project. [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-- **Coroutines:** Kotlin coroutine libraries for handling asynchronous programming tasks
-  efficiently. [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
-- **Networking:** Libraries for making network requests and handling network
-  communication. [Retrofit](https://square.github.io/retrofit/)
-- **Image Loading:** Libraries for loading and displaying images efficiently in your
-  app. [Coil](https://coil-kt.github.io/coil/)
-
-### Compose Libraries
-
-- **UI Components:** Libraries for building UI components using Jetpack
-  Compose. [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Navigation:** Libraries for implementing navigation in Jetpack Compose
-  apps. [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
-- **Material Design:** Libraries for implementing Material Design components and theming in Jetpack
-  Compose. [Material Components for Android](https://github.com/material-components/material-components-android)
-
-### Other
-
-- **Build Tools:** Essential tools for building, testing, and packaging your Android
-  app. [Android Gradle Plugin](https://developer.android.com/studio/releases/gradle-plugin) | [Kotlin Symbol Processing (KSP)](https://github.com/google/ksp)
-
-## Screenshots
-
-[Include screenshots or GIFs of the app in action]
+- There is a known issue with the splash screen not showing on Android 12. A temporary
+  solution is to **open the app from the app tray**, as indicated [here](https://stackoverflow.com/questions/69812590/android-12-splash-screen-icon-not-displaying))
 
 ## Getting Started
 
