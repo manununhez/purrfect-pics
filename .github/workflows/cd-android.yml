@@ -33,11 +33,10 @@ jobs:
 
       - name: Generate file name env var
         run: |
-          VERSION_NAME=$(${{github.workspace}})
           DATE=$(date +'%d.%m.%Y')
           BRANCH_NAME=${GITHUB_REF##*/}
           MESSAGE=$(cat << EOF
-          AppName-release-${VERSION_NAME}-${BRANCH_NAME}-${DATE}
+          AppName-release-${BRANCH_NAME}-${DATE}
           EOF)
           echo OUTPUT_NAME=$MESSAGE >> $GITHUB_ENV
 
