@@ -19,25 +19,24 @@ jobs:
           cache: gradle
 
       - name: Decode keystore and create jks
-        run: echo "${{ secrets.KEY_KEYSTORE_BASE64 }}" | base64 --decode > purrfect-pics-key
+        run: echo "${{ secrets.KEY_KEYSTORE_BASE64 }}" | base64 --decode > app/purrfect-pics-key
 
       - name: Generate keystore.properties
         run: |
           cat <<EOF > keystore.properties
           PEXELS_API_KEY:${{ secrets.PEXELS_API_KEY }}
-          storePassword:${{ secrets.KEYSTORE_PASSWORD }}
-          keyPassword:${{ secrets.KEY_PASSWORD }}
-          keyAlias:${{ secrets.KEY_ALIAS }}
-          storeFile:${{ secrets.KEYSTORE_FILE }}
+          KEYSTORE_PASSWORD:${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD:${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS:${{ secrets.KEY_ALIAS }}
+          KEYSTORE_FILE:${{ secrets.KEYSTORE_FILE }}
           EOF
 
       - name: Generate file name env var
         run: |
-          VERSION_NAME=$(${{github.workspace}})
           DATE=$(date +'%d.%m.%Y')
           BRANCH_NAME=${GITHUB_REF##*/}
           MESSAGE=$(cat << EOF
-          AppName-release-${VERSION_NAME}-${BRANCH_NAME}-${DATE}
+          AppName-release-${BRANCH_NAME}-${DATE}
           EOF)
           echo OUTPUT_NAME=$MESSAGE >> $GITHUB_ENV
 
