@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.android)
@@ -14,13 +17,40 @@ android {
     minSdk = 21
     targetSdk = 34
     versionCode = 1
-    versionName = "1.0"
+    versionName = "1.0.0"
+  }
+
+  signingConfigs {
+    create("release") {
+      val keyStoreFile = rootProject.file("keystore.properties")
+
+      if (keyStoreFile.exists()) {
+        val keystoreProperties = Properties().apply { load(FileInputStream(keyStoreFile)) }
+
+        with(keystoreProperties) {
+          storeFile = file(getProperty("KEYSTORE_FILE"))
+          keyAlias = getProperty("KEY_ALIAS")
+          keyPassword = getProperty("KEY_PASSWORD")
+          storePassword = getProperty("KEYSTORE_PASSWORD")
+        }
+      }
+    }
   }
 
   buildTypes {
-    release {
-      isMinifyEnabled = false
+    getByName("release") {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+      isMinifyEnabled = true // Enables code shrinking for the release build type.
+      isShrinkResources = true
+      signingConfig = signingConfigs.getByName("release")
+      isDebuggable = true
+    }
+
+    getByName("debug") {
+      applicationIdSuffix = ".debug"
+      isMinifyEnabled = false
+      isDebuggable = true
+      proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
 
