@@ -16,24 +16,18 @@ heart.
 
 ### Android Libraries
 
-- **UI Components:
-  ** [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Testing:
-  ** [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
-- **Dependency Injection:
-  ** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+- **UI Components:** [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Testing:** [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
+- **Dependency Injection:** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - **Coroutines:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 - **Networking:** [Retrofit](https://square.github.io/retrofit/)
 - **Image Loading:** [Coil](https://coil-kt.github.io/coil/)
 
 ### Compose Libraries
 
-- **UI Components:
-  **  [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Navigation:
-  ** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
-- **Material Design:
-  ** [Material Components for Android](https://github.com/material-components/material-components-android)
+- **UI Components:**  [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Navigation:** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
+- **Material Design:** [Material Components for Android](https://github.com/material-components/material-components-android)
 
 ## Screenshots
 
