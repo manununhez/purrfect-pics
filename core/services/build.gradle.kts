@@ -42,9 +42,13 @@ android {
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
   buildFeatures { buildConfig = true }
+
+  packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
+  implementation(projects.core.common)
+
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
 

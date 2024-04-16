@@ -2,6 +2,7 @@ package com.manuelnunez.apps.feature.detail.ui
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertHasClickAction
+import androidx.compose.ui.test.assertHasNoClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
@@ -22,12 +23,7 @@ class DetailViewTest {
     composeTestRule.setContent { DetailScreen(mockItem, onBackClick = {}) }
 
     // description
-    composeTestRule
-        .onNodeWithText(
-            mockItem.description,
-            substring = true,
-        )
-        .assertExists()
+    composeTestRule.onNodeWithText(mockItem.description).assertExists()
 
     // share button
     composeTestRule
@@ -40,12 +36,9 @@ class DetailViewTest {
 
     // Image
     composeTestRule
-        .onNodeWithContentDescription(
-            mockItem.photoId,
-            substring = true,
-        )
+        .onNodeWithContentDescription(mockItem.photoId)
         .assertExists()
-        .assertHasClickAction()
+        .assertHasNoClickAction()
   }
 
   @Test
@@ -61,7 +54,7 @@ class DetailViewTest {
 
     composeTestRule
         .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(RCU.string.button_back),
+            composeTestRule.activity.resources.getString(RCU.string.alert_dialog_confirm_button),
             substring = true,
         )
         .assertExists()

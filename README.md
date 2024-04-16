@@ -1,4 +1,4 @@
-# PurrfectPics
+# PurrfectPics ![ic_launcher_round](https://github.com/manununhez/purrfect-pics/assets/5048531/1fab47b6-03fb-4901-b6c9-0fe60cbaecd1)
 
 PurrfectPics is your ultimate companion for discovering, customizing, and sharing adorable cat
 images on Android. With a wide range of features, PurrfectPics brings joy to every cat lover's
@@ -16,23 +16,29 @@ heart.
 
 ### Android Libraries
 
-- **UI Components:** [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Testing:** [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
-- **Dependency Injection:** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+- **UI Components:
+  ** [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Testing:
+  ** [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
+- **Dependency Injection:
+  ** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - **Coroutines:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 - **Networking:** [Retrofit](https://square.github.io/retrofit/)
 - **Image Loading:** [Coil](https://coil-kt.github.io/coil/)
 
 ### Compose Libraries
 
-- **UI Components:**  [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Navigation:** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
-- **Material Design:** [Material Components for Android](https://github.com/material-components/material-components-android)
+- **UI Components:
+  **  [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Navigation:
+  ** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
+- **Material Design:
+  ** [Material Components for Android](https://github.com/material-components/material-components-android)
 
 ## Screenshots
 
-| ![Screenshot 2024-04-15 at 6 34 16 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/a8024c0c-e31f-4189-b268-1167048658ad) | ![Screenshot 2024-04-15 at 6 35 33 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/1a72c5ea-ee22-4470-8e98-6215ebb86924) | ![Screenshot 2024-04-15 at 6 36 08 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/c31637d7-ddfe-436a-8e16-d27244d638ea) |
-|---|---|---|
+| ![Screenshot 2024-04-16 at 10 26 30 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/c08f645e-a362-4d2e-bfff-c99d8966e2b8) | ![Screenshot 2024-04-15 at 6 34 16 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/a8024c0c-e31f-4189-b268-1167048658ad) | ![Screenshot 2024-04-15 at 6 35 33 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/1a72c5ea-ee22-4470-8e98-6215ebb86924) | ![Screenshot 2024-04-15 at 6 36 08 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/c31637d7-ddfe-436a-8e16-d27244d638ea) |
+|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Considerations
 
@@ -44,7 +50,8 @@ heart.
   the other hand, Coil image lib does use disk and memory cache to smooth image loading.
 - KtfmtFormat plugin applied for code formatting.
 - There is a known issue with the splash screen not showing on Android 12. A temporary
-  solution is to **open the app from the app tray**, as indicated [here](https://stackoverflow.com/questions/69812590/android-12-splash-screen-icon-not-displaying))
+  solution is to **open the app from the app tray**, as
+  indicated [here](https://stackoverflow.com/questions/69812590/android-12-splash-screen-icon-not-displaying))
 
 ## Getting Started
 
