@@ -10,7 +10,7 @@ import com.manuelnunez.apps.core.ui.R as RCU
 @Composable
 fun DetailErrorScreen(onBackClick: () -> Unit) {
   ErrorDialog(
-      onConfirmation = onBackClick,
+      onConfirmClick = onBackClick,
       dialogTitle = stringResource(id = RCU.string.alert_error_title),
       dialogText = stringResource(id = RCU.string.alert_error_try_again_back))
 }

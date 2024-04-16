@@ -36,7 +36,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.ui.component.ImageCard
-import com.manuelnunez.apps.core.ui.component.TitleText
+import com.manuelnunez.apps.core.ui.component.SurfaceText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
@@ -108,7 +108,7 @@ private fun SeeMoreToolbar(onBackClick: () -> Unit) {
           tint = MaterialTheme.colorScheme.onSurface)
     }
 
-    TitleText(title = stringResource(id = RCU.string.section_popular))
+    SurfaceText(text = stringResource(id = RCU.string.section_popular))
   }
 }
 

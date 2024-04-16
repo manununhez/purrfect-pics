@@ -17,15 +17,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter.State.Error
 import coil.compose.AsyncImagePainter.State.Loading
 import coil.compose.rememberAsyncImagePainter
 import com.manuelnunez.apps.core.ui.R
 
-/** A wrapper around [AsyncImage] which determines the colorFilter based on the theme */
 @Composable
-fun DynamicAsyncImage(
+fun StatefulAsyncImage(
     modifier: Modifier = Modifier,
     imageUrl: String,
     contentDescription: String,
