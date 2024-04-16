@@ -15,7 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.manuelnunez.apps.core.ui.component.MainGradientBackground
 
-private val LightColorScheme =
+val LightColorScheme =
     lightColorScheme(
         primary = primaryLight,
         onPrimary = onPrimaryLight,
@@ -54,7 +54,7 @@ private val LightColorScheme =
         surfaceContainerHighest = surfaceContainerHighestLight,
     )
 
-private val DarkColorScheme =
+val DarkColorScheme =
     darkColorScheme(
         primary = primaryDark,
         onPrimary = onPrimaryDark,

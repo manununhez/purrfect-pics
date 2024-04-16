@@ -12,7 +12,10 @@ android {
     targetCompatibility = JavaVersion.VERSION_17
   }
 
-  defaultConfig { minSdk = 21 }
+  defaultConfig {
+    minSdk = 21
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
@@ -33,4 +36,8 @@ dependencies {
   val composeBom = platform(libs.androidx.compose.bom)
   implementation(composeBom)
   debugImplementation(libs.androidx.ui.tooling)
+
+  testImplementation(libs.junit)
+  api(libs.androidx.compose.ui.test.junit4)
+  debugApi(libs.androidx.compose.ui.test.manifest)
 }

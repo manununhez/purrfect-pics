@@ -11,7 +11,7 @@ import com.manuelnunez.apps.core.ui.R as RCU
 @Composable
 fun SeeMoreErrorScreen(retry: () -> Unit) {
   ErrorDialog(
-      onConfirmation = retry,
+      onConfirmClick = retry,
       dialogTitle = stringResource(id = RCU.string.alert_error_title),
       dialogText = stringResource(id = RCU.string.alert_error_try_again))
 }

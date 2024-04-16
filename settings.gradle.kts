@@ -34,7 +34,7 @@ include(":core:domain")
 
 include(":core:services")
 
-include(":core:common-ui")
+include(":core:ui")
 
 include(":features:home:domain")
 

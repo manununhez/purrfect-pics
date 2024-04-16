@@ -28,8 +28,8 @@ import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.ui.component.AdaptableVerticalGrid
 import com.manuelnunez.apps.core.ui.component.AdaptableVerticalGridDecoration
 import com.manuelnunez.apps.core.ui.component.ImageCard
+import com.manuelnunez.apps.core.ui.component.SurfaceText
 import com.manuelnunez.apps.core.ui.component.TextCard
-import com.manuelnunez.apps.core.ui.component.TitleText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
@@ -56,7 +56,8 @@ fun HomeScreen(
                 LoadingIndicator(
                     loaderContentDescription = stringResource(id = RCU.string.section_feature))
               }
-          FeaturedItemsState.Error -> item { FeatureError() }
+          FeaturedItemsState.Error ->
+              item { ItemError(stringResource(id = R.string.alert_error_feature)) }
           else -> {}
         }
 
@@ -70,7 +71,8 @@ fun HomeScreen(
                 LoadingIndicator(
                     loaderContentDescription = stringResource(id = RCU.string.section_popular))
               }
-          PopularItemsState.Error -> item { PopularError() }
+          PopularItemsState.Error ->
+              item { ItemError(stringResource(id = R.string.alert_error_popular)) }
           else -> {}
         }
       }
@@ -79,9 +81,9 @@ fun HomeScreen(
 @Composable
 private fun FeaturedItem(items: List<Item>, navigateToDetails: (Item) -> Unit) {
   Column {
-    TitleText(
+    SurfaceText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
-        title = stringResource(id = RCU.string.section_feature))
+        text = stringResource(id = RCU.string.section_feature))
 
     Spacer(modifier = Modifier.height(10.dp))
 
@@ -115,9 +117,9 @@ private fun PopularItem(
   val gridPadding = 20.dp - horizontalMarginItem
 
   Column {
-    TitleText(
+    SurfaceText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
-        title = stringResource(id = RCU.string.section_popular))
+        text = stringResource(id = RCU.string.section_popular))
 
     Spacer(modifier = Modifier.height(10.dp))
 

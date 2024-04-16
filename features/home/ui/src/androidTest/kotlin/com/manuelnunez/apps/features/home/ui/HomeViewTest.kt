@@ -5,10 +5,9 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.ui.components.HomeErrorScreen
 import com.manuelnunez.apps.features.home.ui.components.HomeScreen
-import com.manuelnunez.apps.features.home.ui.utils.mockFeaturedPhotos
-import com.manuelnunez.apps.features.home.ui.utils.mockPopularPhotos
 import org.junit.Rule
 import org.junit.Test
 import com.manuelnunez.apps.core.ui.R as RCU
@@ -143,4 +142,28 @@ class HomeViewTest {
         )
         .assertExists()
   }
+
+  private val mockPopularPhotos =
+      List(20) { index ->
+            val id = (index + 1).toString()
+            Item(
+                photoId = id,
+                imageUrl = "https://example.com/photo$id",
+                thumbnailUrl = "https://example.com/photo$id/small",
+                description = "This is a description for popular items $id")
+          }
+          .shuffled()
+          .take(10)
+
+  private val mockFeaturedPhotos =
+      List(20) { index ->
+            val id = (index + 1).toString()
+            Item(
+                photoId = id,
+                imageUrl = "https://example.com/photo$id",
+                thumbnailUrl = "https://example.com/photo$id/small",
+                description = "This is a description for featured items $id")
+          }
+          .shuffled()
+          .take(5)
 }

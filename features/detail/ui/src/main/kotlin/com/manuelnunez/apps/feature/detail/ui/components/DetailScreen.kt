@@ -34,8 +34,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.manuelnunez.apps.core.domain.model.Item
-import com.manuelnunez.apps.core.ui.component.DynamicAsyncImage
-import com.manuelnunez.apps.core.ui.component.TitleText
+import com.manuelnunez.apps.core.ui.component.StatefulAsyncImage
+import com.manuelnunez.apps.core.ui.component.SurfaceText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.OrientationPreviews
 import com.manuelnunez.apps.features.detail.ui.R
@@ -44,6 +44,7 @@ import com.manuelnunez.apps.core.ui.R as RCU
 @Composable
 fun DetailScreen(item: Item, onBackClick: () -> Unit) {
   val orientation = LocalConfiguration.current.orientation
+
   if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
     DetailLandscape(item, onBackClick)
   } else {
@@ -61,9 +62,9 @@ private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
     Spacer(modifier = Modifier.height(10.dp))
 
     Column(
-        modifier = Modifier.weight(1f).wrapContentSize().heightIn(100.dp),
+        modifier = Modifier.weight(1f).wrapContentSize().heightIn(min = 100.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
-          DynamicAsyncImage(
+          StatefulAsyncImage(
               modifier = Modifier.fillMaxWidth().padding(horizontal = 6.dp),
               imageUrl = item.imageUrl,
               contentDescription = item.photoId,
@@ -71,12 +72,11 @@ private fun DetailPortrait(item: Item, onBackClick: () -> Unit) {
 
           ShareImage(url = item.imageUrl)
 
-          Text(
+          SurfaceText(
               modifier = Modifier.padding(top = 10.dp).padding(horizontal = 40.dp),
               textAlign = TextAlign.Center,
               text = item.description,
-              style = MaterialTheme.typography.titleSmall,
-              color = MaterialTheme.colorScheme.onSurface)
+              style = MaterialTheme.typography.titleSmall)
         }
 
     Spacer(modifier = Modifier.height(20.dp))
@@ -93,7 +93,7 @@ private fun DetailToolbar(onBackClick: () -> Unit) {
           tint = MaterialTheme.colorScheme.onSurface)
     }
 
-    TitleText(title = "Details")
+    SurfaceText(text = "Details")
   }
 }
 
@@ -107,7 +107,7 @@ private fun DetailLandscape(item: Item, onBackClick: () -> Unit) {
     Spacer(modifier = Modifier.height(10.dp))
 
     Row(verticalAlignment = Alignment.CenterVertically) {
-      DynamicAsyncImage(
+      StatefulAsyncImage(
           modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp).weight(0.7f),
           imageUrl = item.imageUrl,
           contentDescription = item.photoId,

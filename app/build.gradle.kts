@@ -69,7 +69,7 @@ android {
 }
 
 dependencies {
-  implementation(projects.core.commonUi)
+  implementation(projects.core.ui)
   implementation(projects.core.data)
   implementation(projects.core.domain)
   implementation(projects.features.home.ui)

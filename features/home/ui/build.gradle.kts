@@ -34,7 +34,7 @@ android {
 dependencies {
   implementation(projects.core.common)
   implementation(projects.core.domain)
-  implementation(projects.core.commonUi)
+  implementation(projects.core.ui)
   implementation(projects.features.home.domain)
 
   // Arch Components
