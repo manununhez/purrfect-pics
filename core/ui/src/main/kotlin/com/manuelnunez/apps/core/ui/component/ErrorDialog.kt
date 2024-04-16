@@ -39,7 +39,7 @@ fun ErrorDialog(
   when {
     openAlertDialog.value -> {
       AlertDialog(
-          icon = { Icon(icon, contentDescription = "Warning Icon") },
+          icon = { Icon(icon, contentDescription = null) },
           title = { Text(text = dialogTitle) },
           text = { Text(text = dialogText) },
           onDismissRequest = { onDismissRequest() },

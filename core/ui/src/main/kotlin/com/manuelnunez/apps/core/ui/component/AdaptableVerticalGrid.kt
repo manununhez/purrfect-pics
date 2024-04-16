@@ -79,7 +79,8 @@ fun AdaptableVerticalGridPreview() {
         Card(Modifier.size(50.dp, 80.dp).padding(horizontal = 10.dp).padding(bottom = 20.dp)) {
           Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_broken_image), contentDescription = "")
+                painter = painterResource(id = R.drawable.ic_broken_image),
+                contentDescription = null)
           }
         }
       }

@@ -30,7 +30,7 @@ class HomeViewTest {
     // Feature loader
     composeTestRule
         .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(RCU.string.section_feature),
+            composeTestRule.activity.resources.getString(R.string.section_feature),
         )
         .assertExists()
 
@@ -59,7 +59,7 @@ class HomeViewTest {
     // Feature title
     composeTestRule
         .onNodeWithText(
-            composeTestRule.activity.resources.getString(RCU.string.section_feature),
+            composeTestRule.activity.resources.getString(R.string.section_feature),
             substring = true,
         )
         .assertExists()

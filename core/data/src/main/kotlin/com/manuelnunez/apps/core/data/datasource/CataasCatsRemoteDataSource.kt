@@ -33,14 +33,7 @@ constructor(private val servicesExecutor: ServicesExecutor, private val apiServi
   override fun getItems(): Either<List<CataasResponseDTO>, ServiceError> {
     val response = servicesExecutor.execute(RetrofitServiceRequest(apiService.searchCats()))
 
-      return response.fold(
-          success = {
-              eitherSuccess(it.data)
-          },
-          error = {
-             eitherError(it)
-          }
-      )
+    return response.fold(success = { eitherSuccess(it.data) }, error = { eitherError(it) })
   }
 
   override fun getAllItems(): Flow<PagingData<Item>> =

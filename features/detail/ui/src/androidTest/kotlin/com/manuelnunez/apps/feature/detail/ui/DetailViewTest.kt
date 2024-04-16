@@ -47,7 +47,7 @@ class DetailViewTest {
 
     composeTestRule
         .onNodeWithText(
-            composeTestRule.activity.resources.getString(RCU.string.alert_error_try_again_back),
+            composeTestRule.activity.resources.getString(R.string.alert_error_try_again_back),
             substring = true,
         )
         .assertExists()

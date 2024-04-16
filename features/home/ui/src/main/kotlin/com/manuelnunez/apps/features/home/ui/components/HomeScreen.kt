@@ -54,7 +54,7 @@ fun HomeScreen(
           FeaturedItemsState.Loading ->
               item {
                 LoadingIndicator(
-                    loaderContentDescription = stringResource(id = RCU.string.section_feature))
+                    loaderContentDescription = stringResource(id = R.string.section_feature))
               }
           FeaturedItemsState.Error ->
               item { ItemError(stringResource(id = R.string.alert_error_feature)) }
@@ -83,7 +83,7 @@ private fun FeaturedItem(items: List<Item>, navigateToDetails: (Item) -> Unit) {
   Column {
     SurfaceText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
-        text = stringResource(id = RCU.string.section_feature))
+        text = stringResource(id = R.string.section_feature))
 
     Spacer(modifier = Modifier.height(10.dp))
 
