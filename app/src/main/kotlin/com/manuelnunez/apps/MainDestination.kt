@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.navOptions
+import com.manuelnunez.apps.feature.favorites.ui.navigation.navigateToFavorites
 import com.manuelnunez.apps.features.home.ui.navigation.navigateToHome
 
 enum class MainDestination(
@@ -43,7 +44,7 @@ fun NavHostController.onNavigateToDestination(destination: MainDestination) {
   }
   when (destination) {
     MainDestination.HOME -> navigateToHome(topLevelNavOptions)
-    MainDestination.FAVORITES -> {} // navigateToFavorites()
+    MainDestination.FAVORITES -> navigateToFavorites(topLevelNavOptions)
   }
 }
 

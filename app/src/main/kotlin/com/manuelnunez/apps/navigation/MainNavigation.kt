@@ -4,12 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.manuelnunez.apps.feature.detail.ui.navigation.detailScreen
-import com.manuelnunez.apps.feature.detail.ui.navigation.navigateToDetail
-import com.manuelnunez.apps.feature.seemore.ui.navigation.navigateToSeeMore
-import com.manuelnunez.apps.feature.seemore.ui.navigation.seeMoreScreen
+import com.manuelnunez.apps.feature.favorites.ui.navigation.favoritesScreen
+import com.manuelnunez.apps.features.detail.ui.navigation.detailScreen
+import com.manuelnunez.apps.features.detail.ui.navigation.navigateToDetail
 import com.manuelnunez.apps.features.home.ui.navigation.HOME_ROUTE
 import com.manuelnunez.apps.features.home.ui.navigation.homeScreen
+import com.manuelnunez.apps.features.seemore.ui.navigation.navigateToSeeMore
+import com.manuelnunez.apps.features.seemore.ui.navigation.seeMoreScreen
 
 @Composable
 fun MainNavigation(
@@ -25,5 +26,6 @@ fun MainNavigation(
     seeMoreScreen(
         onBackClick = { navController.navigateUp() },
         navigateToDetails = navController::navigateToDetail)
+    favoritesScreen()
   }
 }
