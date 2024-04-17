@@ -6,8 +6,8 @@ import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSourceImpl
 import com.manuelnunez.apps.core.data.repository.HomeRepositoryImpl
 import com.manuelnunez.apps.core.data.repository.SeeMoreRepositoryImpl
-import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
+import com.manuelnunez.apps.features.seemore.domain.repository.SeeMoreRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

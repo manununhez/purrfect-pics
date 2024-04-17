@@ -1,11 +1,11 @@
-package com.manuelnunez.apps.feature.seemore.domain
+package com.manuelnunez.apps.features.seemore.domain
 
 import androidx.paging.PagingData
 import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.test.MockkAllRule
 import com.manuelnunez.apps.core.common.test.UnMockkAllRule
-import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
-import com.manuelnunez.apps.feature.seemore.domain.usecase.GetAllItemUseCase
+import com.manuelnunez.apps.features.seemore.domain.repository.SeeMoreRepository
+import com.manuelnunez.apps.features.seemore.domain.usecase.GetAllItemUseCase
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk

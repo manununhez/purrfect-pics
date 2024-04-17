@@ -3,7 +3,7 @@ package com.manuelnunez.apps.core.data.repository
 import androidx.paging.PagingData
 import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.utils.mockItems
-import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
+import com.manuelnunez.apps.features.seemore.domain.repository.SeeMoreRepository
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
