@@ -35,6 +35,7 @@ dependencies {
   implementation(projects.core.common)
   implementation(projects.core.domain)
   implementation(projects.core.ui)
+  implementation(projects.features.favorites.domain)
 
   // Arch Components
   implementation(libs.androidx.lifecycle.runtime.compose)

@@ -49,3 +49,5 @@ include(":features:seemore:domain")
 include(":features:favorites:ui")
 
 include(":features:favorites:domain")
+
+include(":core:datastore-proto")

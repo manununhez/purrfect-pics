@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_package = "com.manuelnunez.apps.core.datastore.proto";
+option java_multiple_files = true;
+
+message ItemList {
+  repeated Item items = 1;
+}
+
+message Item {
+  string photoId = 1;
+  string imageUrl = 2;
+  string thumbnailUrl = 3;
+  string description = 4;
+}
