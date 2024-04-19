@@ -65,7 +65,7 @@ constructor(
               success = { featuredItemsState.value = FeaturedItemsState.ShowList(it) },
               error = { featuredItemsState.value = FeaturedItemsState.Error })
         }
-        .catch { featuredItemsState.value = FeaturedItemsState.ShowList(emptyList()) }
+        .catch { featuredItemsState.value = FeaturedItemsState.Error }
         .launchIn(viewModelScope)
   }
 

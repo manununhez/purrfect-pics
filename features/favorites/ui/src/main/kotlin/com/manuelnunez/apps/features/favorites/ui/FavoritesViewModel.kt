@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.feature.favorites.ui
+package com.manuelnunez.apps.features.favorites.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

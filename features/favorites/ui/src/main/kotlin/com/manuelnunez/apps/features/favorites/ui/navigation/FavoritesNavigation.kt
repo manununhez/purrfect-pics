@@ -1,9 +1,9 @@
-package com.manuelnunez.apps.feature.favorites.ui.navigation
+package com.manuelnunez.apps.features.favorites.ui.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.manuelnunez.apps.core.domain.model.Item
-import com.manuelnunez.apps.feature.favorites.ui.FavoritesRoute
+import com.manuelnunez.apps.features.favorites.ui.FavoritesRoute
 
 const val FAVORITES_ROUTE = "favorites_route"
 

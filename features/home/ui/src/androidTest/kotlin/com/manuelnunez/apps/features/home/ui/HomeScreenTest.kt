@@ -6,13 +6,16 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import com.manuelnunez.apps.core.domain.model.Item
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.FeaturedItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.HomeUiState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.PopularItemsState
 import com.manuelnunez.apps.features.home.ui.components.HomeErrorScreen
 import com.manuelnunez.apps.features.home.ui.components.HomeScreen
 import org.junit.Rule
 import org.junit.Test
 import com.manuelnunez.apps.core.ui.R as RCU
 
-class HomeViewTest {
+class HomeScreenTest {
 
   @get:Rule(order = 0) val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
@@ -21,9 +24,9 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeViewModel.HomeUiState(
-                  popularItemsState = HomeViewModel.PopularItemsState.Loading,
-                  featuredItemsState = HomeViewModel.FeaturedItemsState.Loading),
+              HomeUiState(
+                  popularItemsState = PopularItemsState.Loading,
+                  featuredItemsState = FeaturedItemsState.Loading),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }
@@ -47,10 +50,9 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeViewModel.HomeUiState(
-                  popularItemsState = HomeViewModel.PopularItemsState.ShowList(mockPopularPhotos),
-                  featuredItemsState =
-                      HomeViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
+              HomeUiState(
+                  popularItemsState = PopularItemsState.ShowList(mockPopularPhotos),
+                  featuredItemsState = FeaturedItemsState.ShowList(mockFeaturedPhotos)),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }
@@ -105,9 +107,9 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeViewModel.HomeUiState(
-                  popularItemsState = HomeViewModel.PopularItemsState.ShowList(mockPopularPhotos),
-                  featuredItemsState = HomeViewModel.FeaturedItemsState.Error),
+              HomeUiState(
+                  popularItemsState = PopularItemsState.ShowList(mockPopularPhotos),
+                  featuredItemsState = FeaturedItemsState.Error),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }
@@ -125,10 +127,9 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeViewModel.HomeUiState(
-                  popularItemsState = HomeViewModel.PopularItemsState.Error,
-                  featuredItemsState =
-                      HomeViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
+              HomeUiState(
+                  popularItemsState = PopularItemsState.Error,
+                  featuredItemsState = FeaturedItemsState.ShowList(mockFeaturedPhotos)),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }

@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.feature.favorites.ui.component
+package com.manuelnunez.apps.features.favorites.ui.component
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement

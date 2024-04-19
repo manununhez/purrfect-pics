@@ -15,12 +15,12 @@ import org.junit.Rule
 import org.junit.Test
 import com.manuelnunez.apps.core.ui.R as RCU
 
-class SeeMoreViewTest {
+class SeeMoreScreenTest {
 
   @get:Rule(order = 0) val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
   @Test
-  fun photo_whenScreenIsLoaded_showsPhotoShareAndDescription() {
+  fun photo_whenScreenIsLoaded_showsListOfPhotos() {
     composeTestRule.setContent {
       SeeMoreScreen(
           items = flowOf(PagingData.from(mockItems)).collectAsLazyPagingItems(),
@@ -28,6 +28,7 @@ class SeeMoreViewTest {
           navigateToDetails = {})
     }
 
+    // Title
     composeTestRule
         .onNodeWithText(
             composeTestRule.activity.resources.getString(RCU.string.section_popular),
@@ -35,6 +36,7 @@ class SeeMoreViewTest {
         )
         .assertExists()
 
+    // Content
     composeTestRule
         .onNodeWithContentDescription(
             mockItems[0].description,

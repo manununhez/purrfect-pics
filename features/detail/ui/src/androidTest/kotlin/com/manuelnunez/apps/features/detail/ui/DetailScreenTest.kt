@@ -7,19 +7,27 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import com.manuelnunez.apps.core.domain.model.Item
-import com.manuelnunez.apps.features.detail.ui.components.DetailErrorScreen
 import com.manuelnunez.apps.features.detail.ui.components.DetailScreen
 import org.junit.Rule
 import org.junit.Test
-import com.manuelnunez.apps.core.ui.R as RCU
 
-class DetailViewTest {
+class DetailScreenTest {
 
   @get:Rule(order = 0) val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
   @Test
   fun photo_whenScreenIsLoaded_showsPhotoShareAndDescription() {
-    composeTestRule.setContent { DetailScreen(mockItem, onBackClick = {}, onFavoriteClicked = {}) }
+    composeTestRule.setContent {
+      DetailScreen(item = mockItem, isFavorite = false, onBackClick = {}, onFavoriteClicked = {})
+    }
+
+    // Detail title
+    composeTestRule
+        .onNodeWithText(
+            composeTestRule.activity.resources.getString(R.string.section_details_title),
+            substring = true,
+        )
+        .assertExists()
 
     // description
     composeTestRule.onNodeWithText(mockItem.description).assertExists()
@@ -38,26 +46,6 @@ class DetailViewTest {
         .onNodeWithContentDescription(mockItem.photoId)
         .assertExists()
         .assertHasNoClickAction()
-  }
-
-  @Test
-  fun error_whenError_showsTextAndButtonForGoBack() {
-    composeTestRule.setContent { DetailErrorScreen(onBackClick = {}) }
-
-    composeTestRule
-        .onNodeWithText(
-            composeTestRule.activity.resources.getString(R.string.alert_error_try_again_back),
-            substring = true,
-        )
-        .assertExists()
-
-    composeTestRule
-        .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(RCU.string.alert_dialog_confirm_button),
-            substring = true,
-        )
-        .assertExists()
-        .assertHasClickAction()
   }
 
   private val mockItem =

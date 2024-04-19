@@ -14,12 +14,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.navigation
 import com.manuelnunez.apps.R
-import com.manuelnunez.apps.feature.favorites.ui.navigation.FAVORITES_ROUTE
-import com.manuelnunez.apps.feature.favorites.ui.navigation.favoritesScreen
 import com.manuelnunez.apps.features.detail.ui.navigation.detailFavScreen
 import com.manuelnunez.apps.features.detail.ui.navigation.detailScreen
 import com.manuelnunez.apps.features.detail.ui.navigation.navigateToDetail
 import com.manuelnunez.apps.features.detail.ui.navigation.navigateToDetailFav
+import com.manuelnunez.apps.features.favorites.ui.navigation.FAVORITES_ROUTE
+import com.manuelnunez.apps.features.favorites.ui.navigation.favoritesScreen
 import com.manuelnunez.apps.features.home.ui.navigation.HOME_ROUTE
 import com.manuelnunez.apps.features.home.ui.navigation.homeScreen
 import com.manuelnunez.apps.features.seemore.ui.navigation.navigateToSeeMore

@@ -84,17 +84,7 @@ private fun DetailPortrait(
           Row {
             ShareImage(url = item.imageUrl)
 
-            IconButton(onClick = onFavoriteClicked) {
-              Icon(
-                  imageVector =
-                      if (isFavorite) {
-                        Icons.Filled.Favorite
-                      } else {
-                        Icons.Filled.FavoriteBorder
-                      },
-                  contentDescription = stringResource(id = R.string.button_share),
-                  tint = MaterialTheme.colorScheme.onSurface)
-            }
+            FavoriteButton(onFavoriteClicked, isFavorite)
           }
 
           SurfaceText(
@@ -103,6 +93,21 @@ private fun DetailPortrait(
               text = item.description,
               style = MaterialTheme.typography.titleSmall)
         }
+  }
+}
+
+@Composable
+private fun FavoriteButton(onFavoriteClicked: () -> Unit, isFavorite: Boolean) {
+  IconButton(onClick = onFavoriteClicked) {
+    Icon(
+        imageVector =
+            if (isFavorite) {
+              Icons.Filled.Favorite
+            } else {
+              Icons.Filled.FavoriteBorder
+            },
+        contentDescription = stringResource(id = R.string.button_favorite),
+        tint = MaterialTheme.colorScheme.onSurface)
   }
 }
 
@@ -131,17 +136,7 @@ private fun DetailLandscape(
       Column(Modifier.weight(0.1f)) {
         ShareImage(url = item.imageUrl)
 
-        IconButton(onClick = onFavoriteClicked) {
-          Icon(
-              imageVector =
-                  if (isFavorite) {
-                    Icons.Filled.Favorite
-                  } else {
-                    Icons.Filled.FavoriteBorder
-                  },
-              contentDescription = stringResource(id = R.string.button_share),
-              tint = MaterialTheme.colorScheme.onSurface)
-        }
+        FavoriteButton(onFavoriteClicked = onFavoriteClicked, isFavorite = isFavorite)
       }
 
       VerticalDivider()

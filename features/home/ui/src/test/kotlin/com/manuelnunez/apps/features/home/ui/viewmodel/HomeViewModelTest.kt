@@ -101,6 +101,37 @@ class HomeViewModelTest {
         confirmVerified(getFeaturedItemsUseCase, getPopularItemsUseCase)
       }
 
+  @Test
+  fun `GIVEN viewmodel init, WHEN exception catch, THEN set state with error`() =
+      mockkAllExtension.runTest {
+        every { getFeaturedItemsUseCase.prepare(Unit) } returns flow { throw Exception() }
+        every { getPopularItemsUseCase.prepare(Unit) } returns flow { throw Exception() }
+
+        viewModel = HomeViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
+
+        viewModel.state.test {
+          // GIVEN viewModel INIT
+
+          awaitItem().apply {
+            assertTrue(featuredItemsState is FeaturedItemsState.Idle)
+            assertTrue(popularItemsState is PopularItemsState.Idle)
+          }
+
+          awaitItem().apply {
+            assertEquals(FeaturedItemsState.Error, featuredItemsState)
+            assertEquals(PopularItemsState.Error, popularItemsState)
+          }
+
+          cancelAndIgnoreRemainingEvents()
+        }
+
+        verify(exactly = 1) {
+          getFeaturedItemsUseCase.prepare(Unit)
+          getPopularItemsUseCase.prepare(Unit)
+        }
+        confirmVerified(getFeaturedItemsUseCase, getPopularItemsUseCase)
+      }
+
   private val mockPhotos: List<Item> =
       List(20) { index ->
         val id = (index + 1).toString()
