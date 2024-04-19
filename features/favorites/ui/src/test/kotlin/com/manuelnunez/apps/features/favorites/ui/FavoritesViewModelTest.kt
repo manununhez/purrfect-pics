@@ -60,7 +60,7 @@ class FavoritesViewModelTest {
 
           assertTrue(awaitItem() is FavoriteItemsState.Idle)
           assertTrue(awaitItem() is FavoriteItemsState.Loading)
-          assertEquals(FavoriteItemsState.Error, awaitItem())
+          assertEquals(FavoriteItemsState.ShowList(emptyList()), awaitItem())
 
           cancelAndIgnoreRemainingEvents()
         }

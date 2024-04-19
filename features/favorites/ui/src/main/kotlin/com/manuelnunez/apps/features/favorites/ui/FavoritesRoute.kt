@@ -11,7 +11,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.favorites.ui.FavoritesViewModel.FavoriteItemsState
-import com.manuelnunez.apps.features.favorites.ui.component.FavoritesErrorScreen
 import com.manuelnunez.apps.features.favorites.ui.component.FavoritesScreen
 
 @Composable
@@ -23,16 +22,16 @@ fun FavoritesRoute(
   val items by viewModel.favoriteItemsState.collectAsStateWithLifecycle()
 
   when (items) {
-    is FavoriteItemsState.Loading ->
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-          CircularProgressIndicator()
-        }
+    is FavoriteItemsState.Loading -> {
+      Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        CircularProgressIndicator()
+      }
+    }
     is FavoriteItemsState.ShowList ->
         FavoritesScreen(
             items = (items as FavoriteItemsState.ShowList).items,
             navigateToDetails = onFavoriteClicked,
             onBackClick = onBackClick)
-    is FavoriteItemsState.Error -> FavoritesErrorScreen(onBackClick = onBackClick)
     else -> {}
   }
 }

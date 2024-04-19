@@ -27,7 +27,7 @@ class FavoritesViewModel @Inject constructor(private val getFavoritesUseCase: Ge
         .prepare(Unit)
         .onStart { favoriteItemsState.value = FavoriteItemsState.Loading }
         .onEach { favoriteItemsState.value = FavoriteItemsState.ShowList(it) }
-        .catch { favoriteItemsState.value = FavoriteItemsState.Error }
+        .catch { favoriteItemsState.value = FavoriteItemsState.ShowList(emptyList()) }
         .launchIn(viewModelScope)
   }
 
@@ -35,8 +35,6 @@ class FavoritesViewModel @Inject constructor(private val getFavoritesUseCase: Ge
     data object Idle : FavoriteItemsState
 
     data object Loading : FavoriteItemsState
-
-    data object Error : FavoriteItemsState
 
     data class ShowList(val items: List<Item>) : FavoriteItemsState
   }

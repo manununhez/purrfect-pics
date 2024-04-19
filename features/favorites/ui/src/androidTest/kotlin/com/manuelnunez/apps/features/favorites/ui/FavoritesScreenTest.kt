@@ -6,11 +6,9 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import com.manuelnunez.apps.core.domain.model.Item
-import com.manuelnunez.apps.features.favorites.ui.component.FavoritesErrorScreen
 import com.manuelnunez.apps.features.favorites.ui.component.FavoritesScreen
 import org.junit.Rule
 import org.junit.Test
-import com.manuelnunez.apps.core.ui.R as RCU
 
 class FavoritesScreenTest {
   @get:Rule(order = 0) val composeTestRule = createAndroidComposeRule<ComponentActivity>()
@@ -33,26 +31,6 @@ class FavoritesScreenTest {
     composeTestRule
         .onNodeWithContentDescription(
             mockItems[0].description,
-            substring = true,
-        )
-        .assertExists()
-        .assertHasClickAction()
-  }
-
-  @Test
-  fun error_whenError_showsTextAndButtonForGoBack() {
-    composeTestRule.setContent { FavoritesErrorScreen(onBackClick = {}) }
-
-    composeTestRule
-        .onNodeWithText(
-            composeTestRule.activity.resources.getString(RCU.string.alert_error_try_again_back),
-            substring = true,
-        )
-        .assertExists()
-
-    composeTestRule
-        .onNodeWithContentDescription(
-            composeTestRule.activity.resources.getString(RCU.string.alert_dialog_confirm_button),
             substring = true,
         )
         .assertExists()
