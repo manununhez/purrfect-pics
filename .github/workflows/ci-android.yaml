@@ -23,7 +23,7 @@ jobs:
           cache: gradle
 
       - name: Build with Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v3
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/master' }}
           arguments: compileDebugSources --no-configuration-cache -Pnapt=true
