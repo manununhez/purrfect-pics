@@ -4,11 +4,9 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
@@ -17,14 +15,8 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -35,8 +27,8 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.manuelnunez.apps.core.domain.model.Item
+import com.manuelnunez.apps.core.ui.component.BackToolbar
 import com.manuelnunez.apps.core.ui.component.ImageCard
-import com.manuelnunez.apps.core.ui.component.SurfaceText
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
@@ -52,7 +44,7 @@ fun SeeMoreScreen(
   Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeContent)) {
     Spacer(modifier = Modifier.height(20.dp))
 
-    SeeMoreToolbar(onBackClick)
+    BackToolbar(title = stringResource(id = RCU.string.section_popular), onBackClick = onBackClick)
 
     PopularItems(navigateToDetails = navigateToDetails, itemsPagingItems = items)
 
@@ -96,20 +88,6 @@ fun PopularItems(itemsPagingItems: LazyPagingItems<Item>, navigateToDetails: (It
           }
         }
       }
-}
-
-@Composable
-private fun SeeMoreToolbar(onBackClick: () -> Unit) {
-  Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-    IconButton(onClick = onBackClick) {
-      Icon(
-          imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-          contentDescription = stringResource(id = RCU.string.button_back),
-          tint = MaterialTheme.colorScheme.onSurface)
-    }
-
-    SurfaceText(text = stringResource(id = RCU.string.section_popular))
-  }
 }
 
 @FontScalingPreviews

@@ -19,7 +19,7 @@ class DetailViewTest {
 
   @Test
   fun photo_whenScreenIsLoaded_showsPhotoShareAndDescription() {
-    composeTestRule.setContent { DetailScreen(mockItem, onBackClick = {}) }
+    composeTestRule.setContent { DetailScreen(mockItem, onBackClick = {}, onFavoriteClicked = {}) }
 
     // description
     composeTestRule.onNodeWithText(mockItem.description).assertExists()

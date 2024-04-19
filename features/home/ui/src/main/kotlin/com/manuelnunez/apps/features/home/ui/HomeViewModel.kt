@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel
+class HomeViewModel
 @Inject
 constructor(
     private val getFeaturedItemsUseCase: GetFeaturedItemsUseCase,

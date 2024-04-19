@@ -9,9 +9,9 @@ import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.FeaturedItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.PopularItemsState
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -25,14 +25,14 @@ import org.junit.jupiter.api.extension.RegisterExtension
 import kotlin.properties.Delegates
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class HomeScreenViewModelTest {
+class HomeViewModelTest {
   @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
 
   private val getFeaturedItemsUseCase = mockk<GetFeaturedItemsUseCase>()
   private val getPopularItemsUseCase = mockk<GetPopularItemsUseCase>()
 
-  private var viewModel: HomeScreenViewModel by Delegates.notNull()
+  private var viewModel: HomeViewModel by Delegates.notNull()
 
   @Test
   fun `GIVEN viewmodel init, WHEN onSuccess, THEN set state with popular and featured items`() =
@@ -42,7 +42,7 @@ class HomeScreenViewModelTest {
         every { getPopularItemsUseCase.prepare(Unit) } returns
             flow { emit(eitherSuccess(mockPhotos)) }
 
-        viewModel = HomeScreenViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
+        viewModel = HomeViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
 
         viewModel.state.test {
           // GIVEN viewModel INIT
@@ -76,7 +76,7 @@ class HomeScreenViewModelTest {
         every { getPopularItemsUseCase.prepare(Unit) } returns
             flow { emit(eitherError(ErrorModel.ServiceError)) }
 
-        viewModel = HomeScreenViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
+        viewModel = HomeViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
 
         viewModel.state.test {
           // GIVEN viewModel INIT

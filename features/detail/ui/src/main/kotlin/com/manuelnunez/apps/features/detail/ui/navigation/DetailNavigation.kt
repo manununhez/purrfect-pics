@@ -1,26 +1,29 @@
 package com.manuelnunez.apps.features.detail.ui.navigation
 
-import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.compose.composable
-import androidx.navigation.navOptions
-import com.manuelnunez.apps.core.common.navigation.navigate
 import com.manuelnunez.apps.core.domain.model.Item
-import com.manuelnunez.apps.features.detail.ui.DetailView
+import com.manuelnunez.apps.core.domain.model.toEncodedString
+import com.manuelnunez.apps.features.detail.ui.DetailRoute
 
 const val DETAIL_ITEM = "myItem"
-const val DETAIL_ROUTE = "detail"
+const val DETAIL_ROUTE_FAV = "detail_route_fav"
+const val DETAIL_ROUTE = "detail_route"
 
 fun NavController.navigateToDetail(item: Item, navOptions: NavOptionsBuilder.() -> Unit = {}) {
-  val bundle = Bundle().apply { putParcelable(DETAIL_ITEM, item) }
-  navigate(route = DETAIL_ROUTE, args = bundle, navOptions = navOptions(navOptions))
+  navigate("$DETAIL_ROUTE/${item.toEncodedString()}", navOptions)
 }
 
 fun NavGraphBuilder.detailScreen(onBackClick: () -> Unit) {
-  composable(DETAIL_ROUTE) { backStackEntry ->
-    val myItem = backStackEntry.arguments?.getParcelable<Item>(DETAIL_ITEM)
-    DetailView(onBackClick = onBackClick, item = myItem)
-  }
+  composable("$DETAIL_ROUTE/{$DETAIL_ITEM}") { DetailRoute(onBackClick = onBackClick) }
+}
+
+fun NavController.navigateToDetailFav(item: Item, navOptions: NavOptionsBuilder.() -> Unit = {}) {
+  navigate("$DETAIL_ROUTE_FAV/${item.toEncodedString()}", navOptions)
+}
+
+fun NavGraphBuilder.detailFavScreen(onBackClick: () -> Unit) {
+  composable("$DETAIL_ROUTE_FAV/{$DETAIL_ITEM}") { DetailRoute(onBackClick = onBackClick) }
 }

@@ -43,4 +43,7 @@ class FavoritesDataSource @Inject constructor(private val itemDataStore: DataSto
       updatedItems
     }
   }
+
+  fun isItemFavorite(itemPhotoId: String): Flow<Boolean> =
+      favorites.map { it.any { item -> item.photoId == itemPhotoId } }
 }

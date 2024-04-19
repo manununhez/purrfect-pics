@@ -10,12 +10,4 @@ class FavoritesRepositoryImpl
 @Inject
 constructor(private val favoritesDataSource: FavoritesDataSource) : FavoritesRepository {
   override fun getAllFavorites(): Flow<List<Item>> = favoritesDataSource.favorites
-
-  override suspend fun saveFavoriteItem(favoriteItem: Item) {
-    favoritesDataSource.addItemToFavorites(favoriteItem)
-  }
-
-  override suspend fun removeFavoriteItem(favoriteItem: Item) {
-    favoritesDataSource.removeItemFromFavorites(favoriteItem.photoId)
-  }
 }

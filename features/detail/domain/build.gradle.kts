@@ -2,11 +2,10 @@ plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
-  kotlin("plugin.serialization") version "1.9.23"
 }
 
 android {
-  namespace = "com.manuelnunez.apps.core.domain"
+  namespace = "com.manuelnunez.apps.features.home.domain"
   compileSdk = 34
 
   compileOptions {
@@ -18,14 +17,22 @@ android {
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
+  tasks.withType<Test> { useJUnitPlatform() }
+
   packaging { resources { excludes.add("META-INF/{LICENSE-notice.md,LICENSE.md}") } }
 }
 
 dependencies {
   implementation(projects.core.common)
-  implementation(libs.kotlinx.serializer)
+  implementation(projects.core.domain)
+
+  implementation(libs.kotlinx.coroutines.android)
 
   // HILT
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
+
+  testImplementation(libs.junit)
+  testImplementation(libs.mockk)
+  testImplementation(libs.turbine)
 }

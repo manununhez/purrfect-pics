@@ -21,9 +21,9 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeScreenViewModel.HomeUiState(
-                  popularItemsState = HomeScreenViewModel.PopularItemsState.Loading,
-                  featuredItemsState = HomeScreenViewModel.FeaturedItemsState.Loading),
+              HomeViewModel.HomeUiState(
+                  popularItemsState = HomeViewModel.PopularItemsState.Loading,
+                  featuredItemsState = HomeViewModel.FeaturedItemsState.Loading),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }
@@ -47,11 +47,10 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeScreenViewModel.HomeUiState(
-                  popularItemsState =
-                      HomeScreenViewModel.PopularItemsState.ShowList(mockPopularPhotos),
+              HomeViewModel.HomeUiState(
+                  popularItemsState = HomeViewModel.PopularItemsState.ShowList(mockPopularPhotos),
                   featuredItemsState =
-                      HomeScreenViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
+                      HomeViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }
@@ -106,10 +105,9 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeScreenViewModel.HomeUiState(
-                  popularItemsState =
-                      HomeScreenViewModel.PopularItemsState.ShowList(mockPopularPhotos),
-                  featuredItemsState = HomeScreenViewModel.FeaturedItemsState.Error),
+              HomeViewModel.HomeUiState(
+                  popularItemsState = HomeViewModel.PopularItemsState.ShowList(mockPopularPhotos),
+                  featuredItemsState = HomeViewModel.FeaturedItemsState.Error),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }
@@ -127,10 +125,10 @@ class HomeViewTest {
     composeTestRule.setContent {
       HomeScreen(
           items =
-              HomeScreenViewModel.HomeUiState(
-                  popularItemsState = HomeScreenViewModel.PopularItemsState.Error,
+              HomeViewModel.HomeUiState(
+                  popularItemsState = HomeViewModel.PopularItemsState.Error,
                   featuredItemsState =
-                      HomeScreenViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
+                      HomeViewModel.FeaturedItemsState.ShowList(mockFeaturedPhotos)),
           navigateToDetails = {},
           navigateToSeeMore = {})
     }

@@ -30,6 +30,7 @@ dependencies {
   implementation(projects.features.home.domain)
   implementation(projects.features.seemore.domain)
   implementation(projects.features.favorites.domain)
+  implementation(projects.features.detail.domain)
 
   implementation(libs.androidx.dataStore.core)
   implementation(libs.protobuf.kotlin.lite)

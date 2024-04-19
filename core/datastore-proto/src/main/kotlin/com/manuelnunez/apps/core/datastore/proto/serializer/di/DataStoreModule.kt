@@ -1,10 +1,11 @@
-package com.manuelnunez.apps.core.datastore.proto.serializer
+package com.manuelnunez.apps.core.datastore.proto.serializer.di
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
 import com.manuelnunez.apps.core.datastore.proto.ItemList
+import com.manuelnunez.apps.core.datastore.proto.serializer.ItemListSerializer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

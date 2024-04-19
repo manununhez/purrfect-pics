@@ -33,9 +33,9 @@ import com.manuelnunez.apps.core.ui.component.TextCard
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.HomeUiState
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.FeaturedItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.HomeUiState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.PopularItemsState
 import com.manuelnunez.apps.features.home.ui.R
 import com.manuelnunez.apps.core.ui.R as RCU
 
@@ -165,7 +165,7 @@ private fun LoadingIndicator(loaderContentDescription: String) {
 @Composable
 private fun HomeScreenPreview() {
   MainTheme {
-    val items = List(5) { Item("", "", description = "", thumbnailUrl = "") }
+    val items = List(5) { Item.empty }
 
     HomeScreen(
         items =

@@ -14,7 +14,7 @@ import com.manuelnunez.apps.features.seemore.ui.components.SeeMoreErrorScreen
 import com.manuelnunez.apps.features.seemore.ui.components.SeeMoreScreen
 
 @Composable
-fun SeeMoreView(
+fun SeeMoreRoute(
     viewModel: SeeMoreViewModel = hiltViewModel(),
     onBackClick: () -> Unit,
     navigateToDetails: (Item) -> Unit
