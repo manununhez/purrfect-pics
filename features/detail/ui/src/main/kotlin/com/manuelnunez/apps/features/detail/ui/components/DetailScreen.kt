@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.windowInsetsPadding
@@ -76,10 +77,11 @@ private fun DetailPortrait(
         modifier = Modifier.weight(1f).wrapContentSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
           StatefulAsyncImage(
-              modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
+              modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).heightIn(min = 180.dp),
               imageUrl = item.imageUrl,
               contentDescription = item.photoId,
-              contentScale = ContentScale.Fit)
+              contentScale = ContentScale.Fit,
+              zoomable = true)
 
           Row {
             ShareImage(url = item.imageUrl)
@@ -128,10 +130,12 @@ private fun DetailLandscape(
 
     Row(verticalAlignment = Alignment.CenterVertically) {
       StatefulAsyncImage(
-          modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp).weight(0.7f),
+          modifier =
+              Modifier.fillMaxWidth().padding(vertical = 6.dp).weight(0.7f).heightIn(min = 180.dp),
           imageUrl = item.imageUrl,
           contentDescription = item.photoId,
-          contentScale = ContentScale.Fit)
+          contentScale = ContentScale.Fit,
+          zoomable = true)
 
       Column(Modifier.weight(0.1f)) {
         ShareImage(url = item.imageUrl)
