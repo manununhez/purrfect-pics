@@ -20,6 +20,11 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+#Datastore
+-keep class androidx.datastore.*.** {*;}
+-keepclassmembers class * extends com.google.protobuf.GeneratedMessageLite* {
+   <fields>;
+}
 
 #https://stackoverflow.com/questions/42782328/retrofit-2-returns-null-in-release-apk-when-minifyenable-but-ok-in-debug-apk
 -keep class com.manuelnunez.apps.core.services.dto.* {*;}
@@ -77,20 +82,39 @@
 #Hilt
 -keep class androidx.hilt.* {*;}
 
-## Fragment names
--keepnames class * extends androidx.fragment.app.Fragment
+#Serialization
+# Keep `Companion` object fields of serializable classes.
+# This avoids serializer lookup through `getDeclaredClasses` as done for named companion objects.
+-if @kotlinx.serialization.Serializable class **
+-keepclassmembers class <1> {
+   static <1>$Companion Companion;
+}
 
--keepnames class * extends android.os.Parcelable
--keepnames class * extends java.io.Serializable
+# Keep `serializer()` on companion objects (both default and named) of serializable classes.
+-if @kotlinx.serialization.Serializable class ** {
+   static **$* *;
+}
+-keepclassmembers class <2>$<3> {
+   kotlinx.serialization.KSerializer serializer(...);
+}
 
+# Keep `INSTANCE.serializer()` of serializable objects.
+-if @kotlinx.serialization.Serializable class ** {
+   public static ** INSTANCE;
+}
+-keepclassmembers class <1> {
+   public static <1> INSTANCE;
+   kotlinx.serialization.KSerializer serializer(...);
+}
+
+# @Serializable and @Polymorphic are used at runtime for polymorphic serialization.
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault
 ### R8
 ## Gson
 -keepclassmembers,allowobfuscation class * {
  @com.google.gson.annotations.SerializedName <fields>;
 }
 
--keep class com.google.gson.reflect.TypeToken { *; }
--keep class * extends com.google.gson.reflect.TypeToken
 ## Kotlin suspend functions
 -keep class kotlin.coroutines.Continuation
 
