@@ -31,13 +31,13 @@ class ServiceExecutorRetrofitImpl : ServicesExecutor {
                 headers = response.headers().toMultimap()))
       }
     } catch (ex: TimeoutException) {
-        eitherError(ServiceError("Timeout error: ${ex.message}", -1, emptyMap()))
+      eitherError(ServiceError("Timeout error: ${ex.message}", -1, emptyMap()))
     } catch (ex: NetworkException) {
-        eitherError(ServiceError("Network error: ${ex.message}", -1, emptyMap()))
+      eitherError(ServiceError("Network error: ${ex.message}", -1, emptyMap()))
     } catch (ex: JsonSyntaxException) {
-        eitherError(ServiceError("Json data parsing error: ${ex.message}", -1, emptyMap()))
+      eitherError(ServiceError("Json data parsing error: ${ex.message}", -1, emptyMap()))
     } catch (e: Exception) {
-        eitherError(ServiceError("Unknown error:  ${e.message}", -1, emptyMap()))
+      eitherError(ServiceError("Unknown error:  ${e.message}", -1, emptyMap()))
     }
   }
 }

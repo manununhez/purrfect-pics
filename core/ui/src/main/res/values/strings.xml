@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="section_feature">Featured</string>
     <string name="section_popular">Popular</string>
     <string name="button_back">Go back</string>
     <string name="alert_error_try_again">An Error has occurred. Please try again.</string>
     <string name="alert_error">An Error has occurred</string>
-    <string name="alert_error_feature">An Error has occurred in Featured section</string>
-    <string name="alert_error_popular">An Error has occurred in Popular section</string>
     <string name="alert_error_title">"Ups!"</string>
     <string name="button_retry">Retry</string>
-    <string name="alert_error_try_again_back">An Error has occurred. Please go back and try again.</string>
     <string name="alert_dialog_confirm_button">Confirm</string>
     <string name="alert_dialog_dismiss_button">Dismiss</string>
-
+    <string name="alert_error_try_again_back">An Error has occurred. Please go back and try again.</string>
 </resources>

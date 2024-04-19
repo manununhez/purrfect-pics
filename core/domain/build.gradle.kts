@@ -2,7 +2,7 @@ plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.android)
   alias(libs.plugins.ksp)
-  id("kotlin-parcelize")
+  kotlin("plugin.serialization") version "1.9.23"
 }
 
 android {
@@ -23,6 +23,7 @@ android {
 
 dependencies {
   implementation(projects.core.common)
+  implementation(libs.kotlinx.serializer)
 
   // HILT
   implementation(libs.hilt.android)

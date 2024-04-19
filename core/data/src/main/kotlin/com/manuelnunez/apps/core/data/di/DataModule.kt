@@ -1,13 +1,17 @@
 package com.manuelnunez.apps.core.data.di
 
-import com.manuelnunez.apps.core.data.datasource.CataasCatsRemoteDataSource
-import com.manuelnunez.apps.core.data.datasource.CataasCatsRemoteDataSourceImpl
-import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
-import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSourceImpl
+import com.manuelnunez.apps.core.data.datasource.remote.CataasCatsRemoteDataSource
+import com.manuelnunez.apps.core.data.datasource.remote.CataasCatsRemoteDataSourceImpl
+import com.manuelnunez.apps.core.data.datasource.remote.PexelsCatsRemoteDataSource
+import com.manuelnunez.apps.core.data.datasource.remote.PexelsCatsRemoteDataSourceImpl
+import com.manuelnunez.apps.core.data.repository.DetailRepositoryImpl
+import com.manuelnunez.apps.core.data.repository.FavoritesRepositoryImpl
 import com.manuelnunez.apps.core.data.repository.HomeRepositoryImpl
 import com.manuelnunez.apps.core.data.repository.SeeMoreRepositoryImpl
-import com.manuelnunez.apps.feature.seemore.domain.repository.SeeMoreRepository
+import com.manuelnunez.apps.features.detail.domain.repository.DetailRepository
+import com.manuelnunez.apps.features.favorites.domain.repository.FavoritesRepository
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
+import com.manuelnunez.apps.features.seemore.domain.repository.SeeMoreRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -25,6 +29,16 @@ abstract class DataModule {
   @Singleton
   @Binds
   abstract fun bindsSeeMoreRepository(seeMoreRepository: SeeMoreRepositoryImpl): SeeMoreRepository
+
+  @Singleton
+  @Binds
+  abstract fun bindsDetailRepository(detailRepository: DetailRepositoryImpl): DetailRepository
+
+  @Singleton
+  @Binds
+  abstract fun bindsFavoritesRepository(
+      seeMoreRepository: FavoritesRepositoryImpl
+  ): FavoritesRepository
 
   @Singleton
   @Binds

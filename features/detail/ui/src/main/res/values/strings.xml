@@ -1,5 +1,7 @@
 <resources>
+    <string name="section_details_title">Detail</string>
     <string name="button_share">Share</string>
+    <string name="button_favorite">Favorite</string>
     <string name="share_image_message">Checkout this image from Purrfect Pics!: %1$s</string>
     <string name="share_image_title">Share Image</string>
 </resources>

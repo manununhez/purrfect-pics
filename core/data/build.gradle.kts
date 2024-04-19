@@ -26,15 +26,21 @@ dependencies {
   implementation(projects.core.common)
   implementation(projects.core.services)
   implementation(projects.core.domain)
+  implementation(projects.core.datastoreProto)
   implementation(projects.features.home.domain)
   implementation(projects.features.seemore.domain)
+  implementation(projects.features.favorites.domain)
+  implementation(projects.features.detail.domain)
+
+  implementation(libs.androidx.dataStore.core)
+  implementation(libs.protobuf.kotlin.lite)
 
   implementation(libs.retrofit.core)
   implementation(libs.retrofit.gsonConverter)
 
+  implementation(libs.androidx.paging.common.ktx)
   // HILT
   implementation(libs.hilt.android)
-  implementation(libs.androidx.paging.common.ktx)
   ksp(libs.hilt.compiler)
 
   testImplementation(libs.kotlinx.coroutines.test)

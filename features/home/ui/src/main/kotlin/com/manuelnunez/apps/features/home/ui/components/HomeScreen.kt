@@ -33,9 +33,9 @@ import com.manuelnunez.apps.core.ui.component.TextCard
 import com.manuelnunez.apps.core.ui.theme.MainTheme
 import com.manuelnunez.apps.core.ui.utils.FontScalingPreviews
 import com.manuelnunez.apps.core.ui.utils.ThemePreviews
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.FeaturedItemsState
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.HomeUiState
-import com.manuelnunez.apps.features.home.ui.HomeScreenViewModel.PopularItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.FeaturedItemsState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.HomeUiState
+import com.manuelnunez.apps.features.home.ui.HomeViewModel.PopularItemsState
 import com.manuelnunez.apps.features.home.ui.R
 import com.manuelnunez.apps.core.ui.R as RCU
 
@@ -54,7 +54,7 @@ fun HomeScreen(
           FeaturedItemsState.Loading ->
               item {
                 LoadingIndicator(
-                    loaderContentDescription = stringResource(id = RCU.string.section_feature))
+                    loaderContentDescription = stringResource(id = R.string.section_feature))
               }
           FeaturedItemsState.Error ->
               item { ItemError(stringResource(id = R.string.alert_error_feature)) }
@@ -83,7 +83,7 @@ private fun FeaturedItem(items: List<Item>, navigateToDetails: (Item) -> Unit) {
   Column {
     SurfaceText(
         modifier = Modifier.padding(vertical = 6.dp, horizontal = 20.dp),
-        text = stringResource(id = RCU.string.section_feature))
+        text = stringResource(id = R.string.section_feature))
 
     Spacer(modifier = Modifier.height(10.dp))
 
@@ -165,7 +165,7 @@ private fun LoadingIndicator(loaderContentDescription: String) {
 @Composable
 private fun HomeScreenPreview() {
   MainTheme {
-    val items = List(5) { Item("", "", description = "", thumbnailUrl = "") }
+    val items = List(5) { Item.empty }
 
     HomeScreen(
         items =

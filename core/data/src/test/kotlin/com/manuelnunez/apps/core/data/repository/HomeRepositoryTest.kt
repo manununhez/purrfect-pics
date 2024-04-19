@@ -4,7 +4,7 @@ import com.manuelnunez.apps.core.common.Either
 import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
 import com.manuelnunez.apps.core.common.fold
-import com.manuelnunez.apps.core.data.datasource.PexelsCatsRemoteDataSource
+import com.manuelnunez.apps.core.data.datasource.remote.PexelsCatsRemoteDataSource
 import com.manuelnunez.apps.core.data.utils.mockPexelsSearchResponseDTO
 import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.services.executors.ServiceError

@@ -6,9 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.navigation.compose.rememberNavController
 import com.manuelnunez.apps.core.ui.theme.MainTheme
-import com.manuelnunez.apps.navigation.MainNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,9 +21,6 @@ class MainActivity : ComponentActivity() {
 
     enableEdgeToEdge()
 
-    setContent {
-      val navController = rememberNavController()
-      MainTheme { MainNavigation(navController = navController) }
-    }
+    setContent { MainTheme { MainApp() } }
   }
 }

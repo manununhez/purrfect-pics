@@ -35,6 +35,7 @@ dependencies {
   implementation(projects.core.common)
   implementation(projects.core.domain)
   implementation(projects.core.ui)
+  implementation(projects.features.detail.domain)
 
   // Arch Components
   implementation(libs.androidx.lifecycle.runtime.compose)
@@ -50,6 +51,7 @@ dependencies {
   implementation(libs.coil.kt)
   implementation(libs.coil.kt.compose)
   implementation(libs.coil.kt.gif)
+  implementation(libs.kotlinx.serializer)
 
   // Compose
   implementation(libs.androidx.compose.ui)
