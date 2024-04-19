@@ -9,30 +9,26 @@ heart.
 - **Discover:** Explore a vast collection of random cat images sourced from the web.
 - **Share:** Share delightful cat images with friends, family, and fellow cat enthusiasts with just
   a tap.
-- **Save Favorites: (Coming soon)** Save your favorite cat images to easily revisit them later and
+- **Save Favorites:** Save your favorite cat images to easily revisit them later and
   create your personalized collection.
 
 ## Tools/Libraries
 
-### Android Libraries
-
 - **UI Components:** [AndroidX Core KTX](https://developer.android.com/jetpack/androidx/releases/core) | [Material Components for Android](https://github.com/material-components/material-components-android) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
+- **Compose UI:**   [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
 - **Testing:** [JUnit](https://junit.org/junit5/) | [MockK](https://mockk.io/) | [Turbine](https://github.com/cashapp/turbine)
 - **Dependency Injection:** [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 - **Coroutines:** [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+- **DataStore Proto:** [DataStore Proto](https://developer.android.com/topic/libraries/architecture/datastore#prefs-vs-proto)
+- **Navigation:** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
+- **Material Design:** [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) [Material Components for Android](https://github.com/material-components/material-components-android)
 - **Networking:** [Retrofit](https://square.github.io/retrofit/)
 - **Image Loading:** [Coil](https://coil-kt.github.io/coil/)
 
-### Compose Libraries
-
-- **UI Components:**  [Material3](https://developer.android.com/jetpack/androidx/releases/compose-material3) | [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
-- **Navigation:** [Navigation Compose](https://developer.android.com/jetpack/androidx/releases/navigation) | [Hilt Navigation Compose](https://developer.android.com/training/dependency-injection/hilt-android#navigation-compose)
-- **Material Design:** [Material Components for Android](https://github.com/material-components/material-components-android)
-
 ## Screenshots
 
-| ![Screenshot 2024-04-16 at 10 26 30 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/c08f645e-a362-4d2e-bfff-c99d8966e2b8) | ![Screenshot 2024-04-15 at 6 34 16 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/a8024c0c-e31f-4189-b268-1167048658ad) | ![Screenshot 2024-04-15 at 6 35 33 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/1a72c5ea-ee22-4470-8e98-6215ebb86924) | ![Screenshot 2024-04-15 at 6 36 08 PM](https://github.com/manununhez/purrfect-pics/assets/5048531/c31637d7-ddfe-436a-8e16-d27244d638ea) |
-|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| ![Screenshot 2024-04-16 at 10 26 30 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/c08f645e-a362-4d2e-bfff-c99d8966e2b8) | ![Screenshot 2024-04-19 at 12 06 41 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/f7c9873c-8ab8-4215-b4f3-ed801dd8f6c9) | ![Screenshot 2024-04-19 at 12 17 14 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/534f2f34-5f9d-4945-83bf-0076f667bc19)| ![Screenshot 2024-04-19 at 12 10 40 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/69042702-71aa-4eae-b508-871d9c630ff8) | ![Screenshot 2024-04-19 at 12 16 02 AM](https://github.com/manununhez/purrfect-pics/assets/5048531/e55d1bae-6aa4-4401-a6b6-8754b0756efd)|
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Considerations
 
@@ -40,7 +36,7 @@ heart.
   and [Pexels](https://www.pexels.com/). In particular, Pexels API
   is [rate-limited](https://www.pexels.com/api/documentation/#guidelines), in case of errors for
   this, a new API key will be necessary to be generated.
-- Not persisted in DB or preferences because this API has dynamic and frequently updated data. On
+- Localdata persistence of favorite cats only. Responses from API are not cached because these are dynamic and frequently updated data. On
   the other hand, Coil image lib does use disk and memory cache to smooth image loading.
 - KtfmtFormat plugin applied for code formatting.
 - There is a known issue with the splash screen not showing on Android 12. A temporary
