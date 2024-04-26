@@ -21,8 +21,8 @@ android {
     applicationId = "com.manuelnunez.apps.purrfectpics"
     minSdk = 21
     targetSdk = 34
-    versionCode = 3
-    versionName = "1.1.0"
+    versionCode = 4
+    versionName = "1.1.1"
     testInstrumentationRunner = "com.manuelnunez.apps.navigation.CustomTestRunner"
   }
 
