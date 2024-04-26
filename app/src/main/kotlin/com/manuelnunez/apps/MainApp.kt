@@ -23,6 +23,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.rememberNavController
@@ -71,7 +73,10 @@ fun MainApp() {
 private fun MainBottomNavBar(navController: NavController, currentSelectedScreen: RootScreen) {
   MainNavigationBar {
     mainDestinations().forEach { rootScreen ->
+      val contentDescriptionScreen = stringResource(id = rootScreen.contentDescription)
+
       MainNavigationBarItem(
+          modifier = Modifier.semantics { contentDescription = contentDescriptionScreen },
           selected = currentSelectedScreen == rootScreen,
           onClick = { navController.navigateToRootScreen(rootScreen) },
           icon = {
@@ -95,7 +100,9 @@ private fun MainBottomNavBar(navController: NavController, currentSelectedScreen
 private fun MainNavRail(navController: NavController, currentSelectedScreen: RootScreen) {
   MainNavigationRail {
     mainDestinations().forEach { rootScreen ->
+      val contentDescriptionScreen = stringResource(id = rootScreen.contentDescription)
       MainNavigationRailItem(
+          modifier = Modifier.semantics { contentDescription = contentDescriptionScreen },
           selected = currentSelectedScreen == rootScreen,
           onClick = { navController.navigateToRootScreen(rootScreen) },
           icon = {

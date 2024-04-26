@@ -17,6 +17,8 @@ android {
   defaultConfig { minSdk = 21 }
 
   kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
+
+  tasks.withType<Test> { useJUnitPlatform() }
 }
 
 // Setup protobuf configuration, generating lite Java and Kotlin classes
@@ -33,10 +35,14 @@ protobuf {
 }
 
 dependencies {
+  implementation(projects.core.common)
+
   implementation(libs.protobuf.kotlin.lite)
   implementation(libs.androidx.dataStore.core)
 
   // HILT
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
+
+  testImplementation(libs.junit)
 }

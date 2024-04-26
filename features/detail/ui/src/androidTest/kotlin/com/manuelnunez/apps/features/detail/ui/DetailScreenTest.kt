@@ -16,7 +16,7 @@ class DetailScreenTest {
   @get:Rule(order = 0) val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
   @Test
-  fun photo_whenScreenIsLoaded_showsPhotoShareAndDescription() {
+  fun photo_whenScreenIsLoaded_showsPhotoShareAddToFavoriteAndDescription() {
     composeTestRule.setContent {
       DetailScreen(item = mockItem, isFavorite = false, onBackClick = {}, onFavoriteClicked = {})
     }
@@ -41,6 +41,15 @@ class DetailScreenTest {
         .assertExists()
         .assertHasClickAction()
 
+    // favorite button
+    composeTestRule
+        .onNodeWithContentDescription(
+            composeTestRule.activity.resources.getString(R.string.button_favorite),
+            substring = true,
+        )
+        .assertExists()
+        .assertHasClickAction()
+
     // Image
     composeTestRule
         .onNodeWithContentDescription(mockItem.photoId)
@@ -50,8 +59,8 @@ class DetailScreenTest {
 
   private val mockItem =
       Item(
-          photoId = "14gf",
-          imageUrl = "https://example.com/photo14gf",
-          thumbnailUrl = "https://example.com/photo14gf/small",
-          description = "This is a description for popular items 14gf")
+          photoId = "id",
+          imageUrl = "https://example.com/photoid",
+          thumbnailUrl = "https://example.com/photoid/small",
+          description = "This is a description for item id")
 }

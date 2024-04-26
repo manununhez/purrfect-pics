@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.core.common.test
+package com.manuelnunez.apps.core.common.testRule
 
 import com.manuelnunez.apps.core.common.dispatcher.CoroutineDispatcherProvider
 import io.mockk.unmockkAll
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.extension.AfterEachCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
-@ExperimentalCoroutinesApi
+@OptIn(ExperimentalCoroutinesApi::class)
 class MockkAllRule : BeforeEachCallback, AfterEachCallback {
 
   private val testCoroutinesDispatcher = StandardTestDispatcher()

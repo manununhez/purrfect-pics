@@ -7,7 +7,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.manuelnunez.apps.core.domain.model.Item
+import com.manuelnunez.apps.core.domain.utils.mockItems
 import com.manuelnunez.apps.features.seemore.ui.components.SeeMoreErrorScreen
 import com.manuelnunez.apps.features.seemore.ui.components.SeeMoreScreen
 import kotlinx.coroutines.flow.flowOf
@@ -57,13 +57,4 @@ class SeeMoreScreenTest {
         )
         .assertExists()
   }
-
-  private val mockItems =
-      List(5) { index ->
-        Item(
-            "$index",
-            "https://example.com/$index",
-            description = "description: $index",
-            thumbnailUrl = "https://example.com/$index")
-      }
 }

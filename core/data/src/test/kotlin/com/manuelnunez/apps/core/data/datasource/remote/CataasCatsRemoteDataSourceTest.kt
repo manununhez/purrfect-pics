@@ -1,4 +1,4 @@
-package com.manuelnunez.apps.core.data.datasource
+package com.manuelnunez.apps.core.data.datasource.remote
 
 import androidx.paging.PagingData
 import androidx.paging.map
@@ -6,8 +6,6 @@ import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.Either
 import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
-import com.manuelnunez.apps.core.data.datasource.remote.CataasCatsRemoteDataSource
-import com.manuelnunez.apps.core.data.datasource.remote.CataasCatsRemoteDataSourceImpl
 import com.manuelnunez.apps.core.data.mapper.toItems
 import com.manuelnunez.apps.core.data.utils.mockCataasResponseDTOS
 import com.manuelnunez.apps.core.domain.model.Item
@@ -17,12 +15,14 @@ import com.manuelnunez.apps.core.services.executors.ServiceError
 import com.manuelnunez.apps.core.services.executors.ServicesExecutor
 import com.manuelnunez.apps.core.services.executors.toServiceResponse
 import com.manuelnunez.apps.core.services.service.CataasService
+import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.test.runTest
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -38,6 +38,11 @@ class CataasCatsRemoteDataSourceTest {
   @BeforeEach
   fun setup() {
     remoteDataSource = CataasCatsRemoteDataSourceImpl(servicesExecutor, apiService)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

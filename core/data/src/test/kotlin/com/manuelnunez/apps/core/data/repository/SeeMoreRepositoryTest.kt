@@ -2,14 +2,16 @@ package com.manuelnunez.apps.core.data.repository
 
 import androidx.paging.PagingData
 import com.manuelnunez.apps.core.data.datasource.remote.PexelsCatsRemoteDataSource
-import com.manuelnunez.apps.core.data.utils.mockItems
+import com.manuelnunez.apps.core.domain.utils.mockItems
 import com.manuelnunez.apps.features.seemore.domain.repository.SeeMoreRepository
+import io.mockk.clearAllMocks
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -22,6 +24,11 @@ class SeeMoreRepositoryTest {
   @BeforeEach
   fun setUp() {
     repository = SeeMoreRepositoryImpl(remoteDataSource)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

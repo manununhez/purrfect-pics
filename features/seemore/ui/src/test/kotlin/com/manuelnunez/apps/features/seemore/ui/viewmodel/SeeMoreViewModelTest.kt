@@ -1,22 +1,20 @@
 package com.manuelnunez.apps.features.seemore.ui.viewmodel
 
 import androidx.paging.PagingData
-import com.manuelnunez.apps.core.common.test.MockkAllRule
-import com.manuelnunez.apps.core.common.test.UnMockkAllRule
-import com.manuelnunez.apps.core.domain.model.Item
+import com.manuelnunez.apps.core.common.testRule.MockkAllRule
+import com.manuelnunez.apps.core.common.testRule.UnMockkAllRule
+import com.manuelnunez.apps.core.domain.utils.mockItems
 import com.manuelnunez.apps.features.seemore.domain.usecase.GetAllItemUseCase
 import com.manuelnunez.apps.features.seemore.ui.SeeMoreViewModel
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 import kotlin.properties.Delegates
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class SeeMoreViewModelTest {
 
   @RegisterExtension private val mockkAllExtension = MockkAllRule()
@@ -38,6 +36,4 @@ class SeeMoreViewModelTest {
         verify(exactly = 1) { getAllItemUseCase.prepare(Unit) }
         confirmVerified(getAllItemUseCase)
       }
-
-  private val mockItems = listOf(Item("1", "imageUrl1", "thumbnailUrl1", "description1"))
 }

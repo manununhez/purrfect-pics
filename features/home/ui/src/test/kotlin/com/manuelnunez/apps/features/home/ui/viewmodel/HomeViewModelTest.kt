@@ -3,10 +3,10 @@ package com.manuelnunez.apps.features.home.ui.viewmodel
 import app.cash.turbine.test
 import com.manuelnunez.apps.core.common.eitherError
 import com.manuelnunez.apps.core.common.eitherSuccess
-import com.manuelnunez.apps.core.common.test.MockkAllRule
-import com.manuelnunez.apps.core.common.test.UnMockkAllRule
+import com.manuelnunez.apps.core.common.testRule.MockkAllRule
+import com.manuelnunez.apps.core.common.testRule.UnMockkAllRule
 import com.manuelnunez.apps.core.domain.model.ErrorModel
-import com.manuelnunez.apps.core.domain.model.Item
+import com.manuelnunez.apps.core.domain.utils.mockItems
 import com.manuelnunez.apps.features.home.domain.usecase.GetFeaturedItemsUseCase
 import com.manuelnunez.apps.features.home.domain.usecase.GetPopularItemsUseCase
 import com.manuelnunez.apps.features.home.ui.HomeViewModel
@@ -16,7 +16,6 @@ import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -24,7 +23,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 import kotlin.properties.Delegates
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModelTest {
   @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
@@ -38,9 +36,9 @@ class HomeViewModelTest {
   fun `GIVEN viewmodel init, WHEN onSuccess, THEN set state with popular and featured items`() =
       mockkAllExtension.runTest {
         every { getFeaturedItemsUseCase.prepare(Unit) } returns
-            flow { emit(eitherSuccess(mockPhotos)) }
+            flow { emit(eitherSuccess(mockItems)) }
         every { getPopularItemsUseCase.prepare(Unit) } returns
-            flow { emit(eitherSuccess(mockPhotos)) }
+            flow { emit(eitherSuccess(mockItems)) }
 
         viewModel = HomeViewModel(getFeaturedItemsUseCase, getPopularItemsUseCase)
 
@@ -53,8 +51,8 @@ class HomeViewModelTest {
           }
 
           awaitItem().apply {
-            assertEquals(FeaturedItemsState.ShowList(mockPhotos), featuredItemsState)
-            assertEquals(PopularItemsState.ShowList(mockPhotos), popularItemsState)
+            assertEquals(FeaturedItemsState.ShowList(mockItems), featuredItemsState)
+            assertEquals(PopularItemsState.ShowList(mockItems), popularItemsState)
           }
 
           cancelAndIgnoreRemainingEvents()
@@ -130,15 +128,5 @@ class HomeViewModelTest {
           getPopularItemsUseCase.prepare(Unit)
         }
         confirmVerified(getFeaturedItemsUseCase, getPopularItemsUseCase)
-      }
-
-  private val mockPhotos: List<Item> =
-      List(20) { index ->
-        val id = (index + 1).toString()
-        Item(
-            photoId = id,
-            imageUrl = "https://example.com/photo$id",
-            thumbnailUrl = "https://example.com/photo$id/small",
-            description = "This is a description for item $id")
       }
 }
