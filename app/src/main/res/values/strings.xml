@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Purrfect Pics</string>
     <string name="home_destination_title">Home</string>
+    <string name="home_destination_content_description">HomeTabItem</string>
     <string name="favorites_destination_title">Favorites</string>
+    <string name="favorites_destination_content_description">FavoritesTabItem</string>
 </resources>

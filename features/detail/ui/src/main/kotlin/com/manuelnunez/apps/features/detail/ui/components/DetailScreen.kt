@@ -77,7 +77,7 @@ private fun DetailPortrait(
         modifier = Modifier.weight(1f).wrapContentSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
           StatefulAsyncImage(
-              modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).heightIn(min = 180.dp),
+              modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
               imageUrl = item.imageUrl,
               contentDescription = item.photoId,
               contentScale = ContentScale.Fit,

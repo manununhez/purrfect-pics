@@ -1,12 +1,11 @@
 package com.manuelnunez.apps.core.data.utils
 
-import com.manuelnunez.apps.core.domain.model.Item
 import com.manuelnunez.apps.core.services.dto.CataasResponseDTO
 import com.manuelnunez.apps.core.services.dto.PexelsSearchResponseDTO
 import com.manuelnunez.apps.core.services.dto.PhotoDTO
 import com.manuelnunez.apps.core.services.dto.PhotoSrcDTO
 
-val mockPhotos: List<PhotoDTO> =
+val mockPhotosDTO: List<PhotoDTO> =
     List(20) { index ->
       val id = index + 1
       val photographer = if (id % 2 == 0) "John Doe" else "Jane Smith"
@@ -38,7 +37,7 @@ val mockPhotos: List<PhotoDTO> =
     }
 
 val mockPexelsSearchResponseDTO =
-    PexelsSearchResponseDTO(totalResult = 10, page = 1, perPage = 20, photos = mockPhotos)
+    PexelsSearchResponseDTO(totalResult = 10, page = 1, perPage = 20, photos = mockPhotosDTO)
 
 val mockCataasResponseDTOS =
     listOf(
@@ -57,5 +56,3 @@ val mockCataasResponseDTOS =
             mimetype = "image/jpeg",
             size = 4096,
             tags = listOf("funny", "mischief", "whiskers")))
-
-val mockItems = listOf(Item("1", "imageUrl1", "thumbnailUrl1", "description1"))

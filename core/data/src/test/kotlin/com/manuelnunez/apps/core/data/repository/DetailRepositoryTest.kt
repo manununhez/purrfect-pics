@@ -1,8 +1,9 @@
 package com.manuelnunez.apps.core.data.repository
 
 import com.manuelnunez.apps.core.data.datasource.local.FavoritesDataSource
-import com.manuelnunez.apps.core.data.utils.mockItems
+import com.manuelnunez.apps.core.domain.utils.mockItems
 import com.manuelnunez.apps.features.detail.domain.repository.DetailRepository
+import io.mockk.clearAllMocks
 import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.confirmVerified
@@ -11,6 +12,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -22,6 +24,11 @@ class DetailRepositoryTest {
   @BeforeEach
   fun setUp() {
     repository = DetailRepositoryImpl(remoteDataSource)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

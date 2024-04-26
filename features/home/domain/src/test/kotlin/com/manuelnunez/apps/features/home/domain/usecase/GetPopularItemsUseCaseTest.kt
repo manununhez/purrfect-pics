@@ -1,18 +1,18 @@
 package com.manuelnunez.apps.features.home.domain.usecase
 
 import app.cash.turbine.test
-import com.manuelnunez.apps.core.common.test.MockkAllRule
-import com.manuelnunez.apps.core.common.test.UnMockkAllRule
+import com.manuelnunez.apps.core.common.testRule.MockkAllRule
+import com.manuelnunez.apps.core.common.testRule.UnMockkAllRule
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
+import io.mockk.clearAllMocks
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.RegisterExtension
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class GetPopularItemsUseCaseTest {
   @RegisterExtension private val mockkAllExtension = MockkAllRule()
   @RegisterExtension private val unMockkAllExtension = UnMockkAllRule()
@@ -24,6 +24,11 @@ class GetPopularItemsUseCaseTest {
   fun setUp() {
     useCase =
         GetPopularItemsUseCase(homeRepository, mockkAllExtension.testCoroutineDispatcherProvider)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

@@ -23,6 +23,7 @@ android {
     targetSdk = 34
     versionCode = 3
     versionName = "1.1.0"
+    testInstrumentationRunner = "com.manuelnunez.apps.navigation.CustomTestRunner"
   }
 
   signingConfigs {
@@ -69,9 +70,10 @@ android {
 }
 
 dependencies {
+  implementation(projects.core.data) // Added only for testing using the TestDataModule
   implementation(projects.core.ui)
-  implementation(projects.core.data)
   implementation(projects.core.domain)
+
   implementation(projects.features.home.ui)
   implementation(projects.features.detail.ui)
   implementation(projects.features.seemore.ui)
@@ -86,6 +88,7 @@ dependencies {
   implementation(libs.androidx.navigation.compose)
 
   implementation(libs.coil.kt)
+  implementation(libs.androidx.test.runner)
 
   // Compose
   val composeBom = platform(libs.androidx.compose.bom)
@@ -94,4 +97,7 @@ dependencies {
   // Hilt Dependency Injection
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
+
+  androidTestImplementation(libs.androidx.navigation.testing)
+  androidTestImplementation(libs.hilt.android.testing)
 }

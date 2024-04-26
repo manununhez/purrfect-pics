@@ -5,7 +5,7 @@ import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import com.manuelnunez.apps.core.domain.model.Item
+import com.manuelnunez.apps.core.domain.utils.mockItems
 import com.manuelnunez.apps.features.favorites.ui.component.FavoritesScreen
 import org.junit.Rule
 import org.junit.Test
@@ -36,13 +36,4 @@ class FavoritesScreenTest {
         .assertExists()
         .assertHasClickAction()
   }
-
-  private val mockItems =
-      List(5) { index ->
-        Item(
-            "$index",
-            "https://example.com/$index",
-            description = "description: $index",
-            thumbnailUrl = "https://example.com/$index")
-      }
 }

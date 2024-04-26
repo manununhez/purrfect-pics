@@ -63,19 +63,22 @@ enum class RootScreen(
     val unselectedIcon: ImageVector,
     val iconTextId: Int,
     val titleTextId: Int,
+    val contentDescription: Int
 ) {
   HOME(
       route = "home_root",
       selectedIcon = Icons.Default.Home,
       unselectedIcon = Icons.Outlined.Home,
       iconTextId = R.string.home_destination_title,
-      titleTextId = R.string.home_destination_title),
+      titleTextId = R.string.home_destination_title,
+      contentDescription = R.string.home_destination_content_description),
   FAVORITES(
       route = "favorite_root",
       selectedIcon = Icons.Default.Favorite,
       unselectedIcon = Icons.Outlined.FavoriteBorder,
       iconTextId = R.string.favorites_destination_title,
-      titleTextId = R.string.favorites_destination_title)
+      titleTextId = R.string.favorites_destination_title,
+      contentDescription = R.string.favorites_destination_content_description)
 }
 
 fun NavController.navigateToRootScreen(rootScreen: RootScreen) {

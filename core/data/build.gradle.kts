@@ -25,8 +25,10 @@ android {
 dependencies {
   implementation(projects.core.common)
   implementation(projects.core.services)
-  implementation(projects.core.domain)
+  implementation(
+      projects.core.domain) // Added only for the domain Item model. It could be moved to common
   implementation(projects.core.datastoreProto)
+  // Added features domain only for the repository interface
   implementation(projects.features.home.domain)
   implementation(projects.features.seemore.domain)
   implementation(projects.features.favorites.domain)
@@ -40,6 +42,7 @@ dependencies {
 
   implementation(libs.androidx.paging.common.ktx)
   // HILT
+  implementation(libs.hilt.android.testing)
   implementation(libs.hilt.android)
   ksp(libs.hilt.compiler)
 

@@ -9,8 +9,10 @@ import com.manuelnunez.apps.core.data.utils.mockPexelsSearchResponseDTO
 import com.manuelnunez.apps.core.domain.model.ErrorModel
 import com.manuelnunez.apps.core.services.executors.ServiceError
 import com.manuelnunez.apps.features.home.domain.repository.HomeRepository
+import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
@@ -24,6 +26,11 @@ class HomeRepositoryTest {
   @BeforeEach
   fun setUp() {
     repository = HomeRepositoryImpl(remoteDataSource)
+  }
+
+  @AfterEach
+  fun tearDown() {
+    clearAllMocks()
   }
 
   @Test

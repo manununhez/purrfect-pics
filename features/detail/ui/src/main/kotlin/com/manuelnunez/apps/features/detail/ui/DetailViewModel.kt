@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
+import org.jetbrains.annotations.VisibleForTesting
 import javax.inject.Inject
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -41,7 +42,7 @@ constructor(
           .stateIn(
               scope = viewModelScope, started = SharingStarted.Eagerly, initialValue = Item.empty)
 
-  private val isItemFavorite = MutableStateFlow(false)
+  @VisibleForTesting val isItemFavorite = MutableStateFlow(false)
 
   val state =
       combine(isItemFavorite, selectedItem) { isFavorite, item -> DetailUiState(item, isFavorite) }
